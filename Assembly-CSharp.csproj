@@ -51,11 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\ConnectGame.cs" />
-     <Compile Include="Assets\scripts\MultiCastServerAddress.cs" />
-     <Compile Include="Assets\scripts\OverridenNetworkDiscovery.cs" />
+     <Compile Include="Assets\GeneratePlayer.cs" />
+     <Compile Include="Assets\scripts\Network\ConnectGame.cs" />
+     <Compile Include="Assets\scripts\Network\DebugConnection.cs" />
+     <Compile Include="Assets\scripts\Network\OverridenNetworkDiscovery.cs" />
+     <Compile Include="Assets\scripts\Network\OverridenNetworkManager.cs" />
      <Compile Include="Assets\scripts\PlayerController.cs" />
      <Compile Include="Assets\scripts\PlayerInput.cs" />
+     <Compile Include="Assets\scripts\UI\ReadyButton.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
