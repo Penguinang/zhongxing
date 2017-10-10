@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/OverridenNetworkDiscovery.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Network/ConnectGame.cs">
     <Files>
-      <File FileName="Assets/scripts/ConnectGame.cs" Line="82" Column="34" />
-      <File FileName="Assets/scripts/PlayerInput.cs" Line="8" Column="31" />
-      <File FileName="Assets/scripts/PlayerController.cs" Line="9" Column="3" />
-      <File FileName="Assets/scripts/OverridenNetworkDiscovery.cs" Line="29" Column="38" />
+      <File FileName="Assets/scripts/UI/ReadyButton.cs" Line="21" Column="31" />
+      <File FileName="Assets/scripts/Network/ConnectGame.cs" Line="140" Column="35" />
+      <File FileName="Assets/scripts/Network/DebugConnection.cs" Line="37" Column="3" />
+      <File FileName="Assets/scripts/Network/OverridenNetworkDiscovery.cs" Line="37" Column="12" />
+      <File FileName="Assets/scripts/Network/OverridenNetworkManager.cs" Line="15" Column="30" />
+      <File FileName="../../UnitySourceCode/UNet/Unity-Technologies-networking-78ca8544bbf4/Runtime/NetworkManager.cs" Line="1063" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

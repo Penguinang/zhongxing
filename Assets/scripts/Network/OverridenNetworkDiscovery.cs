@@ -36,5 +36,14 @@ public class OverridenNetworkDiscovery :  NetworkDiscovery{
 		ConnectGame connectComponent = gameObject.GetComponent<ConnectGame> ();
 		connectComponent.JoinLanGame (fromAddress);
 		inGame = true;
+
+		// XXX “准备功能”
+		/*
+		 * 1.  这是为了“准备”功能写的，涉及到了一些传输层API，暂时搁置
+		 */
+//		DebugConnection conn = new DebugConnection();
+//		byte[] byteArray = System.Text.Encoding.Default.GetBytes ("a new debugconnection");
+//		Byte error;
+//		conn.TransportSend (byteArray,20,23890,out error);
 	}
 }
