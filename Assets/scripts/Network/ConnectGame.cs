@@ -10,27 +10,35 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
 
 public class ConnectGame : MonoBehaviour {
-	public NetworkManager networkManager;
+	static public ConnectGame _singleton;
+
+	public NetworkLobbyManager networkManager;
 	public OverridenNetworkDiscovery networkDiscovery;
 	public InputField roomInput;
-	public InputField numInput;
+	public GameObject roomPanel;
+	public GameObject createGamePanel;
 
 	private string roomName;
-	private int playerNum;
-	private int curPlayerNum;
-	private List<NetworkConnection> conns;
 
 	// ip是由服务器决定后，广播给客户端，再由客户端获得
 	public string ipAddress;
 	// port 应该在为服务器和客户端确定相同的值
 	public int port ;
-	void Start(){
+
+	public GameObject localPlayer;
+
+	void Awake(){
+		if (_singleton == null) {
+			_singleton = this;
+		}
 		ipAddress = "localhost";
 		port = 7777;
-		curPlayerNum = 0;
-		conns = new List<NetworkConnection> ();
+		DontDestroyOnLoad (this);
 	}
 
+	// ------------------------common callback ---------------------------
+
+	// ------------------------ server clickcallback ------------------------
 	public void OnHostClick(){
 		roomName = roomInput.text;
 		if (roomName.Equals ("")) {
@@ -38,19 +46,9 @@ public class ConnectGame : MonoBehaviour {
 			return;
 		}
 
-		try{
-			playerNum = int.Parse (numInput.text);
-		}
-		catch(Exception e){
-			Debug.Log (e.Message);
-			return;
-		}
-		if (playerNum < 2||playerNum>4) {
-			Debug.Log ("cuit number is between 2 and 4");
-			return;
-		}
-
 		CreateLanHostGame ();
+		roomPanel.SetActive (true);
+		createGamePanel.SetActive (false);
 	}
 
 	public void CreateLanHostGame(){
@@ -73,6 +71,7 @@ public class ConnectGame : MonoBehaviour {
 		networkDiscovery.StartAsServer ();
 	}
 
+	// ------------------------ client clickcallback ------------------------
 	public void OnJoinClick(){		
 		roomName = roomInput.text;
 		if (roomName.Equals ("")) {
@@ -80,6 +79,7 @@ public class ConnectGame : MonoBehaviour {
 			return;
 		}
 		StartListenforAddressAsClient ();
+		roomPanel.SetActive (true);
 	}
 
 	void StartListenforAddressAsClient(){
@@ -96,7 +96,7 @@ public class ConnectGame : MonoBehaviour {
 			return;
 		}
 		//DEBUG
-		Debug.Log ("get server ip");
+		Debug.Log ("get server ip,and join lan game  "+serverAddress);
 		networkManager.networkAddress = serverAddress;
 
 		networkManager.networkPort = port;
@@ -104,47 +104,27 @@ public class ConnectGame : MonoBehaviour {
 		networkManager.StartClient ();
 	}
 
-	public void OnServerConnect(NetworkConnection conn){
-		conns.Add (conn);
-		curPlayerNum++;
-		Debug.Log ("curPLayernNUm is :"+curPlayerNum);
-		// XXX “准备功能”
-		/*
-		 * 1.  这是为了“准备”功能写的，涉及到了一些传输层API，暂时搁置
-		 */
-//		DebugConnection dconn = new DebugConnection();
-//		byte[] msg = new byte[20];
-//		dconn.TransportRecieve (msg,20,23890);
-//		Debug.Log (msg.ToString ());
+	// ------------------------ server handlers ------------------------
+	public void OnServerConnect(NetworkConnection conn){	}
 
-		if (curPlayerNum >= playerNum) {
-			Debug.Log ("start game");
-			StartGame ();
-		}
+	// ------------------------ client handlers ------------------------
+	public void OnClientConnect(NetworkConnection conn){
+		Debug.Log ("success connect to server");
 	}
 
-	//XXX 踢人操作，搁置
-//	public void KickOut(NetworkConnection conn){
-////		NetworkServer.RemoveExternalConnection (conn);
-//	}
-
-	void StartGame(){
-		//XXX 
-		/*
-		 *  1. 开始游戏后需要更换游戏场景，待补充
-		 *  2. 游戏开始后不能立即生成玩家物体，需要显示准备状态
-		 */
+	public void StartGame(){
+		networkManager.ServerChangeScene (networkManager.playScene);
+		roomPanel.SetActive (false);
+		createGamePanel.SetActive (false);
+	
 		networkDiscovery.StopBroadcast ();
-		Debug.Log (conns.Count);
-//+++++++++++++++++++++++++++++          问题代码            +++++++++++++++++++++++++++++++++++//
-		SceneManager.LoadScene ("Game");
-		DontDestroyOnLoad (this);
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-		foreach(NetworkConnection conn in conns){
-			GameObject player = (GameObject)Instantiate (networkManager.playerPrefab,Vector3.zero,Quaternion.identity);
-			NetworkServer.AddPlayerForConnection (conn,player,0);
-			Debug.Log ("spawn player");
-		}
+		Debug.Log ("isserver");
+
+		LoadScene ();
 	}
 
+	public void LoadScene(){
+		Debug.Log ("networkServer change scene");
+//		networkManager.ServerChangeScene (networkManager.playScene);
+	}
 }

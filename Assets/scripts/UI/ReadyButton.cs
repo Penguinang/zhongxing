@@ -19,9 +19,11 @@ public class ReadyButton : NetworkBehaviour {
 		if (isOn) {
 			selbkg.SetActive (true) ;
 			uselbkg.SetActive (false) ;
+
 		} else {
 			selbkg.SetActive (false) ;
 			uselbkg.SetActive (true) ;
+
 		}
 	}
 }

@@ -52,13 +52,36 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GeneratePlayer.cs" />
+     <Compile Include="Assets\Lobby\Scripts\DraggablePanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyHook.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyInfoPanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyMainMenu.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyManager.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyPlayer.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyPlayerList.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyServerEntry.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyServerList.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyTopPanel.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\NetworkAsteroid.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\NetworkGameManager.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\NetworkLobbyHook.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\NetworkSpaceship.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\NetworkSpaceshipBullet.cs" />
+     <Compile Include="Assets\scripts\NetDebug\Log.cs" />
      <Compile Include="Assets\scripts\Network\ConnectGame.cs" />
-     <Compile Include="Assets\scripts\Network\DebugConnection.cs" />
+     <Compile Include="Assets\scripts\Network\LobbyManager.cs" />
+     <Compile Include="Assets\scripts\Network\LobbyPlayerList.cs" />
+     <Compile Include="Assets\scripts\Network\MyLobbyPlayer.cs" />
      <Compile Include="Assets\scripts\Network\OverridenNetworkDiscovery.cs" />
-     <Compile Include="Assets\scripts\Network\OverridenNetworkManager.cs" />
-     <Compile Include="Assets\scripts\PlayerController.cs" />
-     <Compile Include="Assets\scripts\PlayerInput.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerInput.cs" />
+     <Compile Include="Assets\scripts\Player\TestPlayer.cs" />
      <Compile Include="Assets\scripts\UI\ReadyButton.cs" />
+     <None Include="Assets\Lobby\Documentation.txt" />
+     <None Include="Assets\Lobby\Instruction.txt" />
+     <None Include="Assets\Fonts\OpenSans\License!.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>

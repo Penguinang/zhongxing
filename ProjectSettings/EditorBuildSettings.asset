@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Game.unity
     guid: cf8036a02a90e413394cba6f11195207
+  - enabled: 1
+    path: Assets/SampleScenes/Scenes/NetworkLobby.unity
+    guid: 3c0d76c55eed6214f9d3b070caede5d3
+  - enabled: 1
+    path: Assets/SampleScenes/Scenes/NetworkSpaceship.unity
+    guid: 7f858b30832aff046a2278ab9ef04e1a

@@ -11,9 +11,4 @@ public class GeneratePlayer : NetworkBehaviour {
 //		ClientScene.AddPlayer (0);
 		Debug.Log ("add local player");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

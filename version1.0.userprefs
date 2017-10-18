@@ -2,13 +2,33 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Network/ConnectGame.cs">
     <Files>
-      <File FileName="Assets/scripts/UI/ReadyButton.cs" Line="21" Column="31" />
-      <File FileName="Assets/scripts/Network/ConnectGame.cs" Line="140" Column="35" />
-      <File FileName="Assets/scripts/Network/DebugConnection.cs" Line="37" Column="3" />
-      <File FileName="Assets/scripts/Network/OverridenNetworkDiscovery.cs" Line="37" Column="12" />
-      <File FileName="Assets/scripts/Network/OverridenNetworkManager.cs" Line="15" Column="30" />
-      <File FileName="../../UnitySourceCode/UNet/Unity-Technologies-networking-78ca8544bbf4/Runtime/NetworkManager.cs" Line="1063" Column="40" />
+      <File FileName="Assets/scripts/Network/ConnectGame.cs" Line="128" Column="65" />
+      <File FileName="Assets/scripts/Network/LobbyManager.cs" Line="32" Column="35" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="385" Column="30" />
+      <File FileName="../../UnitySourceCode/UNet/Unity-Technologies-networking-78ca8544bbf4/Runtime/NetworkLobbyManager.cs" Line="636" Column="37" />
+      <File FileName="../../UnitySourceCode/UNet/Unity-Technologies-networking-78ca8544bbf4/Runtime/NetworkManager.cs" Line="613" Column="42" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="version1.0" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Lobby" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Lobby" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="scripts" expanded="True">
+                <Node name="Network" expanded="True">
+                  <Node name="ConnectGame.cs" selected="True" />
+                </Node>
+                <Node name="Player" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
