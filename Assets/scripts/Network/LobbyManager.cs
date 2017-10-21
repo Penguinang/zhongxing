@@ -20,7 +20,7 @@ namespace Lobby{
 
 		public override void OnLobbyServerPlayersReady(){
 			// 内部类会自己管理所有玩家的准备状态，一旦所有玩家准备好后就会自动转换场景开始游戏，这个函数就是传递消息的
-//			base.OnLobbyServerPlayersReady ();
+//						base.OnLobbyServerPlayersReady ();
 			bool allready = true;
 			foreach (NetworkLobbyPlayer player in lobbySlots) {
 				if(player)
@@ -30,7 +30,6 @@ namespace Lobby{
 			if (allready) {
 				Debug.Log ("allready ,start!!");
 				ConnectGame._singleton.StartGame ();
-//				ServerChangeScene (playScene);
 			}
 
 		}

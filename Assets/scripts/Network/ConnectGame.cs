@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using System.Configuration;
 using System;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows.Speech;
 
 public class ConnectGame : MonoBehaviour {
 	static public ConnectGame _singleton;
@@ -113,18 +112,17 @@ public class ConnectGame : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		networkManager.ServerChangeScene (networkManager.playScene);
-		roomPanel.SetActive (false);
 		createGamePanel.SetActive (false);
 	
 		networkDiscovery.StopBroadcast ();
 		Debug.Log ("isserver");
 
 		LoadScene ();
+				roomPanel.SetActive (false);
 	}
 
 	public void LoadScene(){
 		Debug.Log ("networkServer change scene");
-//		networkManager.ServerChangeScene (networkManager.playScene);
+		networkManager.ServerChangeScene (networkManager.playScene);
 	}
 }

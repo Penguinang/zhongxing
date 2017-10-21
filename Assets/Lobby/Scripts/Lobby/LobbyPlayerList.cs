@@ -11,8 +11,9 @@ namespace Prototype.NetworkLobby
         public static LobbyPlayerList _instance = null;
 
         public RectTransform playerListContentTransform;
-        public GameObject warningDirectPlayServer;
-        public Transform addButtonRow;
+//        public GameObject warningDirectPlayServer;
+//        public Transform addButtonRow;
+		  public Transform waitingCircle;
 
         protected VerticalLayoutGroup _layout;
         protected List<LobbyPlayer> _players = new List<LobbyPlayer>();
@@ -23,12 +24,12 @@ namespace Prototype.NetworkLobby
             _layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>();
         }
 
-        public void DisplayDirectServerWarning(bool enabled)
-        {
-            if(warningDirectPlayServer != null)
-                warningDirectPlayServer.SetActive(enabled);
-        }
-
+//        public void DisplayDirectServerWarning(bool enabled)
+//        {
+//            if(warningDirectPlayServer != null)
+//                warningDirectPlayServer.SetActive(enabled);
+//        }
+//
         void Update()
         {
             //this dirty the layout to force it to recompute evryframe (a sync problem between client/server
@@ -46,7 +47,7 @@ namespace Prototype.NetworkLobby
             _players.Add(player);
 
             player.transform.SetParent(playerListContentTransform, false);
-            addButtonRow.transform.SetAsLastSibling();
+//            addButtonRow.transform.SetAsLastSibling();
 
             PlayerListModified();
         }
@@ -66,5 +67,9 @@ namespace Prototype.NetworkLobby
                 ++i;
             }
         }
+
+		public int getPlayerNum(){
+			return _players.Count;
+		}
     }
 }
