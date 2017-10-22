@@ -58,7 +58,7 @@ namespace Prototype.NetworkLobby
 			LobbyPlayerList playerList = LobbyPlayerList._instance;
 			Transform waitingCircle = playerList.waitingCircle;
 			Vector3 rotation = new Vector3 (0, 0, 1);
-			while(playerList.getPlayerNum ()<2){
+			while(playerList.getPlayerNum ()<1){
 				yield return 0;
 				rotation += new Vector3 (0, 0, 1);
 				waitingCircle.Rotate (rotation);
