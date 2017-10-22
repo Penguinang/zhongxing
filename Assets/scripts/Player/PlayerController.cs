@@ -1,20 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Player{
-	public class PlayerController : MonoBehaviour {
-		private int forceRatio;
-		void OnEnable(){
-			Debug.Log ("player spawned");
-		}
+using UnityEngine.Networking;
 
-		void Awake(){
-			OnEnable ();
-		}
+namespace Player{
+	public class PlayerController : NetworkBehaviour {
+		private int forceRatio;
 
 		void Start () {
 			forceRatio= 4;
-			OnEnable ();
 		}
 
 		public void move(Vector3 direction){
@@ -25,6 +19,34 @@ namespace Player{
 		public void rotate(float degree){
 			transform.Rotate (Vector3.up*degree);
 			Debug.Log ("rotate");
+		}
+
+		// -------------------------------Client callback function------------------------------------
+		[Command]
+		public void CmdOnProtectionClick(){
+			RpcOnProtectionClick ();
+		}
+
+		public void OnBombClick(){
+			Debug.Log ("Bomb clicked");
+		}
+
+		public void OnShipPress(){
+			Debug.Log ("Ship pressed");
+		}
+
+		public void OnShipRelease(){
+			Debug.Log ("Ship Release");
+		}
+
+		// -------------------------------Server Callback function--------------------------------------
+		[ClientRpc]
+		public void RpcOnProtectionClick(){
+			Debug.Log ("Protection clicked");
+			// XXX
+			if (!Application.isEditor) {
+
+			}
 		}
 	}
 }

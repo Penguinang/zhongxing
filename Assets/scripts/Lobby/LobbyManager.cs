@@ -14,6 +14,7 @@ namespace Prototype.NetworkLobby
 
         static public LobbyManager s_Singleton;
 		static public GameObject localPlayer;
+		public string localPlayerName;
 
 
         [Header("Unity UI Lobby")]
@@ -46,7 +47,6 @@ namespace Prototype.NetworkLobby
         {
             s_Singleton = this;
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
-//            GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -73,108 +73,13 @@ namespace Prototype.NetworkLobby
             }
         }
 
-        //allow to handle the (+) button to add/remove player
-        public void OnPlayersNumberModified(int count)
-        {
-            _playerNumber += count;
-
-            int localPlayerCount = 0;
-            foreach (PlayerController p in ClientScene.localPlayers)
-                localPlayerCount += (p == null || p.playerControllerId == -1) ? 0 : 1;
-        }
-
-        // ----------------- Server callbacks ------------------
-
-        //we want to disable the button JOIN if we don't have enough player
-        //But OnLobbyClientConnect isn't called on hosting player. So we override the lobbyPlayer creation
-		// 暂时理解为UNet内自动使用此返回值为每一个客户端Spawn
-        public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
-        {
-            GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
-
-            LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
-
-
-            for (int i = 0; i < lobbySlots.Length; ++i)
-            {
-                LobbyPlayer p = lobbySlots[i] as LobbyPlayer;
-
-                if (p != null)
-                {
-//                    p.RpcUpdateRemoveButton();
-                }
-            }
-
-            return obj;
-        }
-
-        public override void OnLobbyServerDisconnect(NetworkConnection conn)
-        {
-            for (int i = 0; i < lobbySlots.Length; ++i)
-            {
-                LobbyPlayer p = lobbySlots[i] as LobbyPlayer;
-
-                if (p != null)
-                {
-//                    p.RpcUpdateRemoveButton();
-                }
-            }
-
-        }
-
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
-        {
-            //This hook allows you to apply state data from the lobby-player to the game-player
-            //just subclass "LobbyHook" and add it to the lobby object.
-
-            if (_lobbyHooks)
-                _lobbyHooks.OnLobbyServerSceneLoadedForPlayer(this, lobbyPlayer, gamePlayer);
+		{
+			string name = lobbyPlayer.GetComponent<LobbyPlayer> ().Name;
+			gamePlayer.GetComponent<PlayerMessage> ().Name = name;
 
             return true;
         }
 
-        // --- Countdown management
-
-        public override void OnLobbyServerPlayersReady()
-        {
-			bool allready = true;
-			for(int i = 0; i < lobbySlots.Length; ++i)
-			{
-				if(lobbySlots[i] != null)
-					allready &= lobbySlots[i].readyToBegin;
-			}
-
-			if(allready)
-				StartCoroutine(ServerCountdownCoroutine());
-        }
-
-        public IEnumerator ServerCountdownCoroutine()
-        {
-            float remainingTime = prematchCountdown;
-            int floorTime = Mathf.FloorToInt(remainingTime);
-
-            while (remainingTime > 0)
-            {
-                yield return null;
-
-                remainingTime -= Time.deltaTime;
-                int newFloorTime = Mathf.FloorToInt(remainingTime);
-
-                if (newFloorTime != floorTime)
-                {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
-                    floorTime = newFloorTime;
-
-                    for (int i = 0; i < lobbySlots.Length; ++i)
-                    {
-                        if (lobbySlots[i] != null)
-                        {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
-                            (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime);
-                        }
-                    }
-                }
-            }
-			Debug.Log("change scene");
-            ServerChangeScene(playScene);
-        }
     }
 }

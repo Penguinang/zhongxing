@@ -10,7 +10,6 @@ using Prototype.NetworkLobby;
 public class LogPanel : MonoBehaviour {
 	public RectTransform UsernameInput;
 	public RectTransform PasswordInput;
-	public Button Login;
 
 	public LobbyManager lobbyManager;
 	public RectTransform waiting;
@@ -34,8 +33,9 @@ public class LogPanel : MonoBehaviour {
 //		Debug.Log ("successfully connect server");
 //		yield return 0;
 //
-//		string username = UsernameInput.GetComponent<Text> ().text;
-//		string password = PasswordInput.GetComponent<Text> ().text;
+		string username = UsernameInput.GetComponent<Text> ().text;
+		LobbyManager.s_Singleton.localPlayerName = username;
+		string password = PasswordInput.GetComponent<Text> ().text;
 //
 //		client.SendMessage (new Item (username,password,"online").formatRecord ());
 //		Debug.Log ("request to log in");
