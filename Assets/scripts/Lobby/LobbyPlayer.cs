@@ -10,7 +10,7 @@ namespace Prototype.NetworkLobby
     public class LobbyPlayer : NetworkLobbyPlayer
     {
 //        public InputField nameInput;
-
+		public string Name;
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();
@@ -25,25 +25,25 @@ namespace Prototype.NetworkLobby
             base.OnStartAuthority();
         }
 
-        public override void OnClientReady(bool readyState)
-        {
-            if (readyState)
-            {
-//                nameInput.interactable = false;
-            }
-            else
-            {
-//                nameInput.interactable = isLocalPlayer;
-            }
-        }
+//        public override void OnClientReady(bool readyState)
+//        {
+//            if (readyState)
+//            {
+////                nameInput.interactable = false;
+//            }
+//            else
+//            {
+////                nameInput.interactable = isLocalPlayer;
+//            }
+//        }
 
-        [ClientRpc]
-        public void RpcUpdateCountdown(int countdown)
-        {
-			Debug.Log ("replace countdownpanel");
-//            LobbyManager.s_Singleton.countdownPanel.UIText.text = "Match Starting in " + countdown;
-//            LobbyManager.s_Singleton.countdownPanel.gameObject.SetActive(countdown != 0);
-        }
+//        [ClientRpc]
+//        public void RpcUpdateCountdown(int countdown)
+//        {
+//			Debug.Log ("replace countdownpanel");
+////            LobbyManager.s_Singleton.countdownPanel.UIText.text = "Match Starting in " + countdown;
+////            LobbyManager.s_Singleton.countdownPanel.gameObject.SetActive(countdown != 0);
+//        }
 
 //        public void OnDestroy()
 //        {
@@ -52,13 +52,27 @@ namespace Prototype.NetworkLobby
 
 		void Start(){
 			StartCoroutine (waitMatchPlayers ());
+			if (isLocalPlayer) {
+				Name = LobbyManager.s_Singleton.localPlayerName;
+				CmdClientUpdateName (Name);
+			}
+		}
+
+		[Command]
+		public void CmdClientUpdateName(string name){
+			RpcServerUpdateName (name);
+		}
+
+		[ClientRpc]
+		public void RpcServerUpdateName(string name){
+			Name = name;
 		}
 
 		public IEnumerator waitMatchPlayers(){
 			LobbyPlayerList playerList = LobbyPlayerList._instance;
 			Transform waitingCircle = playerList.waitingCircle;
 			Vector3 rotation = new Vector3 (0, 0, 1);
-			while(playerList.getPlayerNum ()<2){
+			while(playerList.getPlayerNum ()<1){
 				yield return 0;
 				rotation += new Vector3 (0, 0, 1);
 				waitingCircle.Rotate (rotation);

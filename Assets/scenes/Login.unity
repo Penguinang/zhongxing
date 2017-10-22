@@ -735,14 +735,14 @@ MonoBehaviour:
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 1
+  m_PlayerSpawnMethod: 0
   m_OfflineScene: Login
   m_OnlineScene: 
   m_SpawnPrefabs: []
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
-    m_PacketSize: 1500
+    m_PacketSize: 1440
     m_FragmentSize: 500
     m_ResendTimeout: 1200
     m_DisconnectTimeout: 2000
@@ -758,7 +758,7 @@ MonoBehaviour:
     m_SendDelay: 10
     m_MaxCombinedReliableMessageSize: 100
     m_MaxCombinedReliableMessageCount: 10
-    m_MaxSentMessageQueueSize: 128
+    m_MaxSentMessageQueueSize: 512
     m_AcksType: 1
     m_UsePlatformSpecificProtocols: 0
     m_InitialBandwidth: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 0500000000000000
+  m_Channels: 
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 4
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 1
+  m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 114875998476584216, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1034282317793138, guid: e06251ff2816a4fb99e0291151a8ce22,
@@ -805,7 +805,8 @@ MonoBehaviour:
   m_LobbyScene: Login
   m_PlayScene: Game
   lobbySlots: []
-  prematchCountdown: 1
+  localPlayerName: 
+  prematchCountdown: 5
   countdownPanel: {fileID: 0}
   _playerNumber: 0
   _isMatchmaking: 0
@@ -933,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerListContentTransform: {fileID: 547245586}
-  waitingCircle: {fileID: 2025704821}
+  waitingCircle: {fileID: 0}
 --- !u!1 &680331534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,9 +1192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42b3fd7a3de6499bb59ab17a62bd210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsernameInput: {fileID: 0}
-  PasswordInput: {fileID: 0}
-  Login: {fileID: 0}
+  UsernameInput: {fileID: 296818738}
+  PasswordInput: {fileID: 1667588076}
   lobbyManager: {fileID: 472815746}
   waiting: {fileID: 1139466535}
   wrongPassword: {fileID: 1432380961}
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8af79b9a16609c44adc72204fea583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 90
 --- !u!114 &1539292154
 MonoBehaviour:
   m_ObjectHideFlags: 0

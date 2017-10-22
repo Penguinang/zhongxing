@@ -8,11 +8,12 @@ namespace Player{
 	public class PlayerInput : NetworkBehaviour {
 		public GameObject myPlayer;
 		private float rotateVelocity;
-		// Use this for initialization
+		private PlayerController playerController;
 
 		void Start () {
 			myPlayer = gameObject;
 			rotateVelocity = 10;
+			playerController = GetComponent<PlayerController> ();
 
 			if (isLocalPlayer) {
 				Debug.Log ("find localPLayer");
@@ -41,35 +42,12 @@ namespace Player{
 
 		// -------------------------------player function API-------------------------------------
 		public void OnProtectionClick(){
-			CmdOnProtectionClick ();
+			playerController.CmdOnProtectionClick ();
 		}
 
-		// -------------------------------Client callback function------------------------------------
-		[Command]
-		public void CmdOnProtectionClick(){
-			RpcOnProtectionClick ();
-		}
-
-		public void OnBombClick(){
-			Debug.Log ("Bomb clicked");
-		}
-
-		public void OnShipPress(){
-			Debug.Log ("Ship pressed");
-		}
-
-		public void OnShipRelease(){
-			Debug.Log ("Ship Release");
-		}
-
-		// -------------------------------Server Callback function--------------------------------------
-		[ClientRpc]
-		public void RpcOnProtectionClick(){
-			Debug.Log ("Protection clicked");
-			// XXX
-			if (!Application.isEditor) {
-				
-			}
+		public void OnRockerValueChanged(Vector2 value){
+			Debug.Log ("Rocker value changed");
+			Debug.Log (value);
 		}
 	}
 
