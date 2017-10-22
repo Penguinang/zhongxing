@@ -4,13 +4,17 @@ using UnityEngine;
 namespace Player{
 	public class PlayerController : MonoBehaviour {
 		private int forceRatio;
-		void Start () {
-			forceRatio= 4;
+		void OnEnable(){
+			Debug.Log ("player spawned");
 		}
 
-		// Update is called once per frame
-		void Update () {
+		void Awake(){
+			OnEnable ();
+		}
 
+		void Start () {
+			forceRatio= 4;
+			OnEnable ();
 		}
 
 		public void move(Vector3 direction){

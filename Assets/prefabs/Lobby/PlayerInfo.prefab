@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLobbyGUI: 0
-  nameInput: {fileID: 0}
 --- !u!114 &114956471935363526
 MonoBehaviour:
   m_ObjectHideFlags: 1

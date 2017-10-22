@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Prototype.NetworkLobby;
 
 public class TestPlayer : MonoBehaviour {
 	public GameObject player;
@@ -9,12 +10,12 @@ public class TestPlayer : MonoBehaviour {
 	private PlayerInput playerInput;
 
 	void Start(){
-		Invoke ("bindPlayer",0.1f);
+//		Invoke ("bindPlayer",1f);
 	}
 
 	void bindPlayer(){
 		if (!player) {
-			player = ConnectGame._singleton.localPlayer;
+			player = LobbyManager.localPlayer;
 			if (!player) {
 				Debug.Log ("localPLayer is null");
 				return;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using NetDebug;
+using Prototype.NetworkLobby;
 
 namespace Player{
 	public class PlayerInput : NetworkBehaviour {
@@ -16,7 +16,7 @@ namespace Player{
 
 			if (isLocalPlayer) {
 				Debug.Log ("find localPLayer");
-				ConnectGame._singleton.localPlayer = gameObject;
+				LobbyManager.localPlayer = gameObject;
 			}
 			else 
 				Debug.Log ("isn't localPLayer");
@@ -66,9 +66,9 @@ namespace Player{
 		[ClientRpc]
 		public void RpcOnProtectionClick(){
 			Debug.Log ("Protection clicked");
-			// DEBUG'
+			// XXX
 			if (!Application.isEditor) {
-				Log log = new Log ("Protection clicked");
+				
 			}
 		}
 	}

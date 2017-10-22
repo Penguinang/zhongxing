@@ -13,6 +13,7 @@ namespace Prototype.NetworkLobby
     {
 
         static public LobbyManager s_Singleton;
+		static public GameObject localPlayer;
 
 
         [Header("Unity UI Lobby")]
@@ -21,7 +22,7 @@ namespace Prototype.NetworkLobby
 
         [Space]
         [Header("UI Reference")]
-		public RectTransform logPanel;
+//		public RectTransform logPanel;
 
         public LobbyCountdownPanel countdownPanel;
         protected RectTransform currentPanel;
@@ -45,7 +46,7 @@ namespace Prototype.NetworkLobby
         {
             s_Singleton = this;
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
-            GetComponent<Canvas>().enabled = true;
+//            GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -53,7 +54,7 @@ namespace Prototype.NetworkLobby
         public override void OnLobbyClientSceneChanged(NetworkConnection conn)
         {
 			Debug.Log ("scene");
-			logPanel.gameObject.SetActive (false);
+//			logPanel.gameObject.SetActive (false);
         }
 
 		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
@@ -172,15 +173,7 @@ namespace Prototype.NetworkLobby
                     }
                 }
             }
-
-//            for (int i = 0; i < lobbySlots.Length; ++i)
-//            {
-//                if (lobbySlots[i] != null)
-//                {
-////                    (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
-//                }
-//            }
-
+			Debug.Log("change scene");
             ServerChangeScene(playScene);
         }
     }

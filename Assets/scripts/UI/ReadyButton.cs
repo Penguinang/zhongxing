@@ -19,17 +19,17 @@ public class ReadyButton : NetworkBehaviour {
 		if (isOn) {
 			selbkg.SetActive (true) ;
 			uselbkg.SetActive (false) ;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 		} else {
 			selbkg.SetActive (false) ;
 			uselbkg.SetActive (true) ;
 
-=======
-		} else {
-			selbkg.SetActive (false) ;
-			uselbkg.SetActive (true) ;
->>>>>>> c880078b7b856404535163c79cd5b026c6252671
+//=======
+//		} else {
+//			selbkg.SetActive (false) ;
+//			uselbkg.SetActive (true) ;
+//>>>>>>> c880078b7b856404535163c79cd5b026c6252671
 		}
 	}
 }
