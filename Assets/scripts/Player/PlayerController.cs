@@ -8,12 +8,22 @@ namespace Player{
 		private int forceRatio;
 
 		void Start () {
-			forceRatio= 4;
+			forceRatio= 10;
 		}
 
 		public void move(Vector3 direction){
 			Rigidbody body = gameObject.GetComponent<Rigidbody>();
 			body.AddForce (direction*forceRatio);
+		}
+
+		//DEBUG
+		[Command]
+		public void CmdMove(Vector2 dir){
+			RpcMove (dir);
+		}
+		[ClientRpc]
+		public void RpcMove(Vector2 dir){
+			move (dir);
 		}
 
 		public void rotate(float degree){

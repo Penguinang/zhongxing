@@ -6,16 +6,18 @@ using UnityEngine.Networking.Match;
 using MySocket;
 using System.Net.Sockets;
 using Prototype.NetworkLobby;
+using UnityEngineInternal;
 
 public class LogPanel : MonoBehaviour {
 	public RectTransform UsernameInput;
 	public RectTransform PasswordInput;
 
 	public LobbyManager lobbyManager;
-	public RectTransform waiting;
-	public RectTransform wrongPassword;
+	public RectTransform logError;
 	public RectTransform alreadyLogin;
-	public RectTransform wrongUsername;
+	public RectTransform matching;
+	public RectTransform linking;
+
 
 	private string serverIp;
 
@@ -28,37 +30,38 @@ public class LogPanel : MonoBehaviour {
 	}
 
 	public IEnumerator tryLogin(){
-//		ClientSocket client = new ClientSocket ();
-//		client.ConnectServer (serverIp,8088);
-//		Debug.Log ("successfully connect server");
-//		yield return 0;
-//
-		string username = UsernameInput.GetComponent<Text> ().text;
-		LobbyManager.s_Singleton.localPlayerName = username;
-		string password = PasswordInput.GetComponent<Text> ().text;
-//
-//		client.SendMessage (new Item (username,password,"online").formatRecord ());
-//		Debug.Log ("request to log in");
-//		yield return 0;
-//
-//		string response = client.ReceiveMessage ();
-//		Debug.Log ("get response from server");
-//		yield return 0;
-
-//		if (response.Contains ("success")) {
+		ClientSocket client = new ClientSocket ();
+		client.ConnectServer (serverIp,8088);
+		ChangeTipTo (linking);
+		Debug.Log ("successfully connect server");
 		yield return 0;
-		if(true){
+
+		string username = UsernameInput.GetComponent<InputField> ().text;
+		LobbyManager.s_Singleton.localPlayerName = username;
+		string password = PasswordInput.GetComponent <InputField> ().text;
+
+		client.SendMessage (new Item (username,password,"online").formatRecord ());
+		Debug.Log ("request to log in");
+		yield return 0;
+
+		string response = client.ReceiveMessage ();
+		
+		Debug.Log ("get response from server");
+		yield return 0;
+
+		if (response.Contains ("success")) {
+//		if(true){
 			OnStartMatch ();
+		} else if (response.Contains ("fail")) {
+			ChangeTipTo (logError);
+		} else {
+			ChangeTipTo (alreadyLogin);
 		}
-		else {
-			wrongPassword.gameObject.SetActive (true);
-		};
 	}
 
 	public void OnStartMatch(){
 		lobbyManager.StartMatchMaker ();
 		lobbyManager.matchMaker.ListMatches (0,6,"",true,0,0,OnListGet);
-		waiting.gameObject.SetActive (true);
 	}
 
 	private void OnListGet(bool success, string extendedInfo, List<MatchInfoSnapshot> matches){
@@ -77,7 +80,18 @@ public class LogPanel : MonoBehaviour {
 					lobbyManager._isMatchmaking = true;
 				}
 		}
-		waiting.gameObject.SetActive (false );
 	}
 
+	private RectTransform current;
+	private void ChangeTipTo(RectTransform target){
+		if (current)
+			current.gameObject.SetActive (false);
+		current = target;
+		if(current)
+			current.gameObject.SetActive (true);
+	}
+
+	public void OnMatching(){
+			ChangeTipTo (matching);
+	}
 }

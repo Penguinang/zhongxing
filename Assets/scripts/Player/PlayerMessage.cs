@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerMessage : MonoBehaviour {
-	public string _Name;
-	public string Name{
-		get{ return _Name;}
-		set{ if (value != null) {
-				_Name = value;
-				Debug.Log ("playerName changed to " + _Name);
-			}
-		}
+public class PlayerMessage : NetworkBehaviour {
+	public TextMesh PlayerNameText;
+
+	[SyncVar(hook = "OnSyncNameChanged")]
+	public string Name = "";
+
+	public void OnSyncNameChanged(string name){
+		Debug.Log ("SyncVar playerName changed to " + name);
+		PlayerNameText.text = name;
 	}
 
 	void Start(){
+		Invoke ("PatchChangeName",1);
+	}
 
+	void PatchChangeName(){
+		PlayerNameText.text = Name;
 	}
 }

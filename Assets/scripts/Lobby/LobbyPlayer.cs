@@ -9,7 +9,7 @@ namespace Prototype.NetworkLobby
 {
     public class LobbyPlayer : NetworkLobbyPlayer
     {
-//        public InputField nameInput;
+		public int PlayerNum = 1;
 		public string Name;
         public override void OnClientEnterLobby()
         {
@@ -52,10 +52,10 @@ namespace Prototype.NetworkLobby
 
 		void Start(){
 			StartCoroutine (waitMatchPlayers ());
-			if (isLocalPlayer) {
-				Name = LobbyManager.s_Singleton.localPlayerName;
-				CmdClientUpdateName (Name);
-			}
+//			if (isLocalPlayer) {
+//				Name = LobbyManager.s_Singleton.localPlayerName;
+//				CmdClientUpdateName (Name);
+//			}
 		}
 
 		[Command]
@@ -70,12 +70,15 @@ namespace Prototype.NetworkLobby
 
 		public IEnumerator waitMatchPlayers(){
 			LobbyPlayerList playerList = LobbyPlayerList._instance;
-			Transform waitingCircle = playerList.waitingCircle;
 			Vector3 rotation = new Vector3 (0, 0, 1);
-			while(playerList.getPlayerNum ()<1){
+			while(playerList.getPlayerNum ()<PlayerNum){
 				yield return 0;
 				rotation += new Vector3 (0, 0, 1);
-				waitingCircle.Rotate (rotation);
+			}
+			if (isLocalPlayer) {
+				Name = LobbyManager.s_Singleton.localPlayerName;
+				CmdClientUpdateName (Name);
+				Debug.Log ("cmdchangename");
 			}
 			SendReadyToBeginMessage ();
 		}

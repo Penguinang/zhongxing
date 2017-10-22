@@ -10,8 +10,6 @@ namespace Prototype.NetworkLobby
         public static LobbyPlayerList _instance = null;
 
         public RectTransform playerListContentTransform;
-		  public Transform waitingCircle;
-
         protected List<LobbyPlayer> _players = new List<LobbyPlayer>();
 
         public void OnEnable()

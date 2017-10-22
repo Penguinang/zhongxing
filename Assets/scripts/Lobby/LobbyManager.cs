@@ -15,6 +15,7 @@ namespace Prototype.NetworkLobby
         static public LobbyManager s_Singleton;
 		static public GameObject localPlayer;
 		public string localPlayerName;
+		public LogPanel logPanel;
 
 
         [Header("Unity UI Lobby")]
@@ -61,6 +62,12 @@ namespace Prototype.NetworkLobby
 		{
 			base.OnMatchCreate(success, extendedInfo, matchInfo);
             _currentMatchID = (System.UInt64)matchInfo.networkId;
+			logPanel.OnMatching ();
+		}
+
+		public override void OnMatchJoined (bool success, string extendedInfo, MatchInfo matchInfo){
+			base.OnMatchJoined (success,extendedInfo,matchInfo);
+			logPanel.OnMatching ();
 		}
 
 		public override void OnDestroyMatch(bool success, string extendedInfo)
@@ -76,8 +83,8 @@ namespace Prototype.NetworkLobby
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
 		{
 			string name = lobbyPlayer.GetComponent<LobbyPlayer> ().Name;
+			Debug.Log ("OnLobbyServerSceneLoadedForPlayer,get lobby player name is "+name);
 			gamePlayer.GetComponent<PlayerMessage> ().Name = name;
-
             return true;
         }
 

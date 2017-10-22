@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLobbyGUI: 0
+  PlayerNum: 1
+  Name: 
 --- !u!114 &114956471935363526
 MonoBehaviour:
   m_ObjectHideFlags: 1

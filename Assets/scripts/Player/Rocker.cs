@@ -5,7 +5,17 @@ using Prototype.NetworkLobby;
 using Player;
 
 public class Rocker : MonoBehaviour {
-	public void OnRockerChanged(Vector2 value){
-		LobbyManager.localPlayer.GetComponent<PlayerInput> ().OnRockerValueChanged (value);
+	public Transform rockerBar;
+	public Transform origin;
+	public int radius;
+
+	public void FixedUpdate(){
+		Vector2 dir = getRockerValue ();
+		if(dir.sqrMagnitude != 0)
+			LobbyManager.localPlayer.GetComponent<PlayerInput> ().OnRockerMoved (dir);			
+	}
+
+	public Vector2 getRockerValue(){
+		return (rockerBar.position - origin.position) / radius;
 	}
 }

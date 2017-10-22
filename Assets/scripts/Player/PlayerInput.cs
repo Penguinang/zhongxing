@@ -45,9 +45,10 @@ namespace Player{
 			playerController.CmdOnProtectionClick ();
 		}
 
-		public void OnRockerValueChanged(Vector2 value){
+		public void OnRockerMoved(Vector2 value){
 			Debug.Log ("Rocker value changed");
 			Debug.Log (value);
+			playerController.CmdMove (value);
 		}
 	}
 
