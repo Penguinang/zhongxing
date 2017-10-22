@@ -471,8 +471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerListContentTransform: {fileID: 478154519}
-  warningDirectPlayServer: {fileID: 0}
-  addButtonRow: {fileID: 0}
   waitingCircle: {fileID: 862741579}
 --- !u!1 &666032779
 GameObject:
@@ -1722,7 +1720,7 @@ MonoBehaviour:
   m_MaxPlayers: 4
   m_MaxPlayersPerConnection: 1
   m_MinPlayers: 1
-  m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
+  m_LobbyPlayerPrefab: {fileID: 114875998476584216, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
   m_GamePlayerPrefab: {fileID: 111598, guid: e1ae9de1b8dd57e41918d7f8b76a310d, type: 2}
   m_LobbyScene: NetworkLobby
