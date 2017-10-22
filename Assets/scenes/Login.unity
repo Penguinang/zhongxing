@@ -800,7 +800,7 @@ MonoBehaviour:
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 114875998476584216, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1034282317793138, guid: e06251ff2816a4fb99e0291151a8ce22,
+  m_GamePlayerPrefab: {fileID: 1080922833755520, guid: d5947f13fb4a8447791b7de081b0d490,
     type: 2}
   m_LobbyScene: Login
   m_PlayScene: Game

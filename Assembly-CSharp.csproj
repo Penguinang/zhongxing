@@ -59,6 +59,7 @@
      <Compile Include="Assets\scripts\Lobby\LobbyPlayer.cs" />
      <Compile Include="Assets\scripts\Lobby\LobbyPlayerList.cs" />
      <Compile Include="Assets\scripts\Lobby\LogPanel.cs" />
+     <Compile Include="Assets\scripts\PanelManage\PanelManager.cs" />
      <Compile Include="Assets\scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\scripts\Player\PlayerInput.cs" />
      <Compile Include="Assets\scripts\Player\PlayerMessage.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\scripts\UI\SceneEnter.cs" />
      <Compile Include="Assets\scripts\UI\SceneSettings.cs" />
      <Compile Include="Assets\scripts\UI\SetActive.cs" />
+     <Compile Include="Assets\scripts\UI\SetSettings.cs" />
      <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
      <Compile Include="Assets\scripts\UI\Switch.cs" />
      <None Include="Assets\Fonts\OpenSans\License!.txt" />
