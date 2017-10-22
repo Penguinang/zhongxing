@@ -36,6 +36,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4394621651544882}
   - component: {fileID: 33633242316979924}
   - component: {fileID: 136849318717726178}
@@ -45,6 +46,17 @@ GameObject:
   - component: {fileID: 114491228136322708}
   - component: {fileID: 114363650182192632}
   - component: {fileID: 114520350799905926}
+=======
+  - component: {fileID: 4512805907803152}
+  - component: {fileID: 33969695686229882}
+  - component: {fileID: 136031917114984546}
+  - component: {fileID: 23952193481573300}
+  - component: {fileID: 114554612657302728}
+  - component: {fileID: 114143629471247912}
+  - component: {fileID: 54267956481416034}
+  - component: {fileID: 114984793634168736}
+  - component: {fileID: 114849432791801462}
+>>>>>>> c880078b7b856404535163c79cd5b026c6252671
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
