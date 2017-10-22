@@ -1,5 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Network/ConnectGame.cs">
     <Files>
       <File FileName="Assets/scripts/UI/ReadyButton.cs" Line="21" Column="31" />
@@ -10,6 +11,9 @@
       <File FileName="../../UnitySourceCode/UNet/Unity-Technologies-networking-78ca8544bbf4/Runtime/NetworkManager.cs" Line="1063" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+=======
+  <MonoDevelop.Ide.Workbench />
+>>>>>>> upstream/Dev
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

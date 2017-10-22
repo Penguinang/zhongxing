@@ -7,7 +7,6 @@ using UnityEngine.Experimental.Rendering;
 
 public class OverridenNetworkDiscovery :  NetworkDiscovery{
 	private bool inGame;
-
 	void start(){
 //		showGUI = true;
 //		broadcastPort = 47777;
@@ -16,7 +15,6 @@ public class OverridenNetworkDiscovery :  NetworkDiscovery{
 //		broadcastSubVersion = 1;
 //		broadcastInterval = 1000;
 //		useNetworkManager = true;
-
 		inGame = false;
 	}
 
