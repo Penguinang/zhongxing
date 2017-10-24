@@ -672,6 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0054c97b0d3a8ae43b230ebf037bd90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delta: 1
 --- !u!1 &464290272
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +876,7 @@ MonoBehaviour:
   lobbySlots: []
   localPlayerName: 
   logPanel: {fileID: 1049837320}
+  loadingNum: {fileID: 346910812}
   prematchCountdown: 5
   countdownPanel: {fileID: 0}
   _playerNumber: 0
@@ -1332,6 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UsernameInput: {fileID: 1469715213}
   PasswordInput: {fileID: 55021296}
+  loadingNum: {fileID: 346910812}
   lobbyManager: {fileID: 472815746}
   logError: {fileID: 792998051}
   alreadyLogin: {fileID: 309428102}
@@ -1831,6 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 90
+  rotationCenter: {fileID: 539498435}
 --- !u!114 &1539292154
 MonoBehaviour:
   m_ObjectHideFlags: 0

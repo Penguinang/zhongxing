@@ -16,15 +16,12 @@ namespace Prototype.NetworkLobby
 		static public GameObject localPlayer;
 		public string localPlayerName;
 		public LogPanel logPanel;
+		public LoadingNum loadingNum;
 
 
         [Header("Unity UI Lobby")]
         [Tooltip("Time in second between all players ready & match start")]
         public float prematchCountdown = 5.0f;
-
-        [Space]
-        [Header("UI Reference")]
-//		public RectTransform logPanel;
 
         public LobbyCountdownPanel countdownPanel;
         protected RectTransform currentPanel;
@@ -60,12 +57,14 @@ namespace Prototype.NetworkLobby
 
 		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
 		{
+			loadingNum.countFromAndTo (60,100);
 			base.OnMatchCreate(success, extendedInfo, matchInfo);
             _currentMatchID = (System.UInt64)matchInfo.networkId;
 			logPanel.OnMatching ();
 		}
 
 		public override void OnMatchJoined (bool success, string extendedInfo, MatchInfo matchInfo){
+			loadingNum.countFromAndTo (60,100);
 			base.OnMatchJoined (success,extendedInfo,matchInfo);
 			logPanel.OnMatching ();
 		}

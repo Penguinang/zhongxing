@@ -8,11 +8,14 @@ public class Rocker : MonoBehaviour {
 	public Transform rockerBar;
 	public Transform origin;
 	public int radius;
+	public CameraController cameraController;
 
 	public void FixedUpdate(){
 		Vector2 dir = getRockerValue ();
-		if(dir.sqrMagnitude != 0)
-			LobbyManager.localPlayer.GetComponent<PlayerInput> ().OnRockerMoved (dir);			
+		if (dir.sqrMagnitude != 0) {
+//			LobbyManager.localPlayer.GetComponent<PlayerInput> ().OnRockerMoved (dir);			
+			cameraController.move (dir);
+		}
 	}
 
 	public Vector2 getRockerValue(){

@@ -11,6 +11,7 @@ using UnityEngineInternal;
 public class LogPanel : MonoBehaviour {
 	public RectTransform UsernameInput;
 	public RectTransform PasswordInput;
+	public LoadingNum loadingNum;
 
 	public LobbyManager lobbyManager;
 	public RectTransform logError;
@@ -20,16 +21,22 @@ public class LogPanel : MonoBehaviour {
 
 
 	private string serverIp;
-
 	void Start(){
 		serverIp = "138.68.18.64";
 	}
 
 	public void OnClickLogin(){
+		//==========================================================================================================
+		// 连接的过程一共分为三步
+		// 1. 向服务器发送登录请求，直到获得回应  																							----------------------------------10%
+		// 2. 获得服务器回应后，（若需要）获取房间列表，直到得到房间列表											----------------------------------30%
+		// 3. 获取房间列表后，新建房间或者加入房间，直到进入房间															----------------------------------60%
+		// 4. 等待玩家准备，直到开始游戏																												----------------------------------100%
 		StartCoroutine (tryLogin ());
 	}
 
 	public IEnumerator tryLogin(){
+		loadingNum.countFromAndTo (0,10);
 		ClientSocket client = new ClientSocket ();
 		client.ConnectServer (serverIp,8088);
 		ChangeTipTo (linking);
@@ -60,11 +67,13 @@ public class LogPanel : MonoBehaviour {
 	}
 
 	public void OnStartMatch(){
+		loadingNum.countFromAndTo (10,30);
 		lobbyManager.StartMatchMaker ();
 		lobbyManager.matchMaker.ListMatches (0,6,"",true,0,0,OnListGet);
 	}
 
 	private void OnListGet(bool success, string extendedInfo, List<MatchInfoSnapshot> matches){
+		loadingNum.countFromAndTo (30,60);
 		if (matches.Count == 0) {
 			lobbyManager.matchMaker.CreateMatch(
 				"game",
