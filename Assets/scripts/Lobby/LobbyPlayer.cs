@@ -11,6 +11,11 @@ namespace Prototype.NetworkLobby
     {
 		public int PlayerNum = 1;
 		public string Name;
+		//DEBUG
+		void Awake(){
+			InputField num = GameObject.Find ("DebugPlayerNum").GetComponent<InputField> ();
+			PlayerNum = int.Parse (num.text);
+		}
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();

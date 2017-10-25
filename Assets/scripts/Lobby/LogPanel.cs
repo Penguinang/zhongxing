@@ -7,6 +7,8 @@ using MySocket;
 using System.Net.Sockets;
 using Prototype.NetworkLobby;
 using UnityEngineInternal;
+using UnityEditor.PackageManager;
+using System.Threading;
 
 public class LogPanel : MonoBehaviour {
 	public RectTransform UsernameInput;
@@ -19,8 +21,9 @@ public class LogPanel : MonoBehaviour {
 	public RectTransform matching;
 	public RectTransform linking;
 
-
+	private ClientSocket client;
 	private string serverIp;
+	private string response = "";
 	void Start(){
 		serverIp = "138.68.18.64";
 	}
@@ -37,34 +40,48 @@ public class LogPanel : MonoBehaviour {
 
 	public IEnumerator tryLogin(){
 		loadingNum.countFromAndTo (0,10);
-		ClientSocket client = new ClientSocket ();
-		client.ConnectServer (serverIp,8088);
+		client = new ClientSocket ();
+		Thread connect = new Thread(Connect);
+		connect.Start ();
+		while(!client.IsConnected){
+			yield return 0;
+		}
+
 		ChangeTipTo (linking);
 		Debug.Log ("successfully connect server");
-		yield return 0;
-
 		string username = UsernameInput.GetComponent<InputField> ().text;
 		LobbyManager.s_Singleton.localPlayerName = username;
 		string password = PasswordInput.GetComponent <InputField> ().text;
-
 		client.SendMessage (new Item (username,password,"online").formatRecord ());
 		Debug.Log ("request to log in");
 		yield return 0;
 
-		string response = client.ReceiveMessage ();
-		
+		Thread getResponse = new Thread (GetResponse);
+		getResponse.Start ();
+		while (response.Equals ("")) {
+			yield return 0;
+		}
 		Debug.Log ("get response from server");
-		yield return 0;
 
 		if (response.Contains ("success")) {
 //		if(true){
 			OnStartMatch ();
 		} else if (response.Contains ("fail")) {
 			ChangeTipTo (logError);
+			StartCoroutine (backtoLog ());
 		} else {
 			ChangeTipTo (alreadyLogin);
+			StartCoroutine (backtoLog ());
 		}
 	}
+
+	private void Connect(){
+		client.ConnectServer (serverIp,8088);
+	}
+
+	private void GetResponse(){
+		response = client.ReceiveMessage ();
+	}	
 
 	public void OnStartMatch(){
 		loadingNum.countFromAndTo (10,30);
@@ -102,5 +119,15 @@ public class LogPanel : MonoBehaviour {
 
 	public void OnMatching(){
 			ChangeTipTo (matching);
+	}
+
+	private IEnumerator backtoLog(){
+		float time = 0;
+		while(time<4){
+			time += Time.deltaTime;
+			yield return 0;
+		}
+		ChangeTipTo (null);
+		GetComponent <SetActive>().OnClick (true);
 	}
 }

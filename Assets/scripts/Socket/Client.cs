@@ -2,7 +2,8 @@
 using System.Net;  
 using System.Net.Sockets;  
 using System.IO;
-using System;  
+using System;
+using System.Diagnostics;  
 
 namespace MySocket  
 {  
