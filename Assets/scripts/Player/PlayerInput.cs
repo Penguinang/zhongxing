@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Prototype.NetworkLobby;
+using System.Runtime.InteropServices;
 
 namespace Player{
 	public class PlayerInput : NetworkBehaviour {
@@ -41,8 +42,8 @@ namespace Player{
 		}
 
 		// -------------------------------player function API-------------------------------------
-		public void OnProtectionClick(){
-			playerController.CmdOnProtectionClick ();
+		public void OnProtectionClick(int[] planets){
+			playerController.CmdOnProtectionClick (planets);
 		}
 
 		public void OnRockerMoved(Vector2 value){

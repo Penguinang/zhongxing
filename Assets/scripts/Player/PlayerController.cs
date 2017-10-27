@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace Player{
 	public class PlayerController : NetworkBehaviour {
+		public GameObject BarrierPrefab;
 		private int forceRatio;
 
 		void Start () {
@@ -33,8 +34,8 @@ namespace Player{
 
 		// -------------------------------Client callback function------------------------------------
 		[Command]
-		public void CmdOnProtectionClick(){
-			RpcOnProtectionClick ();
+		public void CmdOnProtectionClick(int[] planets){
+			RpcOnProtectionClick (planets);
 		}
 
 		public void OnBombClick(){
@@ -51,12 +52,11 @@ namespace Player{
 
 		// -------------------------------Server Callback function--------------------------------------
 		[ClientRpc]
-		public void RpcOnProtectionClick(){
+		public void RpcOnProtectionClick(int[] planets){
 			Debug.Log ("Protection clicked");
-			// XXX
-			if (!Application.isEditor) {
 
-			}
+			GameObject barrier = Instantiate (BarrierPrefab);
+			barrier.GetComponent<Barrier> ().Init (planets);
 		}
 	}
 }

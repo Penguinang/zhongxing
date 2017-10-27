@@ -7,7 +7,6 @@ using MySocket;
 using System.Net.Sockets;
 using Prototype.NetworkLobby;
 using UnityEngineInternal;
-using UnityEditor.PackageManager;
 using System.Threading;
 
 public class LogPanel : MonoBehaviour {
