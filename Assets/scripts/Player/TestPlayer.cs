@@ -15,7 +15,7 @@ public class TestPlayer : MonoBehaviour {
 		return instance.allPlanets [ID];
 	}
 
-	void Start(){
+	void OnEnable(){
 		instance = this;
 		GameObject stars = GameObject.Find ("DebugStars");
 		allPlanets = new List<GameObject> ();
@@ -26,6 +26,7 @@ public class TestPlayer : MonoBehaviour {
 	}
 	void Update(){
 		if(!playerInput)
+		if(LobbyManager.localPlayer)
 			playerInput = LobbyManager.localPlayer.GetComponent<PlayerInput> ();		
 		bool protect = Input.GetKeyDown ("p");
 		int[] planets = new int[7]{ 0, 1, 2, 3, 4, 5, 6 };

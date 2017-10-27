@@ -173,10 +173,11 @@ public class Barrier : MonoBehaviour
 		//----------------------------------------添加圆角--------------------------------------------
 
 		//----------------------------------------添加网格然后渲染--------------------------------------------
-		Mesh mesh = gameObject.GetComponent<MeshFilter> ().mesh;
-		Debug.Log (vertices.Count);
-		mesh.triangles = indexes.ToArray ();
+		Mesh mesh = new Mesh();
+		GetComponent<MeshFilter> ().mesh = mesh;
+		//		Mesh mesh = gameObject.GetComponent<MeshFilter> ().mesh;
 		mesh.vertices = this.vertices.ToArray ();
+		mesh.triangles = indexes.ToArray ();
 		mesh.RecalculateNormals();  
 		mesh.RecalculateBounds(); 
 		//----------------------------------------添加网格然后渲染--------------------------------------------
@@ -198,14 +199,8 @@ public class Barrier : MonoBehaviour
 	//DEBUG
 	public GameObject[] stars;
 	void Start(){
-//		int[] IDs = new int[]{0,1,2,3,4,5,6};
-//		StartCoroutine (Calculate (IDs));
-	}
-	public GameObject getStar(int ID){
-		if (ID < stars.Length)
-			return stars [ID];
-		else
-			return null;
+		int[] IDs = new int[]{0,1,2,3,4,5,6};
+		StartCoroutine (Calculate (IDs));
 	}
 
 }
