@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using System.ComponentModel.Design;
 using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
-using UnityEngine.XR.Tango;
+//using UnityEngine.XR.Tango;
 
 public class Barrier : MonoBehaviour
 {
