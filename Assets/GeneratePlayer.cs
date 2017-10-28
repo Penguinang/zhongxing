@@ -5,15 +5,10 @@ using UnityEngine.Networking;
 
 public class GeneratePlayer : NetworkBehaviour {
 
-	// Use this for initialization
-	void Start () {
-//		ClientScene.AddPlayer(
-//		ClientScene.AddPlayer (0);
-		Debug.Log ("add local player");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+//	// Use this for initialization
+//	void Start () {
+////		ClientScene.AddPlayer(
+////		ClientScene.AddPlayer (0);
+//		Debug.Log ("add local player");
+//	}
 }

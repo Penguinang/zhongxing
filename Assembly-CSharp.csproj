@@ -52,13 +52,36 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GeneratePlayer.cs" />
-     <Compile Include="Assets\scripts\Network\ConnectGame.cs" />
-     <Compile Include="Assets\scripts\Network\DebugConnection.cs" />
-     <Compile Include="Assets\scripts\Network\OverridenNetworkDiscovery.cs" />
-     <Compile Include="Assets\scripts\Network\OverridenNetworkManager.cs" />
-     <Compile Include="Assets\scripts\PlayerController.cs" />
-     <Compile Include="Assets\scripts\PlayerInput.cs" />
-     <Compile Include="Assets\scripts\UI\ReadyButton.cs" />
+     <Compile Include="Assets\scripts\Barrier\Barrier.cs" />
+     <Compile Include="Assets\scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyCountdownPanel.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyHook.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyManager.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyPlayer.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyPlayerList.cs" />
+     <Compile Include="Assets\scripts\Lobby\LogPanel.cs" />
+     <Compile Include="Assets\scripts\PanelManage\PanelManager.cs" />
+     <Compile Include="Assets\scripts\Player\CameraController.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerInput.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerMessage.cs" />
+     <Compile Include="Assets\scripts\Player\Rocker.cs" />
+     <Compile Include="Assets\scripts\Player\TestPlayer.cs" />
+     <Compile Include="Assets\scripts\Socket\AccountDB.cs" />
+     <Compile Include="Assets\scripts\Socket\AssemblyInfo.cs" />
+     <Compile Include="Assets\scripts\Socket\ByteBuffer.cs" />
+     <Compile Include="Assets\scripts\Socket\Client.cs" />
+     <Compile Include="Assets\scripts\Socket\Server.cs" />
+     <Compile Include="Assets\scripts\UI\Loading.cs" />
+     <Compile Include="Assets\scripts\UI\LoadingNum.cs" />
+     <Compile Include="Assets\scripts\UI\SceneChanger.cs" />
+     <Compile Include="Assets\scripts\UI\SceneEnter.cs" />
+     <Compile Include="Assets\scripts\UI\SceneSettings.cs" />
+     <Compile Include="Assets\scripts\UI\SetActive.cs" />
+     <Compile Include="Assets\scripts\UI\SetSettings.cs" />
+     <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
+     <Compile Include="Assets\scripts\UI\Switch.cs" />
+     <None Include="Assets\Fonts\OpenSans\License!.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
