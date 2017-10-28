@@ -7,7 +7,6 @@ using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
 using UnityEngine.XR.Tango;
 using System.IO;
-using NUnit.Framework;
 
 public class Barrier : MonoBehaviour
 {
