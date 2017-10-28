@@ -108,6 +108,7 @@
     <Compile Include="Assets\scripts\UI\SetSettings.cs" />
     <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
     <Compile Include="Assets\scripts\UI\Switch.cs" />
+    <Compile Include="Assets\scripts\tian\ButtonCircle.cs" />
     <Compile Include="Assets\scripts\tian\ButtonShip.cs" />
     <Compile Include="Assets\scripts\tian\CUbe.cs" />
     <Compile Include="Assets\scripts\tian\EnergyManager.cs" />

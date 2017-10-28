@@ -29,7 +29,6 @@ public class Planet : MonoBehaviour {
     void Start () {
         this.health = 100;
         this.R = Random.Range(5, 8);
-        ChangeToControlable();
         this.PlanetPos = transform.position;
 	}
 
@@ -47,117 +46,73 @@ public class Planet : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if(this.ControlerId==1)
-        {
-            bu = GameObject.Find("button");
-            if(bu==null)
-            {
-                buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                Instantiate(buttons, transform.position, transform.rotation);
-            }
-            
-            
-            //buttons.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-            //Instantiate(ship, transform.position, transform.rotation);
-            //ship.GetComponent<Ship>().id = this.ControlerId;
-
-        }
+        ShipOnMousedown();
     }
 
 
     void Update () {
-        bu= GameObject.Find("button");
+        ButtonUpdate();
     }
 
 
     private void FixedUpdate()
     {
-        
-        
 
+        ShipInFixedUpdate();
 
-        GameObject[] sh=GameObject.FindGameObjectsWithTag("ship");
-
-        if(sh!=null)
-        foreach(GameObject s in sh)
-        {
-                Gforce = new Vector2(this.transform.position.x - s.transform.position.x,
-                this.transform.position.y - s.transform.position.y);
-                float R = (this.transform.position - s.transform.position).magnitude;
-               
-                Gforce = Gforce * mass / (R * R);
-                if(!Input.GetMouseButton(0))
-                {
-                    s.GetComponent<Ship>().Rship.AddForce(Gforce);
-                }
-                
-        }
-
-
-
-
-
-        if (ShipManager.ships!=null)
-        {
-            foreach (Ship s in ShipManager.ships)
-            {
-                s.Rship.AddForce(Gforce);
-            }
-
-            if (ship.gameObject.GetComponent<Ship>().id == this.ControlerId)
-            {
-                ship.gameObject.GetComponent<Ship>().Rship.AddForce(Gforce);
-            }
-        }
-        
-
-
-
-        if (bu != null)
-        {
-            if (bu.transform.localScale.x<3.34f)
-            {
-                bu.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
-                bu.transform.Translate(new Vector3(0.024f,-0.024f,0));
-            }
-        }
-
-
-
-
+        ButtonGrow();
 
     }
-    void GetHarm(int harm)
-    {
-        this.health = this.health - harm;
-    }
+
     public void GetCaughtBy(int id)
     {
         ControlerId = id;
     }
-    void ChangeToControlable()
+
+
+    void ShipOnMousedown()
     {
-        if (this.ControlerId != -1)
+        if (this.ControlerId == 1)
         {
-            
+            bu = GameObject.Find("button");
+            if (bu == null)
+            {
+                buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                Instantiate(buttons, transform.position, transform.rotation);
+            }
         }
     }
-    public Vector3 GetPlanetPos()
+    void ShipInFixedUpdate()
     {
-        return this.PlanetPos;
-    }
-    public float GetR()
-    {
-        return this.R;
-    }
+        GameObject[] sh = GameObject.FindGameObjectsWithTag("ship");
+        if (sh != null)
+            foreach (GameObject s in sh)
+            {
+                Gforce = new Vector2(this.transform.position.x - s.transform.position.x,
+                this.transform.position.y - s.transform.position.y);
+                float R = (this.transform.position - s.transform.position).magnitude;
 
+                Gforce = Gforce * mass / (R * R);
+                if (!Input.GetMouseButton(0))
+                {
+                    s.GetComponent<Ship>().Rship.AddForce(Gforce);
+                }
 
-    void OnTriggerEnter2D(Collider2D col)
+            }
+    }
+    void ButtonGrow()
     {
-        if(col.tag=="ship")
+        if (bu != null)
         {
-            
+            if (bu.transform.localScale.x < 3.34f)
+            {
+                bu.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                bu.transform.Translate(new Vector3(0.024f, -0.024f, 0));
+            }
         }
     }
-
+    void ButtonUpdate()
+    {
+        bu = GameObject.Find("button");
+    } 
 }

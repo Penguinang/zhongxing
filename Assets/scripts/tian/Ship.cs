@@ -112,11 +112,6 @@ public class Ship : MonoBehaviour
         
 
     }
-    //void OnTriggerEnter(Collision collision)
-    //{
-    //    // 销毁当前游戏物体
-        
-    //        Destroy(this.Rship);
-    //   // Destroy(this.gameObject);
-    //    }
+ 
+    
 }

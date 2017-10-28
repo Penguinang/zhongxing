@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: -1
+  ControlerId: 0
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
@@ -673,11 +673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: -1
+  ControlerId: 0
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
-  mass: 30
+  mass: 40
   Rship: {fileID: 0}
   bu: {fileID: 0}
 --- !u!212 &206685112
@@ -999,8 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f39510607e9e0e4facc846657e49b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnGameObject: {fileID: 1888014302}
-  isOffGameObject: {fileID: 405450122}
+  isOnGameObject: {fileID: 0}
+  isOffGameObject: {fileID: 0}
 --- !u!1 &466226356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: -1
+  ControlerId: 0
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
@@ -1841,8 +1841,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd1437b64644d64b92ac012da497e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnGameObject: {fileID: 764069420}
-  isOffGameObject: {fileID: 1319718823}
+  isOnGameObject: {fileID: 0}
+  isOffGameObject: {fileID: 0}
 --- !u!1 &913463438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,8 +1967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd1437b64644d64b92ac012da497e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnGameObject: {fileID: 1985350437}
-  isOffGameObject: {fileID: 1177349481}
+  isOnGameObject: {fileID: 0}
+  isOffGameObject: {fileID: 0}
 --- !u!114 &1017810075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2308,7 +2308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4344053dbeef4c408168ae56bb74d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
+  velocity: 10
 --- !u!114 &1149796571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,7 +2488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: -1
+  ControlerId: 0
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
@@ -2667,7 +2667,7 @@ MonoBehaviour:
   EnergyUpdate: {fileID: 594391035}
   Amout: {fileID: 20486886}
   launchable: 0
-  ShipEnergy: 20
+  ShipEnergy: 0
 --- !u!4 &1275932653
 Transform:
   m_ObjectHideFlags: 0
@@ -3176,7 +3176,7 @@ MonoBehaviour:
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
-  mass: 10
+  mass: 20
   Rship: {fileID: 0}
   bu: {fileID: 0}
 --- !u!212 &1628923824
@@ -3462,8 +3462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f39510607e9e0e4facc846657e49b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnGameObject: {fileID: 405450122}
-  isOffGameObject: {fileID: 1888014302}
+  isOnGameObject: {fileID: 0}
+  isOffGameObject: {fileID: 0}
 --- !u!1 &1948738509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,7 +3928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc724339e3e84959bec1548befa1cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  welcomePanel: {fileID: 405450126}
+  welcomePanel: {fileID: 0}
 --- !u!4 &2140563712
 Transform:
   m_ObjectHideFlags: 0
