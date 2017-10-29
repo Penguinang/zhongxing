@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Loading : MonoBehaviour {
     public float speed = 90;
-	// Use this for initialization
+	public Transform rotationCenter;
 
-	// Update is called once per frame
 	void Update () {
-        Vector3 zero = new Vector3(512, 152, 0);
+		Vector3 zero = rotationCenter.position;
         transform.RotateAround(zero, Vector3.back,speed* Time.deltaTime);
 	}
 }
