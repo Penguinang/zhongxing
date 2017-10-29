@@ -91,12 +91,7 @@ public class LogPanel : MonoBehaviour {
 	private void OnListGet(bool success, string extendedInfo, List<MatchInfoSnapshot> matches){
 		loadingNum.countFromAndTo (30,60);
 		if (matches.Count == 0) {
-			lobbyManager.matchMaker.CreateMatch(
-				"game",
-				(uint)lobbyManager.maxPlayers,
-				true,
-				"", "", "", 0, 0,
-				lobbyManager.OnMatchCreate);
+			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,	"", "", "", 0, 0,lobbyManager.OnMatchCreate);
 			lobbyManager._isMatchmaking = true;				
 		} else {
 			bool hasRoom = false;
@@ -107,16 +102,9 @@ public class LogPanel : MonoBehaviour {
 					hasRoom = true;
 				}
 			if (!hasRoom) {
-
-				lobbyManager.matchMaker.CreateMatch(
-					"game",
-					(uint)lobbyManager.maxPlayers,
-					true,
-					"", "", "", 0, 0,
-					lobbyManager.OnMatchCreate);
+				lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,"", "", "", 0, 0,	lobbyManager.OnMatchCreate);
 				lobbyManager._isMatchmaking = true;				
-			}
-				
+			}				
 		}
 	}
 

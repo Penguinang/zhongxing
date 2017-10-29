@@ -6,20 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Prototype.NetworkLobby
-{//new
+{
     public class LobbyPlayer : NetworkLobbyPlayer
     {
 		public int PlayerNum = 1;
 		public string Name;
+		public int ID;
 		//DEBUG
 		void Awake(){
 			InputField num = GameObject.Find ("DebugPlayerNum").GetComponent<InputField> ();
 			PlayerNum = int.Parse (num.text);
 		}
+		void OnDestroy(){Debug.Log ("fucccccccccccccccccccccccc");
+		}
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();
-
 			
             LobbyPlayerList._instance.AddPlayer(this);
 			Debug.Log ("add player");
@@ -32,10 +34,6 @@ namespace Prototype.NetworkLobby
 
 		void Start(){
 			StartCoroutine (waitMatchPlayers ());
-//			if (isLocalPlayer) {
-//				Name = LobbyManager.s_Singleton.localPlayerName;
-//				CmdClientUpdateName (Name);
-//			}
 		}
 
 		[Command]

@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0054c97b0d3a8ae43b230ebf037bd90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 1
+  delta: 0.03
 --- !u!1 &464290272
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,10 +879,11 @@ MonoBehaviour:
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 1
+  m_PlayerSpawnMethod: 0
   m_OfflineScene: Login
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1190021479757926, guid: 1caea814cc1b24176874e234f61a4357, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -941,7 +942,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 4
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 0
+  m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 114875998476584216, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1080922833755520, guid: d5947f13fb4a8447791b7de081b0d490,
@@ -952,6 +953,7 @@ MonoBehaviour:
   localPlayerName: 
   logPanel: {fileID: 1049837320}
   loadingNum: {fileID: 346910812}
+  idManager: {fileID: 1190021479757926, guid: 1caea814cc1b24176874e234f61a4357, type: 2}
   prematchCountdown: 5
   countdownPanel: {fileID: 0}
   _playerNumber: 0

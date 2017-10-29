@@ -10,7 +10,9 @@ namespace Player{
 		public GameObject myPlayer;
 		private float rotateVelocity;
 		private PlayerController playerController;
-
+		void OnEnable(){
+			Debug.Log ("gameplayer onenable");
+		}
 		void Start () {
 			myPlayer = gameObject;
 			rotateVelocity = 10;
@@ -22,7 +24,7 @@ namespace Player{
 			}
 			else 
 				Debug.Log ("isn't localPLayer");
-		}
+		}		
 
 		void FixedUpdate(){
 			if(!isLocalPlayer)
