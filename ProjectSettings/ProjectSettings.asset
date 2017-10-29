@@ -584,8 +584,10 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 00f3ef4a-5da0-4bd9-a88f-f165e08188ea
+  projectName: version1.0
+  organizationId: penguinang
   cloudEnabled: 0
-  enableNewInputSystem: 0
+  enableNativePlatformBackendsForNewInputSystem: 0
+  disableOldInputManagerSupport: 0
+
