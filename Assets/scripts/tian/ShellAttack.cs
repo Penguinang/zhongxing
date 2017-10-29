@@ -22,9 +22,9 @@ public class ShellAttack :MonoBehaviour{
     
     //实例化核弹
     private void OnMouseDown()
-    {
+	{
         if (isNbomb == false)
-        {
+		{Debug.Log ("onmouse down on shellatack"+isNbomb);
             Nbombpre = Instantiate(Nbomb, transform.position+new Vector3(0,4,0), transform.rotation);
             isNbomb = true;
             Planes.isNavigationCanDispear = false;
