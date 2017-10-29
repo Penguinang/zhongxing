@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Planet : MonoBehaviour {
 
     //标明星球是否是自己的星球（为-1时标明无主星球，为0为敌对星球，为1为自己的星球）
     public int status;
+    public Slider sli;
+    private float currentHealth;
     private Vector3 PlanetPos;
     private float R;
     private int health;
@@ -25,13 +27,14 @@ public class Planet : MonoBehaviour {
     public GameObject bu;
     public int id;
     public Vector3 PlanetPosition;
+    public bool isDead;
  
 
 
     //sun
     public static Transform FirePosition;
     public static bool isNavigationCanDispear = true;//作为判断是否UI可以被删除
-    public int planeHp = 100;
+    public float planeHp = 100;
     //public Transform shellPosition;
     //public Transform haloPosition;
     public Transform airshipPosition;
@@ -45,20 +48,20 @@ public class Planet : MonoBehaviour {
     private GameObject shell, protect;
     //public bool isPlayer, isEmeny, isNone;//作为是否是玩家，敌人，还是无主星球的判定
 
+    public Image HealthBar;
+
 
 
     // Use this for initialization
     void Start () {
-        
-        FirePosition = transform.Find("FirePosition");
+        //currentHealth = sli.maxValue;
+        HealthBar = this.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
     }
 
 
     private void Awake()
     {
-        //Instantiate(this, transform.position, transform.rotation);
-        //Instantiate(ship, transform.position, transform.rotation);
-
+        
         
     }
 
@@ -78,6 +81,18 @@ public class Planet : MonoBehaviour {
 
     void Update () {
         ButtonUpdate();
+        HealthBar.fillAmount = planeHp / 100;
+
+        if(this.planeHp>0)
+        {
+            this.isDead = false;
+        }
+        else
+        {
+            this.isDead = true;
+        }
+
+
     }
 
 
@@ -151,6 +166,19 @@ public class Planet : MonoBehaviour {
         if (planeHp <= 10)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "stone")
+        {
+            //sli.value = currentHealth;
+            Destroy(collision.gameObject);
+            this.planeHp -= GameController.damage;
         }
     }
 }
