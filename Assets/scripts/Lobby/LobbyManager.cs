@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace Prototype.NetworkLobby
@@ -17,6 +18,9 @@ namespace Prototype.NetworkLobby
 		public string localPlayerName;
 		public LogPanel logPanel;
 		public LoadingNum loadingNum;
+		public GameObject idManager;
+
+		private int currentPlayerNum = 0;
 
 
         [Header("Unity UI Lobby")]
@@ -49,12 +53,6 @@ namespace Prototype.NetworkLobby
             DontDestroyOnLoad(gameObject);
         }
 
-        public override void OnLobbyClientSceneChanged(NetworkConnection conn)
-        {
-			Debug.Log ("scene");
-//			logPanel.gameObject.SetActive (false);
-        }
-
 		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
 		{
 			loadingNum.countFromAndTo (60,100);
@@ -84,8 +82,34 @@ namespace Prototype.NetworkLobby
 			string name = lobbyPlayer.GetComponent<LobbyPlayer> ().Name;
 			Debug.Log ("OnLobbyServerSceneLoadedForPlayer,get lobby player name is "+name);
 			gamePlayer.GetComponent<PlayerMessage> ().Name = name;
+			gamePlayer.GetComponent <PlayerMessage>().ID = lobbyPlayer.GetComponent<LobbyPlayer>().ID;
             return true;
-        }
+		}
 
+		public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+		{
+			Debug.Log ("scene");
+		}
+
+//		public override void OnLobbyServerSceneChanged(string sceneName){
+//			base.OnLobbyServerSceneChanged (sceneName);
+//			PlanetManager instance = GameObject.Find ("PlanetManager").GetComponent<PlanetManager> ();
+//			if (instance) {
+//				Debug.Log ("distribute id ");
+//				GameObject id = Instantiate (idManager);
+//				NetworkServer.Spawn (id);
+//				id.GetComponent<IDManager> ().player0 = 0;
+//				id.GetComponent<IDManager> ().player1 = 1;
+//				id.GetComponent<IDManager> ().player2 = 2;
+//				id.GetComponent<IDManager> ().player3 = 3;
+//			} 
+//		}
+
+//		public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId){
+//			GameObject lobbyplayer = Instantiate (lobbyPlayerPrefab.gameObject);
+//			lobbyplayer.GetComponent<LobbyPlayer> ().ID = currentPlayerNum;
+//			currentPlayerNum++;
+//			return lobbyplayer;
+//		}
     }
 }

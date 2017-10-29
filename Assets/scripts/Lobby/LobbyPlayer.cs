@@ -11,10 +11,13 @@ namespace Prototype.NetworkLobby
     {
 		public int PlayerNum = 1;
 		public string Name;
+		public int ID;
 		//DEBUG
 		void Awake(){
 			InputField num = GameObject.Find ("DebugPlayerNum").GetComponent<InputField> ();
 			PlayerNum = int.Parse (num.text);
+		}
+		void OnDestroy(){Debug.Log ("fucccccccccccccccccccccccc");
 		}
         public override void OnClientEnterLobby()
         {
@@ -32,10 +35,6 @@ namespace Prototype.NetworkLobby
 
 		void Start(){
 			StartCoroutine (waitMatchPlayers ());
-//			if (isLocalPlayer) {
-//				Name = LobbyManager.s_Singleton.localPlayerName;
-//				CmdClientUpdateName (Name);
-//			}
 		}
 
 		[Command]

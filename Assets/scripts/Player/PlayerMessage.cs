@@ -14,6 +14,9 @@ public class PlayerMessage : NetworkBehaviour {
 		PlayerNameText.text = name;
 	}
 
+	[SyncVar]
+	public int ID=-1;
+
 	void Start(){
 		Invoke ("PatchChangeName",1);
 	}
