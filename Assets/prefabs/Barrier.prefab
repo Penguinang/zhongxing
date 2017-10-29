@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 33881802854460190}
   - component: {fileID: 23200054409019046}
   - component: {fileID: 114337939752648184}
-  - component: {fileID: 68006526454973512}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -113,24 +112,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503634925143452}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!68 &68006526454973512
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1503634925143452}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 0.5, y: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114337939752648184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +127,6 @@ MonoBehaviour:
   debugLine: {fileID: 120064108778053950}
   R: 2
   stars: []
-  meteorolite: {fileID: 0}
 --- !u!120 &120064108778053950
 LineRenderer:
   m_ObjectHideFlags: 1
