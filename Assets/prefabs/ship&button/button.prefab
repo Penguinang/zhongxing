@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4721989557181506}
   - component: {fileID: 212268379278418872}
   - component: {fileID: 61900061468764458}
+  - component: {fileID: 114354999499320908}
   m_Layer: 0
   m_Name: flash_button
   m_TagString: Untagged
@@ -161,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503367917788780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.42374, y: 1.0224528, z: 0}
+  m_LocalPosition: {x: -24.513206, y: 2.0981288, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4269138454398046}
@@ -309,6 +310,19 @@ MonoBehaviour:
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   ship_energy: 10
   EnergyManager: {fileID: 0}
+--- !u!114 &114354999499320908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212057728382690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f2191dc7b1559448ebdbe16986eef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Nbomb: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6, type: 2}
+  shellmove: {fileID: 0}
 --- !u!212 &212268379278418872
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -381,7 +395,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 34db5a3d6ef5b42419fb1f4424805341, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

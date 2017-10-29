@@ -99,15 +99,15 @@ public class Ship : MonoBehaviour
             //col.gameObject.GetComponent<Planet>().GetCaughtBy(this.id);
             
             Destroy(this.gameObject);
-            col.GetComponent<Planet>().ControlerId = this.id;
-            col.gameObject.transform.GetComponent<Planet>().ControlerId = this.id;
+            col.GetComponent<Planet>().status = this.id;
+            col.gameObject.transform.GetComponent<Planet>().status = this.id;
             
         }
         if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude < 3))
         {
 
             GameObject p = col.gameObject;
-            this.id=p.transform.GetComponent<Planet>().ControlerId;
+            this.id=p.transform.GetComponent<Planet>().status;
         }
         
 

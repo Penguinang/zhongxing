@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 152587581}
   m_Layer: 5
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -568,13 +568,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: 0
+  status: -1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
   mass: 35
   Rship: {fileID: 0}
   bu: {fileID: 0}
+  id: 0
+  PlanetPosition: {x: 0, y: 0, z: 0}
+  planeHp: 100
+  airshipPosition: {fileID: 0}
+  protectPosition: {fileID: 0}
+  ProtectPre: {fileID: 0}
+  AirshipPre: {fileID: 0}
+  isInput: 0
 --- !u!212 &194275174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -625,7 +633,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.349037, y: -0.93115914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1754080477}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -673,13 +682,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: 0
+  status: -1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
   mass: 40
   Rship: {fileID: 0}
   bu: {fileID: 0}
+  id: 0
+  PlanetPosition: {x: 0, y: 0, z: 0}
+  planeHp: 100
+  airshipPosition: {fileID: 0}
+  protectPosition: {fileID: 0}
+  ProtectPre: {fileID: 0}
+  AirshipPre: {fileID: 0}
+  isInput: 0
 --- !u!212 &206685112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -730,7 +747,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.3787882, y: 2.3773818, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1595049835}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1633,13 +1651,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: 0
+  status: -1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
   mass: 35
   Rship: {fileID: 0}
   bu: {fileID: 0}
+  id: 0
+  PlanetPosition: {x: 0, y: 0, z: 0}
+  planeHp: 100
+  airshipPosition: {fileID: 0}
+  protectPosition: {fileID: 0}
+  ProtectPre: {fileID: 0}
+  AirshipPre: {fileID: 0}
+  isInput: 0
 --- !u!212 &803801495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1690,7 +1716,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.00067, y: -2.7272239, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1549449177}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2218,7 +2245,6 @@ GameObject:
   - component: {fileID: 1149796565}
   - component: {fileID: 1149796569}
   - component: {fileID: 1149796570}
-  - component: {fileID: 1149796571}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2308,18 +2334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4344053dbeef4c408168ae56bb74d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 10
---- !u!114 &1149796571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149796564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af7b54f523554d3b9eabed638e8d4f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  velocity: 3
 --- !u!1 &1177349481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,13 +2503,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: 0
+  status: -1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
   mass: 40
   Rship: {fileID: 0}
   bu: {fileID: 0}
+  id: 0
+  PlanetPosition: {x: 0, y: 0, z: 0}
+  planeHp: 100
+  airshipPosition: {fileID: 0}
+  protectPosition: {fileID: 0}
+  ProtectPre: {fileID: 0}
+  AirshipPre: {fileID: 0}
+  isInput: 0
 --- !u!212 &1234208449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2545,7 +2568,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.631288, y: -1.8134366, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1955550827}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3070,6 +3094,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1513094367}
+--- !u!1 &1549449176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1549449177}
+  m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549449177
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1549449176}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: 1.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 803801496}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1568427489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,6 +3195,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1595049834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1595049835}
+  m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1595049835
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1595049834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 1.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206685113}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628923822
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,13 +3252,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlerId: 1
+  status: 1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}
   mass: 20
   Rship: {fileID: 0}
   bu: {fileID: 0}
+  id: 1
+  PlanetPosition: {x: 0, y: 0, z: 0}
+  planeHp: 100
+  airshipPosition: {fileID: 0}
+  protectPosition: {fileID: 0}
+  ProtectPre: {fileID: 0}
+  AirshipPre: {fileID: 0}
+  isInput: 0
 --- !u!212 &1628923824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3229,7 +3317,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.97, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1973762020}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3248,6 +3337,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!1 &1754080476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1754080477}
+  m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754080477
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754080476}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 1.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 194275175}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790169561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,6 +3650,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 737106078}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1955550826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1955550827}
+  m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955550827
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1955550826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 1.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1234208450}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1973762019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1973762020}
+  m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1973762020
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973762019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628923825}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985350437
 GameObject:

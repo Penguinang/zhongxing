@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
-    public int ControlerId;
+    //标明星球是否是自己的星球（为-1时标明无主星球，为0为敌对星球，为1为自己的星球）
+    public int status;
     private Vector3 PlanetPos;
     private float R;
     private int health;
@@ -22,15 +23,35 @@ public class Planet : MonoBehaviour {
     public float mass;
     public Rigidbody2D Rship;
     public GameObject bu;
+    public int id;
+    public Vector3 PlanetPosition;
+ 
 
-   
+
+    //sun
+    public static Transform FirePosition;
+    public static bool isNavigationCanDispear = true;//作为判断是否UI可以被删除
+    public int planeHp = 100;
+    //public Transform shellPosition;
+    //public Transform haloPosition;
+    public Transform airshipPosition;
+    public Transform protectPosition;
+    //public GameObject ShellPre;
+    //public GameObject HaloPre;
+    public GameObject ProtectPre;
+    public GameObject AirshipPre;
+    public bool isInput = false;//作为判断是否产生了UI
+    public RaycastHit2D hit;
+    private GameObject shell, protect;
+    //public bool isPlayer, isEmeny, isNone;//作为是否是玩家，敌人，还是无主星球的判定
+
+
 
     // Use this for initialization
     void Start () {
-        this.health = 100;
-        this.R = Random.Range(5, 8);
-        this.PlanetPos = transform.position;
-	}
+        
+        FirePosition = transform.Find("FirePosition");
+    }
 
 
     private void Awake()
@@ -47,6 +68,11 @@ public class Planet : MonoBehaviour {
     private void OnMouseDown()
     {
         ShipOnMousedown();
+
+        this.PlanetPosition = this.transform.position;
+        
+
+
     }
 
 
@@ -66,14 +92,15 @@ public class Planet : MonoBehaviour {
 
     public void GetCaughtBy(int id)
     {
-        ControlerId = id;
+        status = id;
     }
 
 
     void ShipOnMousedown()
     {
-        if (this.ControlerId == 1)
+        if (this.status == 1)
         {
+            //Debug.Log("done");
             bu = GameObject.Find("button");
             if (bu == null)
             {
@@ -114,5 +141,16 @@ public class Planet : MonoBehaviour {
     void ButtonUpdate()
     {
         bu = GameObject.Find("button");
-    } 
+    }
+
+
+    public void TakeDamage()
+    {
+        if (planeHp <= 0) return;
+        planeHp -= 10;
+        if (planeHp <= 10)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
