@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Prototype.NetworkLobby
-{
+{//new
     public class LobbyPlayer : NetworkLobbyPlayer
     {
 		public int PlayerNum = 1;

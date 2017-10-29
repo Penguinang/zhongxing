@@ -99,11 +99,24 @@ public class LogPanel : MonoBehaviour {
 				lobbyManager.OnMatchCreate);
 			lobbyManager._isMatchmaking = true;				
 		} else {
+			bool hasRoom = false;
 			foreach (MatchInfoSnapshot room in matches)
 				if (room.currentSize < room.maxSize) {
 					lobbyManager.matchMaker.JoinMatch(room.networkId, "", "", "", 0, 0, lobbyManager.OnMatchJoined);
 					lobbyManager._isMatchmaking = true;
+					hasRoom = true;
 				}
+			if (!hasRoom) {
+
+				lobbyManager.matchMaker.CreateMatch(
+					"game",
+					(uint)lobbyManager.maxPlayers,
+					true,
+					"", "", "", 0, 0,
+					lobbyManager.OnMatchCreate);
+				lobbyManager._isMatchmaking = true;				
+			}
+				
 		}
 	}
 

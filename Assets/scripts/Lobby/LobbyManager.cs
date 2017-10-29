@@ -77,7 +77,7 @@ namespace Prototype.NetworkLobby
                 StopMatchMaker();
                 StopHost();
             }
-        }
+        }//new
 
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
 		{
