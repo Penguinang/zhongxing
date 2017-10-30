@@ -38,6 +38,11 @@ namespace Player{
 			RpcOnProtectionClick (planets);
 		}
 
+		[Command]
+		public void CmdOnShipClick(int planetID,Vector3 velocity){
+			RpcOnShipClick (planetID,velocity);
+		}
+
 		public void OnBombClick(){
 			Debug.Log ("Bomb clicked");
 		}
@@ -57,6 +62,20 @@ namespace Player{
 
 			GameObject barrier = Instantiate (BarrierPrefab);
 			barrier.GetComponent<Barrier> ().Init (planets);
+		}
+
+		[ClientRpc]
+		public void RpcOnShipClick(int planetID,Vector3 velocity){
+			OnShipClick (planetID,velocity);
+		}
+
+		// -------------------------------Real Function--------------------------------------
+		public void OnShipClick(int planetID,Vector3 velocity){
+			GameObject planet = PlanetManager.GetPlanet (planetID);
+			if (!planet)
+				return;
+			//XXX
+			Debug.Log ("planet whose id is  "+planetID+" release ship");
 		}
 	}
 }

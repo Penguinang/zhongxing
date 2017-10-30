@@ -5,7 +5,7 @@ using UnityEngine;
 public class Planet : MonoBehaviour {
 
     //标明星球是否是自己的星球（为-1时标明无主星球，为0为敌对星球，为1为自己的星球）
-    public int status;
+    public int status  = -1;
     private Vector3 PlanetPos;
     private float R;
     private int health;

@@ -6,6 +6,7 @@ using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 
 namespace Prototype.NetworkLobby
@@ -21,6 +22,7 @@ namespace Prototype.NetworkLobby
 		public GameObject idManager;
 
 		private int currentPlayerNum = 0;
+		private List<GameObject> gamePlayers = new List<GameObject> ();
 
 
         [Header("Unity UI Lobby")]
@@ -77,6 +79,20 @@ namespace Prototype.NetworkLobby
             }
         }
 
+		public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId){
+			GameObject lobbyplayer = Instantiate (lobbyPlayerPrefab.gameObject);
+			Debug.Log ("create lobby player , curent number is "+currentPlayerNum);
+			lobbyplayer.GetComponent<LobbyPlayer> ().ID = currentPlayerNum;
+			currentPlayerNum++;
+			return lobbyplayer;
+		}
+
+		public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn,short playerControllerId){
+			GameObject player = Instantiate (gamePlayerPrefab) as GameObject;
+			gamePlayers.Add (player);
+			return player;
+		}
+
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
 		{
 			base.OnLobbyServerSceneLoadedForPlayer (lobbyPlayer,gamePlayer);
@@ -106,13 +122,6 @@ namespace Prototype.NetworkLobby
 				id.GetComponent<IDManager> ().player2 = 2;
 				id.GetComponent<IDManager> ().player3 = 3;
 			} 
-		}
-
-		public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId){
-			GameObject lobbyplayer = Instantiate (lobbyPlayerPrefab.gameObject);
-			lobbyplayer.GetComponent<LobbyPlayer> ().ID = currentPlayerNum;
-			currentPlayerNum++;
-			return lobbyplayer;
 		}
     }
 }

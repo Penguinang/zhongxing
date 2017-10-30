@@ -6,6 +6,12 @@ using System;
 
 public class IDManager : NetworkBehaviour
 {
+	public static IDManager instance;
+	void OnEnable(){
+		if (!instance)
+			instance = this;
+	}
+
 	[SyncVar(hook = "none")]
 	public int player0;
 	[SyncVar(hook = "none")]

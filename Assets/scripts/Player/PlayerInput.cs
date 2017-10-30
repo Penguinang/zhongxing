@@ -48,6 +48,10 @@ namespace Player{
 			playerController.CmdOnProtectionClick (planets);
 		}
 
+		public void OnShipClick(int planetID,Vector3 velocity){
+			playerController.CmdOnShipClick (planetID,velocity);
+		}
+
 		public void OnRockerMoved(Vector2 value){
 			Debug.Log ("Rocker value changed");
 			Debug.Log (value);

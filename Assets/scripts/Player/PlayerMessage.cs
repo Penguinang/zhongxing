@@ -19,9 +19,22 @@ public class PlayerMessage : NetworkBehaviour {
 
 	void Start(){
 		Invoke ("PatchChangeName",1);
+		Invoke ("UpdatePlanetStatus",1);
 	}
 
 	void PatchChangeName(){
 		PlayerNameText.text = Name;
+	}
+
+	public void UpdatePlanetStatus(){
+		Debug.Log ("player successfully update planet id");
+		int[] planet = IDManager.instance.GetPlanetIDForPlayer (ID);
+		if (planet.Length < 1)
+			return;
+		if (isLocalPlayer) {
+			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet> ().status = 1;
+		} else {
+			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet>().status = 0;
+		}
 	}
 }

@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 1
+  status: -1
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   buttons: {fileID: 1503367917788780, guid: 6537a571ccdc84a46a8cf65e7869be39, type: 2}

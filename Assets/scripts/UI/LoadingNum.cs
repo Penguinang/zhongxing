@@ -22,7 +22,6 @@ public class LoadingNum : MonoBehaviour {
 		float current = start;
 		yield return 0;
 		while(current<=end){
-			Debug.Log ("a frame");
 			current += delta;
 			SetNumber ((int)current);
 			yield return 0;
