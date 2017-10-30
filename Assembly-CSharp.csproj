@@ -78,6 +78,7 @@
      <Compile Include="Assets\scripts\tian\ButtonShip.cs" />
      <Compile Include="Assets\scripts\tian\CUbe.cs" />
      <Compile Include="Assets\scripts\tian\EnergyManager.cs" />
+     <Compile Include="Assets\scripts\tian\GameController.cs" />
      <Compile Include="Assets\scripts\tian\Pauser.cs" />
      <Compile Include="Assets\scripts\tian\Planes.cs" />
      <Compile Include="Assets\scripts\tian\Planet.cs" />
@@ -86,6 +87,7 @@
      <Compile Include="Assets\scripts\tian\Ship.cs" />
      <Compile Include="Assets\scripts\tian\ShipManager.cs" />
      <Compile Include="Assets\scripts\tian\StatusManager.cs" />
+     <Compile Include="Assets\scripts\tian\StoneController.cs" />
      <Compile Include="Assets\scripts\UI\Loading.cs" />
      <Compile Include="Assets\scripts\UI\LoadingNum.cs" />
      <Compile Include="Assets\scripts\UI\SceneChanger.cs" />

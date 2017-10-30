@@ -37,6 +37,9 @@ public class EnergyManager : MonoBehaviour {
         {
             launchable = false;
         }
+
+
+
     }
     private void FixedUpdate()
     {
@@ -46,9 +49,13 @@ public class EnergyManager : MonoBehaviour {
         }
         Amout.GetComponent<Text>().text = energy_update + "%";
     }
-    private void OnGUI()
+    public void IncreaseEnergy(float e)
     {
-        
+        this.energy += e;
+    }
+    public void DecreaseEnergy(float e)
+    {
+        this.energy -= e;
     }
 
 }

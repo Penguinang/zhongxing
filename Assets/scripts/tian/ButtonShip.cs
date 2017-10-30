@@ -42,7 +42,12 @@ public class ButtonShip : MonoBehaviour {
 
             Instantiate(ship, shipPos, transform.rotation);
             //ShipManager.ships.Add(ship.GetComponent<Ship>());
-            EnergyManager.GetComponent<EnergyManager>().energy -= 20;
+
+
+
+            //DEBUG
+            EnergyManager.DecreaseEnergy(20f);
+
         }
     }
 }
