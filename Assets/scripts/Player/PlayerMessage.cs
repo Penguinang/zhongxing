@@ -17,6 +17,9 @@ public class PlayerMessage : NetworkBehaviour {
 	[SyncVar]
 	public int ID=-1;
 
+	[SyncVar(hook="OnEnergyChange")]
+	public float energy;
+
 	void Start(){
 		Invoke ("PatchChangeName",1);
 		Invoke ("UpdatePlanetStatus",1);
@@ -36,5 +39,11 @@ public class PlayerMessage : NetworkBehaviour {
 		} else {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet>().status = 0;
 		}
+	}
+
+	private void OnEnergyChange(float energy){
+		//XXX
+		if (isLocalPlayer)
+			;
 	}
 }

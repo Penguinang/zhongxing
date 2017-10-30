@@ -27,6 +27,8 @@ public class LogPanel : MonoBehaviour {
 		serverIp = "138.68.18.64";
 	}
 
+	//DEBUG
+	public GameObject playerNumInput;
 	public void OnClickLogin(){
 		//==========================================================================================================
 		// 连接的过程一共分为三步
@@ -34,6 +36,9 @@ public class LogPanel : MonoBehaviour {
 		// 2. 获得服务器回应后，（若需要）获取房间列表，直到得到房间列表											----------------------------------30%
 		// 3. 获取房间列表后，新建房间或者加入房间，直到进入房间															----------------------------------60%
 		// 4. 等待玩家准备，直到开始游戏																												----------------------------------100%
+		//DEBUG
+//		lobbyManager.maxPlayers = int.Parse(playerNumInput.GetComponent<InputField> ().text);
+//		lobbyManager.maxPlayers = 3;
 		StartCoroutine (tryLogin ());
 	}
 

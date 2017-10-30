@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class StoneController : MonoBehaviour {
+public class StoneController : NetworkBehaviour {
     public Rigidbody2D stone;
     public float damage;
     public float maxSpeed;
@@ -17,6 +18,7 @@ public class StoneController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Random.InitState(System.DateTime.Today.Millisecond);
+		if(isServer)
         StartCoroutine("Stone");
 	}
 	
@@ -72,7 +74,8 @@ public class StoneController : MonoBehaviour {
         float endY = Random.Range(minPosY / 3, maxPosY / 3);
         Vector3 endPos = new Vector3(endX, endY, transform.position.z);
         Vector3 d = endPos - stonePos;
-        stoneInstance.velocity = new Vector2(d.normalized.x*maxSpeed, d.normalized.y*maxSpeed);
+		stoneInstance.velocity = new Vector2(d.normalized.x*maxSpeed, d.normalized.y*maxSpeed);
+		NetworkServer.Spawn (stoneInstance.gameObject);
         StartCoroutine(Stone());
         while (stoneInstance != null)
         {
