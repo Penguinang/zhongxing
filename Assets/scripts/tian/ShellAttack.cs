@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 //发射导弹，脚本挂在发射按钮上
+using Prototype.NetworkLobby;
+using Player;
+
+
 public class ShellAttack :MonoBehaviour{
     public static Transform FirePosition;
     public static bool isNavigationCanDispear = true;
@@ -58,9 +62,14 @@ public class ShellAttack :MonoBehaviour{
             {
                 //DEBUG
                 // LobbyManager.localPlayer.gameObject = hideFlags = GetComponent<PlayerInput>().OnShellClick(int ID, Vector3 velocity);
-
-                ShellLaunch(Input.mousePosition);//
-
+				//------------------------------------------------------------------YangPengBo----------------------------------------------------------------------------
+				GameObject planet = transform.parent.parent.parent.gameObject;
+				Debug.Log ("mousePosition "+Input.mousePosition+"  NBombPosition : "+Nbombpre.transform.position);
+				Vector3 mouseClickPositionInWorld = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+				LobbyManager.localPlayer.GetComponent<PlayerInput>().OnShellClick (planet.GetComponent<Planet>().id,(mouseClickPositionInWorld-Nbombpre.transform.position).normalized);
+//                ShellLaunch(Input.mousePosition);
+				Debug.Log ("shell attack planet : "+planet.GetComponent<Planet>().id);
+				Destroy (Nbombpre);
 
                 isNbomb = false;
                 Destroy(this.transform.parent.gameObject);

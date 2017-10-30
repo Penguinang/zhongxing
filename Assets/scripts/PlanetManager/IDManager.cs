@@ -12,25 +12,36 @@ public class IDManager : NetworkBehaviour
 			instance = this;
 	}
 
-	[SyncVar(hook = "none")]
+	/// <summary>
+	/// player* is planetid for player *
+	/// </summary>
+	[SyncVar]
 	public int player0;
-	[SyncVar(hook = "none")]
+	[SyncVar]
 	public int player1;
-	[SyncVar(hook = "none")]
+	[SyncVar]
 	public int player2;
 	[SyncVar(hook = "TransDict")]
 	public int player3;
 
-	Dictionary<int,int> ids = new Dictionary<int,int>();					// Dictionary<planet,player>  
-	public void none(int id){}
- 	public void TransDict(int id){
-		ids.Add (	0,player0);
-		ids.Add (	1,player1);
-		ids.Add (	2,player2);
-		ids.Add (	3,player3);
-		Debug.Log ("success ditribute planet");
+	void Awake(){
+		Debug.Log ("asd");
 	}
 
+	Dictionary<int,int> ids = new Dictionary<int,int>();					// Dictionary<planet,player>  
+//	[ClientRpc]
+	public void TransDict(int id){
+		Debug.Log ("player0's planet : "+player0);
+		Debug.Log ("player1's planet : "+player1);
+		Debug.Log ("player2's planet : "+player2);
+		Debug.Log ("player3's planet : "+player3);
+		Debug.Log ("transdict param id is "+id);
+		player3 = id;
+		ids.Add (	player0,0);
+		ids.Add (	player1,1);
+		ids.Add (	player2,2);
+		ids.Add (	player3,3);
+	}
 	public void UpdateIDs(Dictionary<int,int> IDs){
 		ids = IDs;
 	}
@@ -46,6 +57,15 @@ public class IDManager : NetworkBehaviour
 	}
 
 	public int[] GetPlanetIDForPlayer(int playerID){
+		//PATCH
+		if (ids.Count < 4) {
+			ids.Add (	player0,0);
+			ids.Add (	player1,1);
+			ids.Add (	player2,2);
+			ids.Add (	player3,3);
+			Debug.Log ("patch update ids");
+		}
+
 		List<int> planetIDs = new List<int> ();
 		foreach (KeyValuePair<int,int> pair in ids) {
 			if (pair.Value == playerID)

@@ -43,17 +43,22 @@ namespace Player{
 			RpcOnShipClick (planetID,velocity);
 		}
 
-		public void OnBombClick(){
-			Debug.Log ("Bomb clicked");
+		[Command]
+		public void CmdOnShellClick(int planetID,Vector3 direction){
+			RpcOnShellClick (planetID,direction);
 		}
-
-		public void OnShipPress(){
-			Debug.Log ("Ship pressed");
-		}
-
-		public void OnShipRelease(){
-			Debug.Log ("Ship Release");
-		}
+//
+//		public void OnBombClick(){
+//			Debug.Log ("Bomb clicked");
+//		}
+//
+//		public void OnShipPress(){
+//			Debug.Log ("Ship pressed");
+//		}
+//
+//		public void OnShipRelease(){
+//			Debug.Log ("Ship Release");
+//		}
 
 		// -------------------------------Server Callback function--------------------------------------
 		[ClientRpc]
@@ -69,13 +74,28 @@ namespace Player{
 			OnShipClick (planetID,velocity);
 		}
 
+		[ClientRpc]
+		public void RpcOnShellClick(int planetID,Vector3 direction){
+			OnShellClick (planetID,direction);
+		}
+
 		// -------------------------------Real Function--------------------------------------
 		public void OnShipClick(int planetID,Vector3 velocity){
 			GameObject planet = PlanetManager.GetPlanet (planetID);
 			if (!planet)
 				return;
+			planet.GetComponent<Planet> ().LaunchShip (velocity);
 			//XXX
 			Debug.Log ("planet whose id is  "+planetID+" release ship");
+		}
+
+		public void OnShellClick(int planetID,Vector3 direction){
+			GameObject planet = PlanetManager.GetPlanet (planetID);
+			if (!planet) {
+				Debug.Log ("wrong planet id , can't find planet");
+				return;
+			}
+			planet.GetComponent<Planet> ().LaunchShell (direction);
 		}
 	}
 }

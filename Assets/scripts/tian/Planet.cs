@@ -120,7 +120,7 @@ public class Planet : MonoBehaviour {
             if (bu == null)
             {
                 buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                Instantiate(buttons, transform.position, transform.rotation);
+				Instantiate(buttons, transform.position, transform.rotation).transform.parent = transform;
             }
         }
     }
@@ -133,8 +133,9 @@ public class Planet : MonoBehaviour {
                 Gforce = new Vector2(this.transform.position.x - s.transform.position.x,
                 this.transform.position.y - s.transform.position.y);
                 float R = (this.transform.position - s.transform.position).magnitude;
-
                 Gforce = Gforce * mass / (R * R);
+				if (R < 0.3)
+					Gforce = new Vector2 ();
                 if (!Input.GetMouseButton(0))
                 {
                     s.GetComponent<Ship>().Rship.AddForce(Gforce);
@@ -181,4 +182,18 @@ public class Planet : MonoBehaviour {
             this.planeHp -= GameController.damage;
         }
     }
+
+	//-------------------------------------------------YangPengBo--------------------------------------------------------------
+	public GameObject shipPrefab;
+	public GameObject shellPrefab;
+	public float shellSpeed = 2;
+	public void LaunchShip(Vector2 velocity){
+		GameObject ship = Instantiate (shipPrefab,transform.position,new Quaternion());
+		ship.GetComponent<Rigidbody2D> ().velocity = velocity;
+	}
+	public void LaunchShell(Vector2 direction){
+		GameObject shell = Instantiate (shellPrefab, transform.position+new Vector3(0,0.5f,0), new Quaternion ());
+		shell.transform.up = direction;
+		shell.GetComponent <Rigidbody2D>().velocity =direction*shellSpeed;
+	}
 }

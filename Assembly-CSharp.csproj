@@ -97,7 +97,7 @@
      <Compile Include="Assets\scripts\UI\SetSettings.cs" />
      <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
      <Compile Include="Assets\scripts\UI\Switch.cs" />
-     <None Include="Assets\fonts\OpenSans\License!.txt" />
+     <None Include="Assets\Fonts\OpenSans\License!.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>

@@ -33,14 +33,13 @@ public class ButtonShip : MonoBehaviour {
         float yPos = transform.position.y;
         Vector3 shipPos = new Vector3(xPos - 1.4f, transform.position.y + 1.3f, 0);
 
-        Destroy(this.transform.parent.gameObject);
-        Destroy(this.transform.parent.parent.gameObject);
-
 
         if (EnergyManager.launchable)
         {
 
-            Instantiate(ship, shipPos, transform.rotation);
+            GameObject instance = Instantiate(ship, shipPos, transform.rotation);
+			GameObject planet = transform.parent.parent.parent.gameObject;
+			instance.GetComponent<Ship> ().planetID = planet.GetComponent<Planet> ().id;
             //ShipManager.ships.Add(ship.GetComponent<Ship>());
 
 
@@ -48,6 +47,9 @@ public class ButtonShip : MonoBehaviour {
             //DEBUG
             EnergyManager.DecreaseEnergy(20f);
 
-        }
+		}
+
+		Destroy(this.transform.parent.gameObject);
+		Destroy(this.transform.parent.parent.gameObject);
     }
 }

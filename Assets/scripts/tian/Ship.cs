@@ -1,31 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Prototype.NetworkLobby;
+using Player;
 
 public class Ship : MonoBehaviour
 {
-    
     public static Planet[] planets;
     private SpriteRenderer ren;
-
-
-
     public Vector2 FirstPos;
     public Vector2 SecondPos;
-
-
-
     public float WidthToDestroy;
     public float HeigtToDestroy;
-
-
-
-
     public Vector3 AwakePos;
     public float speed;
     public Rigidbody2D Rship;
     public int id;
     public Planet ParentPlanet;
     public float mass;
+	public int planetID = -1;
 
     
 
@@ -83,9 +75,12 @@ public class Ship : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 SecondPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-                Rship.velocity = (new Vector3(SecondPos.x,SecondPos.y,0) - AwakePos) * speed;
-                //ship.AddForce(SecondPos - FirstPos);
+				//----------------------------------------------------YangPengBo-----------------------------------------------------------------
+//                Rship.velocity = (new Vector3(SecondPos.x,SecondPos.y,0) - AwakePos) * speed;
+				Vector3 velocity = (SecondPos-(Vector2)AwakePos)*speed;
+				if(planetID!=-1)
+					LobbyManager.localPlayer.GetComponent<PlayerInput>().OnShipClick (planetID,velocity);
+				Destroy (gameObject);
             }
         }
 

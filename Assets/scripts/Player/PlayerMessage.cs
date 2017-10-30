@@ -14,6 +14,9 @@ public class PlayerMessage : NetworkBehaviour {
 		PlayerNameText.text = name;
 	}
 
+	/// <summary>
+	/// this player's ID , gen on server
+	/// </summary>
 	[SyncVar]
 	public int ID=-1;
 
@@ -22,7 +25,7 @@ public class PlayerMessage : NetworkBehaviour {
 
 	void Start(){
 		Invoke ("PatchChangeName",1);
-		Invoke ("UpdatePlanetStatus",1);
+		Invoke ("UpdatePlanetStatus",3);
 	}
 
 	void PatchChangeName(){
@@ -32,14 +35,18 @@ public class PlayerMessage : NetworkBehaviour {
 	public void UpdatePlanetStatus(){
 		Debug.Log ("player successfully update planet id");
 		int[] planet = IDManager.instance.GetPlanetIDForPlayer (ID);
-		if (planet.Length < 1)
+		if (planet.Length < 1) {
+			Debug.Log ("this player "+ID+" have no planet");
 			return;
+		}
 		if (isLocalPlayer) {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet> ().status = 1;
+			localPlayer = true;
+			Debug.Log ("localPlayerUpdatePlanet");
 		} else {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet>().status = 0;
 		}
-	}
+	}public bool localPlayer = false;
 
 	private void OnEnergyChange(float energy){
 		//XXX
