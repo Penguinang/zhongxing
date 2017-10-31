@@ -73,5 +73,16 @@ public class IDManager : NetworkBehaviour
 		}
 		return planetIDs.ToArray ();
 	}
+
+	/// <summary>
+	/// when a planet is caught,we need change its playerID in IDManager
+	/// </summary>
+	/// <param name="planet">Caught Planet.</param>
+	/// <param name="oldPlayer">The Old player.</param>
+	/// <param name="newPlayer">The New player.</param>
+	public void ChangePlanetOwner(int planet,int oldPlayer,int newPlayer){
+		ids.Remove (planet);
+		ids.Add (planet,newPlayer);
+	}
 }
 

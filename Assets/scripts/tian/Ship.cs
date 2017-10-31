@@ -86,27 +86,39 @@ public class Ship : MonoBehaviour
 
     }
     void OnTriggerEnter2D(Collider2D col)
-    {
-        // If it hits an enemy...
+	{
+		// If it hits an enemy...
 
-        if ((col.tag == "Planet")&&((this.transform.position-AwakePos).magnitude>1.8))
-        {
-            //col.gameObject.GetComponent<Planet>().GetCaughtBy(this.id);
+		if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude > 1.8)) {
+			//col.gameObject.GetComponent<Planet>().GetCaughtBy(this.id);
             
-            Destroy(this.gameObject);
-            col.GetComponent<Planet>().status = this.id;
-            col.gameObject.transform.GetComponent<Planet>().status = this.id;
-            
-        }
-        if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude < 3))
-        {
+			Destroy (this.gameObject);
+//			col.GetComponent<Planet> ().status = this.id;
+			//			col.gameObject.transform.GetComponent<Planet> ().status = this.id;
+			//----------------------------------------YangPengBo---------------------------------------------------------------
+			int localPlayerID = LobbyManager.localPlayer.GetComponent<PlayerMessage>().ID;
+			int planetID = col.GetComponent<Planet> ().id;
+			int oldPlayer = IDManager.instance.GetPlayerIDForPlanet (planetID);
+			int newPlayer = IDManager.instance.GetPlayerIDForPlanet (this.id);
+			IDManager.instance.ChangePlanetOwner (planetID,oldPlayer,newPlayer);
 
-            GameObject p = col.gameObject;
-            this.id=p.transform.GetComponent<Planet>().status;
-        }
+			if (newPlayer== localPlayerID) {//this.id is attacking planets'id 
+				col.GetComponent<Planet> ().status = 1;
+			}
+			else
+				col.GetComponent<Planet> ().status = 0;
+            
+		}
+		if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude < 3)) {
+
+			GameObject p = col.gameObject;
+//            this.id=p.transform.GetComponent<Planet>().status;
+			//----------------------------------------YangPengBo---------------------------------------------------------------
+			this.id = p.GetComponent<Planet> ().id;
+		}
         
 
-    }
+	}
  
     
 }

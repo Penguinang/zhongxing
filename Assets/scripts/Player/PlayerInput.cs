@@ -44,6 +44,10 @@ namespace Player{
 		}
 
 		// -------------------------------player function API-------------------------------------
+		/// <summary>
+		/// Receive Protection Button Input;
+		/// </summary>
+		/// <param name="planets">planets which need be in a protection cover.</param>
 		public void OnProtectionClick(int[] planets){
 			playerController.CmdOnProtectionClick (planets);
 		}
