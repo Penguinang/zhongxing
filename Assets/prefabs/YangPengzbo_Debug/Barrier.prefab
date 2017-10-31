@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33881802854460190}
   - component: {fileID: 23200054409019046}
   - component: {fileID: 114337939752648184}
+  - component: {fileID: 60932705391545068}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -113,6 +114,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503634925143452}
   m_Mesh: {fileID: 0}
+--- !u!60 &60932705391545068
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503634925143452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths: []
 --- !u!114 &114337939752648184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugLine: {fileID: 120064108778053950}
+  polygonCollider: {fileID: 60932705391545068}
   R: 2
   stars: []
 --- !u!120 &120064108778053950

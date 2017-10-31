@@ -11,8 +11,20 @@ using NUnit.Framework;
 public class Barrier : MonoBehaviour
 {
 	public LineRenderer debugLine;
+	public PolygonCollider2D polygonCollider;
 	public float R = 2;
 	List<Vector3> vertices;
+
+	void OnTriggerEnter2D(Collider2D collider){
+		//XXX
+		Debug.Log ("barrier get attack");
+//		if (collider.tag == "stone") {
+//			Destroy (collider);
+//		} else if (collider.tag == "ship") {
+		Destroy (collider.gameObject);
+		Debug.Log ("collider : " + collider.name);
+//		}
+	}
 
 	public void Init(int[] starsIDs){
 		StartCoroutine (BarrierAnimation (starsIDs));
@@ -39,7 +51,12 @@ public class Barrier : MonoBehaviour
 	}
 
 	public IEnumerator Calculate(List<Vector3> starsPositions){
+//		List<Vector3> starsPositions = new List<Vector3>();
 		vertices = new List<Vector3> ();
+		polygonCollider.pathCount = 0;
+//		foreach (int ID in starsID) {
+//			starsPositions.Add (TestPlayer.getStar (ID).transform.localPosition);
+//		}
 
 		//----------------------------------------找出凸多边形--------------------------------------------
 		Vector3 current = new Vector3 (),next = new Vector3(9999,9999,9999),start;
@@ -72,8 +89,7 @@ public class Barrier : MonoBehaviour
 		current = temp [temp.Count - 1];
 		bool startMask = true;
 		//--------开始循环
-		while ((!start.Equals (current))||startMask) {
-			if(startMask) startMask = false;
+		while ((!start.Equals (current))||startMask) {yield return null;if(startMask) startMask = false;
 			//找到最小角
 			float minAngle = 9999;
 			for (int i = 0; i < starsPositions.Count; i++) {
@@ -113,22 +129,30 @@ public class Barrier : MonoBehaviour
 			Vector3 leftPoint = vertices [i] + left.normalized * R;
 			vertices.Insert (i,leftPoint);
 			vertices.Insert (i+2,rightPoint);
+			yield return null;
 		}
 		Vector3 head = vertices [0];
 		vertices.Add (head);
 		//----------------------------------------对边的坐标修正--------------------------------------------
 
+		// 多边形Collider
+		List<Vector2> colliderPoint = new List<Vector2>();
+		foreach (Vector3 point in vertices) {
+			colliderPoint.Add (point);
+		}
+		AddPolygonColliderElement (colliderPoint.ToArray ());
+
 		//DEBUG
 		//用找到的顶点画多边形
-//		debugLine.positionCount = vertices.Count;
-//		debugLine.SetPositions (vertices.ToArray ());
+		//		debugLine.positionCount = vertices.Count;
+		//		debugLine.SetPositions (vertices.ToArray ());
 
 		Render ();
-		yield return 0;
 	}
 
 	public void Render(){
-		vertices.Reverse ();
+		// 上面得到的是逆时针方向绕点，根据unity中mesh的要求，必须为逆时针，所以反向
+		vertices.Reverse ();	
 		//----------------------------------------分割三角形--------------------------------------------
 		int vertexNumber = vertices.Count-1;
 		int sunkenVertexNumber = vertexNumber / 3;
@@ -165,40 +189,58 @@ public class Barrier : MonoBehaviour
 			Vector3 left = vertices [3 * i+1];
 			Vector3 right = vertices [3 * i + 3];
 			Vector3 current = left - origin;
+			int baseCount = vertices.Count;
 
 			current = Rotate (current, -dtheta);
 			Vector3 result = current + origin;
 			vertices.Add (result);
-			indexes.Add (3 * i + 2);
-			indexes.Add (3 * i+1); 
-			indexes.Add (vertices.Count-1);
+			indexes.Add (3 * i + 2);																														// 中间凹点
+			indexes.Add (3 * i+1); 																														// 左上角点
+			indexes.Add (vertices.Count-1);																									// 新得到的弧线点
 
 			while(Angle (right - origin,current)>dtheta){
-//				Debug.Log ("right \\/ current"+Angle (right - origin,current));
 				current = Rotate (current, -dtheta);
 				result = current + origin;
 				vertices.Add (result);
-				indexes.Add (3 * i + 2);
-				indexes.Add (vertices.Count-2);
-				indexes.Add (vertices.Count-1);
-//				Debug.Log ("vertices .count is "+vertices.Count);
+				indexes.Add (3 * i + 2);																													// 中间凹点
+				indexes.Add (vertices.Count-2);																								// 上一个弧线点
+				indexes.Add (vertices.Count-1);																								// 新得到的弧线点
 			}
 
- 			indexes.Add (3 * i + 2);
-			indexes.Add (vertices.Count-1);
-			indexes.Add (3 * i+3); 
+			indexes.Add (3 * i + 2);																														// 中间凹点
+			indexes.Add (vertices.Count-1);																									// 新的到的弧线点
+			indexes.Add (3 * i+3); 																														// 右上角点
+
+			// 多边形Collider
+			List<Vector2> colliderPoint = new List<Vector2> ();
+			colliderPoint.Add (vertices[3 * i + 2]);																						// 左上角点
+			for(int k = baseCount;k<vertices.Count;k++){
+				colliderPoint.Add (vertices[k]);																									// 中间弧线点
+			}
+
+			colliderPoint.Add (vertices[3 * i + 3]);																						// 右上角点
+
+			AddPolygonColliderElement (colliderPoint.ToArray ());
 		}
 		//----------------------------------------添加圆角--------------------------------------------
 
 		//----------------------------------------添加网格然后渲染--------------------------------------------
-		Mesh mesh = gameObject.GetComponent<MeshFilter> ().mesh;
-		Debug.Log (vertices.Count);
-		mesh.triangles = indexes.ToArray ();
+		Mesh mesh = new Mesh();
+		GetComponent<MeshFilter> ().mesh = mesh;
 		mesh.vertices = this.vertices.ToArray ();
+		mesh.triangles = indexes.ToArray ();
 		mesh.RecalculateNormals();  
 		mesh.RecalculateBounds(); 
 		//----------------------------------------添加网格然后渲染--------------------------------------------
 	}
+
+	//----------------------------------------添加多边形Collider--------------------------------------------
+	private void AddPolygonColliderElement(Vector2[] points){
+		polygonCollider.pathCount = polygonCollider.pathCount + 1;
+		polygonCollider.SetPath (polygonCollider.pathCount-1,points);
+	}
+	//----------------------------------------添加多边形Collider--------------------------------------------
+
 
 	private float Angle(Vector3 start,Vector3 end){
 		//XXX not very sure whether this will result in any bug

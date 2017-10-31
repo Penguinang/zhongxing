@@ -49,8 +49,8 @@ public class PlayerMessage : NetworkBehaviour {
 	}public bool localPlayer = false;
 
 	private void OnEnergyChange(float energy){
-		//XXX
-		if (isLocalPlayer)
-			;
+		//XXX we need not sync energy or blood,because they can only be seen and destroyed on localPlayer
+//		if (isLocalPlayer)
+//			;
 	}
 }
