@@ -120,7 +120,18 @@ public class Planet : MonoBehaviour {
             if (bu == null)
             {
                 buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+//<<<<<<< HEAD
+				buttons.GetComponent<Button>().ButtonId = this.id;
 				Instantiate(buttons, transform.position, transform.rotation).transform.parent = transform;
+//=======
+//
+//                //
+//                buttons.GetComponent<Button>().ButtonId = this.id;
+//                Instantiate(buttons, transform.position, transform.rotation);
+//                //
+//
+//           
+//>>>>>>> 8e64032bac1835f4b88e1c98c2e6bf7a9f8ce0c8
             }
         }
     }
@@ -179,7 +190,11 @@ public class Planet : MonoBehaviour {
         {
             //sli.value = currentHealth;
             Destroy(collision.gameObject);
-            this.planeHp -= GameController.damage;
+            if(this.status!=-1)
+            {
+                this.planeHp -= GameController.damage;
+            }
+           
         }
     }
 

@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4711065909758544}
   - component: {fileID: 212599890505664818}
   - component: {fileID: 61124388921628712}
+  - component: {fileID: 114253238183852486}
   m_Layer: 0
   m_Name: protect
   m_TagString: Untagged
@@ -72,6 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4551646707420478}
+  - component: {fileID: 114312170822907426}
   m_Layer: 0
   m_Name: button
   m_TagString: Untagged
@@ -310,6 +312,39 @@ MonoBehaviour:
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   ship_energy: 10
   EnergyManager: {fileID: 0}
+--- !u!114 &114253238183852486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447720976494294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b145d81825c334d85bc6dfccfbd078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProtectPlanets: []
+  ProtectedPlanet: {fileID: 0}
+  Planet1: {fileID: 0}
+  Planet2: {fileID: 0}
+  Planet3: {fileID: 0}
+  Planet4: {fileID: 0}
+  Planet5: {fileID: 0}
+  Planet6: {fileID: 0}
+  AllPlanets: []
+  pm: {fileID: 0}
+--- !u!114 &114312170822907426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503367917788780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce33ae4a1d74bde4e851a81c3cf2c439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonId: 1
 --- !u!114 &114354999499320908
 MonoBehaviour:
   m_ObjectHideFlags: 1

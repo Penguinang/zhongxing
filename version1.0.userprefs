@@ -1,28 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Lobby/LogPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Barrier/Barrier.cs">
     <Files>
-      <File FileName="Assets/scripts/Lobby/LogPanel.cs" Line="74" Column="66" />
-      <File FileName="Assets/scripts/Socket/Client.cs" Line="13" Column="16" />
+      <File FileName="Assets/scripts/Barrier/Barrier.cs" Line="129" Column="2" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="version1.0" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="scripts" expanded="True">
-                <Node name="Lobby" expanded="True">
-                  <Node name="LogPanel.cs" selected="True" />
-                </Node>
-                <Node name="Player" expanded="True" />
-                <Node name="Socket" expanded="True" />
-                <Node name="tian" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
