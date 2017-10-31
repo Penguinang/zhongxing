@@ -10,7 +10,7 @@ namespace MySocket
 	public class ClientSocket  
 	{  
 		private static byte[] result = new byte[1024];  
-		private static Socket clientSocket;  
+		public static Socket clientSocket;  
 		//是否已连接的标识  
 		public bool IsConnected = false;  
 
@@ -31,12 +31,12 @@ namespace MySocket
 			try {  
 				clientSocket.Connect(ip_end_point);  
 				IsConnected = true;  
-				Console.WriteLine("连接服务器成功");  
+//				Console.WriteLine("连接服务器成功");  
 			}  
 			catch  
 			{  
 				IsConnected = false;  
-				Console.WriteLine("连接服务器失败");  
+//				Console.WriteLine("连接服务器失败");  
 				return;  
 			}  
 			//服务器下发数据长度  
@@ -44,7 +44,7 @@ namespace MySocket
 			ByteBuffer buffer = new ByteBuffer(result);  
 			int len = buffer.ReadShort();  
 			string data = buffer.ReadString();  
-			Console.WriteLine("服务器返回数据：" + data);  
+//			Console.WriteLine("服务器返回数据：" + data);  
 		}  
 
 		/// <summary>  

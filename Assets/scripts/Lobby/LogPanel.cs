@@ -20,7 +20,6 @@ public class LogPanel : MonoBehaviour {
 	public RectTransform matching;
 	public RectTransform linking;
 
-	private ClientSocket client;
 	private string serverIp;
 	private string response = "";
 	void Start(){
@@ -44,10 +43,10 @@ public class LogPanel : MonoBehaviour {
 
 	public IEnumerator tryLogin(){
 		loadingNum.countFromAndTo (0,10);
-		client = new ClientSocket ();
+		LobbyManager.s_Singleton.clientSocket = new ClientSocket ();
 		Thread connect = new Thread(Connect);
 		connect.Start ();
-		while(!client.IsConnected){
+		while(!LobbyManager.s_Singleton.clientSocket.IsConnected){
 			yield return 0;
 		}
 
@@ -56,7 +55,7 @@ public class LogPanel : MonoBehaviour {
 		string username = UsernameInput.GetComponent<InputField> ().text;
 		LobbyManager.s_Singleton.localPlayerName = username;
 		string password = PasswordInput.GetComponent <InputField> ().text;
-		client.SendMessage (new Item (username,password,"online").formatRecord ());
+		LobbyManager.s_Singleton.clientSocket.SendMessage (new Item (username,password,"online").formatRecord ());
 		Debug.Log ("request to log in");
 		yield return 0;
 
@@ -72,19 +71,23 @@ public class LogPanel : MonoBehaviour {
 			OnStartMatch ();
 		} else if (response.Contains ("fail")) {
 			ChangeTipTo (logError);
+			response = "";
+			Debug.Log ("wrong password or username");
 			StartCoroutine (backtoLog ());
 		} else {
 			ChangeTipTo (alreadyLogin);
+			response = "";
 			StartCoroutine (backtoLog ());
 		}
 	}
 
 	private void Connect(){
-		client.ConnectServer (serverIp,8088);
+		LobbyManager.s_Singleton.clientSocket.ConnectServer (serverIp,8088);
 	}
 
 	private void GetResponse(){
-		response = client.ReceiveMessage ();
+		response = LobbyManager.s_Singleton.clientSocket.ReceiveMessage ();
+		Debug.Log ("receive message");
 	}	
 
 	public void OnStartMatch(){
@@ -97,7 +100,7 @@ public class LogPanel : MonoBehaviour {
 		loadingNum.countFromAndTo (30,60);
 		if (matches.Count == 0) {
 			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,	"", "", "", 0, 0,lobbyManager.OnMatchCreate);
-			lobbyManager._isMatchmaking = true;				
+			lobbyManager._isMatchmaking = true;	
 		} else {
 			bool hasRoom = false;
 			foreach (MatchInfoSnapshot room in matches)

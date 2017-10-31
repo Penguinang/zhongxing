@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
 //using UnityEngine.XR.Tango;
+using NUnit.Framework;
 
 public class Barrier : MonoBehaviour
 {
@@ -14,15 +15,31 @@ public class Barrier : MonoBehaviour
 	List<Vector3> vertices;
 
 	public void Init(int[] starsIDs){
-		StartCoroutine (Calculate (starsIDs));
+		StartCoroutine (BarrierAnimation (starsIDs));
 	}
 
-	public IEnumerator Calculate(int[] starsID){
-		List<Vector3> starsPositions = new List<Vector3>();
-		vertices = new List<Vector3> ();
-		foreach (int ID in starsID) {
-			starsPositions.Add (TestPlayer.getStar (ID).transform.localPosition);
+	IEnumerator BarrierAnimation(int[] starsIDs){
+		int count = starsIDs.Length;
+		for(int i = 1;i<count;i++){
+			float x = 0;
+			while (x <= 1) {
+				List<Vector3> starsPositions = new List<Vector3> ();
+				for (int k = 0; k <= i; k++) {
+					starsPositions.Add (PlanetManager.GetPlanet (starsIDs[k]).transform.position);
+				}
+				Vector3 targetPosition = starsPositions[starsPositions.Count-1];
+				starsPositions.RemoveAt (starsPositions.Count-1);
+				Vector3 lastPosition = starsPositions[starsPositions.Count-1];
+				x += 0.05f;
+				starsPositions.Add (lastPosition*(1-x)+targetPosition*x);
+				yield return StartCoroutine (Calculate (starsPositions));
+//				yield return 100;
+			}
 		}
+	}
+
+	public IEnumerator Calculate(List<Vector3> starsPositions){
+		vertices = new List<Vector3> ();
 
 		//----------------------------------------找出凸多边形--------------------------------------------
 		Vector3 current = new Vector3 (),next = new Vector3(9999,9999,9999),start;
@@ -55,7 +72,8 @@ public class Barrier : MonoBehaviour
 		current = temp [temp.Count - 1];
 		bool startMask = true;
 		//--------开始循环
-		while ((!start.Equals (current))||startMask) {yield return null;if(startMask) startMask = false;
+		while ((!start.Equals (current))||startMask) {
+			if(startMask) startMask = false;
 			//找到最小角
 			float minAngle = 9999;
 			for (int i = 0; i < starsPositions.Count; i++) {
@@ -95,7 +113,6 @@ public class Barrier : MonoBehaviour
 			Vector3 leftPoint = vertices [i] + left.normalized * R;
 			vertices.Insert (i,leftPoint);
 			vertices.Insert (i+2,rightPoint);
-			yield return null;
 		}
 		Vector3 head = vertices [0];
 		vertices.Add (head);
@@ -107,6 +124,7 @@ public class Barrier : MonoBehaviour
 //		debugLine.SetPositions (vertices.ToArray ());
 
 		Render ();
+		yield return 0;
 	}
 
 	public void Render(){
@@ -156,14 +174,14 @@ public class Barrier : MonoBehaviour
 			indexes.Add (vertices.Count-1);
 
 			while(Angle (right - origin,current)>dtheta){
-				Debug.Log ("right \\/ current"+Angle (right - origin,current));
+//				Debug.Log ("right \\/ current"+Angle (right - origin,current));
 				current = Rotate (current, -dtheta);
 				result = current + origin;
 				vertices.Add (result);
 				indexes.Add (3 * i + 2);
 				indexes.Add (vertices.Count-2);
 				indexes.Add (vertices.Count-1);
-				Debug.Log ("vertices .count is "+vertices.Count);
+//				Debug.Log ("vertices .count is "+vertices.Count);
 			}
 
  			indexes.Add (3 * i + 2);
@@ -183,6 +201,9 @@ public class Barrier : MonoBehaviour
 	}
 
 	private float Angle(Vector3 start,Vector3 end){
+		//XXX not very sure whether this will result in any bug
+		if (start.Equals (new Vector3 ())||end.Equals (new Vector3()))
+			return 0;
 		float sign = Vector3.Dot (Vector3.Cross (start, end), new Vector3 (0,0,-1));
 		if (sign > 0)
 			return -1*Vector3.Angle (start, end);

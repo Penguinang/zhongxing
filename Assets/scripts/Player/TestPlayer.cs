@@ -6,7 +6,6 @@ using Prototype.NetworkLobby;
 using System.Net.NetworkInformation;
 
 public class TestPlayer : MonoBehaviour {
-	public GameObject player;
 	private PlayerInput playerInput;
 	public List<GameObject> allPlanets;
 	public static TestPlayer instance;
@@ -25,10 +24,10 @@ public class TestPlayer : MonoBehaviour {
 
 	}
 	void Update(){
-		//if(!playerInput)
-			//playerInput = LobbyManager.localPlayer.GetComponent<PlayerInput> ();		
+		if(!playerInput)
+			playerInput = LobbyManager.localPlayer.GetComponent<PlayerInput> ();		
 		bool protect = Input.GetKeyDown ("p");
-		int[] planets = new int[7]{ 0, 1, 2, 3, 4, 5, 6 };
+		int[] planets = new int[4]{ 0, 1, 2, 3 };
 		if (protect) 
 			playerInput.OnProtectionClick (planets);		
 	}

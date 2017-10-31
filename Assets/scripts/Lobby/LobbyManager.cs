@@ -6,6 +6,7 @@ using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
 using System.Collections.Generic;
+using MySocket;
 
 
 namespace Prototype.NetworkLobby
@@ -19,6 +20,8 @@ namespace Prototype.NetworkLobby
 		public LogPanel logPanel;
 		public LoadingNum loadingNum;
 		public GameObject idManager;
+
+		public ClientSocket clientSocket;
 
 		private int currentPlayerNum = 0;
 		private List<GameObject> gamePlayers = new List<GameObject> ();
