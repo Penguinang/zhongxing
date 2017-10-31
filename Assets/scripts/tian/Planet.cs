@@ -120,7 +120,13 @@ public class Planet : MonoBehaviour {
             if (bu == null)
             {
                 buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+                //
+                buttons.GetComponent<Button>().ButtonId = this.id;
                 Instantiate(buttons, transform.position, transform.rotation);
+                //
+
+           
             }
         }
     }
@@ -178,7 +184,11 @@ public class Planet : MonoBehaviour {
         {
             //sli.value = currentHealth;
             Destroy(collision.gameObject);
-            this.planeHp -= GameController.damage;
+            if(this.status!=-1)
+            {
+                this.planeHp -= GameController.damage;
+            }
+           
         }
     }
 }
