@@ -89,20 +89,16 @@ public class ProtectManager : MonoBehaviour {
         List<int> single = new List<int>();
         if ((ThisId == LastId) && (ThisId == FirstId))
         {
-			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
-			Debug.Log ("done");
             single.Add(ThisId);
             planets = new int[1];
             planets[0] = single[0];
-            Planets = single;
-            //DEBUG
-			//LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(new int[2]{0,1});
+			Planets = single;
+			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
+			Debug.Log ("done");
             return (single);
         }
         else if ((ThisId == FirstId) && (ThisId != LastId)&& (FirstId != -3) && (LastId != -1))
         {
-			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
-			Debug.Log ("done");
             //Ids.Add(ThisId);
             Ids.Add(LastId);
             //Debug.Log("done");
@@ -116,10 +112,10 @@ public class ProtectManager : MonoBehaviour {
             ThisId = -1;
             LastId = -2;
             FirstId = -3;
-            return (Ids);
-            Ids = new List<int>();
-            //DEBUG
-			//LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(new int[2]{0,1});
+			Ids = new List<int>();
+			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
+			Debug.Log ("done");
+			return (Ids);
 
         }
         else return (new List<int>());

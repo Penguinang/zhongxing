@@ -63,7 +63,9 @@ namespace Player{
 		// -------------------------------Server Callback function--------------------------------------
 		[ClientRpc]
 		public void RpcOnProtectionClick(int[] planets){
-			Debug.Log ("Protection clicked");
+			foreach (int a in planets) {
+				Debug.Log ("Protection clicked, planets is "+a);
+			}
 
 			GameObject barrier = Instantiate (BarrierPrefab);
 			barrier.GetComponent<Barrier> ().Init (planets);

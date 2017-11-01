@@ -45,11 +45,14 @@ public class Barrier : MonoBehaviour
 				x += 0.05f;
 				starsPositions.Add (lastPosition*(1-x)+targetPosition*x);
 				yield return StartCoroutine (Calculate (starsPositions));
-//				yield return 100;
 			}
 		}
 	}
 
+	/// <summary>
+	/// 只适用于两个以上星球
+	/// </summary>
+	/// <param name="starsPositions">Stars positions.</param>
 	public IEnumerator Calculate(List<Vector3> starsPositions){
 //		List<Vector3> starsPositions = new List<Vector3>();
 		vertices = new List<Vector3> ();
