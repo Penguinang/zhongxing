@@ -10,6 +10,9 @@ public class TestPlayer : MonoBehaviour {
 	public List<GameObject> allPlanets;
 	public static TestPlayer instance;
 
+	//DEBUG
+	public GameObject testBarrier;
+
 	public static GameObject getStar(int ID){
 		return instance.allPlanets [ID];
 	}
@@ -24,11 +27,14 @@ public class TestPlayer : MonoBehaviour {
 
 	}
 	void Update(){
-		if(!playerInput)
-			playerInput = LobbyManager.localPlayer.GetComponent<PlayerInput> ();		
+		if(!playerInput&&LobbyManager.localPlayer)
+			playerInput = LobbyManager.localPlayer.GetComponent<PlayerInput> ();	
 		bool protect = Input.GetKeyDown ("p");
 		int[] planets = new int[4]{ 0, 1, 2, 3 };
-		if (protect) 
-			playerInput.OnProtectionClick (planets);		
+		if (protect) {
+			//DEBUG
+			testBarrier.GetComponent<Barrier> ().Init (new int[3]{0,3,4});
+//			playerInput.OnProtectionClick (planets);	
+		}
 	}
 }

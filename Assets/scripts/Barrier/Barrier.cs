@@ -6,7 +6,9 @@ using System.ComponentModel.Design;
 using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
 //using UnityEngine.XR.Tango;
-using NUnit.Framework;
+//using NUnit.Framework;
+using System.Net.Sockets;
+using System;
 
 public class Barrier : MonoBehaviour
 {
@@ -28,23 +30,41 @@ public class Barrier : MonoBehaviour
 
 	public void Init(int[] starsIDs){
 		StartCoroutine (BarrierAnimation (starsIDs));
+		//DEBUG
+//		List<Vector3> stars = new List<Vector3>();
+//		foreach (int i in new int[]{0,2,4}) {
+//			stars.Add (PlanetManager.GetPlanet (i).transform.position);
+//		}
+//		StartCoroutine (Calculate (stars));
 	}
 
 	IEnumerator BarrierAnimation(int[] starsIDs){
 		int count = starsIDs.Length;
-		for(int i = 1;i<count;i++){
-			float x = 0;
-			while (x <= 1) {
-				List<Vector3> starsPositions = new List<Vector3> ();
-				for (int k = 0; k <= i; k++) {
-					starsPositions.Add (PlanetManager.GetPlanet (starsIDs[k]).transform.position);
+		if (count > 1) {
+			for (int i = 1; i < count; i++) {
+				float x = 0;
+				while (x <= 1) {
+					List<Vector3> starsPositions = new List<Vector3> ();
+					for (int k = 0; k <= i; k++) {
+						starsPositions.Add (PlanetManager.GetPlanet (starsIDs [k]).transform.position);
+					}
+					Vector3 targetPosition = starsPositions [starsPositions.Count - 1];
+					starsPositions.RemoveAt (starsPositions.Count - 1);
+					Vector3 lastPosition = starsPositions [starsPositions.Count - 1];
+					x += 0.05f;
+					starsPositions.Add (lastPosition * (1 - x) + targetPosition * x);
+					yield return StartCoroutine (Calculate (starsPositions));
 				}
-				Vector3 targetPosition = starsPositions[starsPositions.Count-1];
-				starsPositions.RemoveAt (starsPositions.Count-1);
-				Vector3 lastPosition = starsPositions[starsPositions.Count-1];
-				x += 0.05f;
-				starsPositions.Add (lastPosition*(1-x)+targetPosition*x);
-				yield return StartCoroutine (Calculate (starsPositions));
+			}
+		} else {
+			Debug.Log ("draw one-point mesh for planet : "+starsIDs[0]);
+			float currTheta = Mathf.PI/18;
+			float dTheta = Mathf.PI / 18;
+			Vector3 position = PlanetManager.GetPlanet (starsIDs [0]).transform.position;
+			while (currTheta < Mathf.PI*2) {
+				ProtectionForOnePlayer (position,currTheta);
+				currTheta += dTheta;
+				yield return new WaitForSeconds (0.2f);
 			}
 		}
 	}
@@ -54,12 +74,8 @@ public class Barrier : MonoBehaviour
 	/// </summary>
 	/// <param name="starsPositions">Stars positions.</param>
 	public IEnumerator Calculate(List<Vector3> starsPositions){
-//		List<Vector3> starsPositions = new List<Vector3>();
 		vertices = new List<Vector3> ();
 		polygonCollider.pathCount = 0;
-//		foreach (int ID in starsID) {
-//			starsPositions.Add (TestPlayer.getStar (ID).transform.localPosition);
-//		}
 
 		//----------------------------------------找出凸多边形--------------------------------------------
 		Vector3 current = new Vector3 (),next = new Vector3(9999,9999,9999),start;
@@ -124,14 +140,24 @@ public class Barrier : MonoBehaviour
 		for (int i = 0; i < vertices.Count; i+=3) {
 			int nextVertex = (i+1)%vertices.Count;
 			int prevVertex = (i - 1 + vertices.Count) % vertices.Count;
-			Vector3 leftEdge = vertices[prevVertex] - vertices [i];
-			Vector3 rightEdge = vertices [nextVertex] - vertices [i];
-			Vector3 right = new Vector3(rightEdge.y,-rightEdge.x);
-			Vector3 left = new Vector3 (-leftEdge.y, +leftEdge.x);
+//			Vector3 leftEdge = vertices[prevVertex] - vertices [i];
+//			Vector3 rightEdge = vertices [nextVertex] - vertices [i];
+//			Vector3 right = new Vector3(rightEdge.y,-rightEdge.x);
+//			Vector3 left = new Vector3 (-leftEdge.y, +leftEdge.x);
+//			Vector3 rightPoint = vertices [i] + right.normalized * R;
+//			Vector3 leftPoint = vertices [i] + left.normalized * R;
+//			vertices.Insert (i,leftPoint);
+//			vertices.Insert (i+2,rightPoint);
+
+			//DEBUG
+			Vector3 leftEdge = vertices[nextVertex] - vertices [i];
+			Vector3 rightEdge = vertices [prevVertex] - vertices [i];
+			Vector3 right = new Vector3(-rightEdge.y,rightEdge.x);
+			Vector3 left = new Vector3 (leftEdge.y, -leftEdge.x);
 			Vector3 rightPoint = vertices [i] + right.normalized * R;
 			Vector3 leftPoint = vertices [i] + left.normalized * R;
-			vertices.Insert (i,leftPoint);
-			vertices.Insert (i+2,rightPoint);
+			vertices.Insert (i,rightPoint);
+			vertices.Insert (i+2,leftPoint);
 			yield return null;
 		}
 		Vector3 head = vertices [0];
@@ -147,8 +173,8 @@ public class Barrier : MonoBehaviour
 
 		//DEBUG
 		//用找到的顶点画多边形
-		//		debugLine.positionCount = vertices.Count;
-		//		debugLine.SetPositions (vertices.ToArray ());
+				debugLine.positionCount = vertices.Count;
+				debugLine.SetPositions (vertices.ToArray ());
 
 		Render ();
 	}
@@ -188,6 +214,8 @@ public class Barrier : MonoBehaviour
 		//----------------------------------------添加圆角--------------------------------------------
 		float dtheta =10f;
 		for (int i = 0; i < sunkenVertexNumber; i++) {
+//			if (i == 0)
+//				continue;
 			Vector3 origin = vertices [3 * i + 2];
 			Vector3 left = vertices [3 * i+1];
 			Vector3 right = vertices [3 * i + 3];
@@ -244,6 +272,43 @@ public class Barrier : MonoBehaviour
 	}
 	//----------------------------------------添加多边形Collider--------------------------------------------
 
+	public void ProtectionForOnePlayer(Vector3 position,float targetTheta){
+		List<Vector3> points = new List<Vector3> ();
+		points.Add (position);
+		float dtheta = Mathf.PI / 18;
+		for(float theta = 0;theta>=-targetTheta;theta-=dtheta){
+			Vector3 result = R * new Vector3 (Mathf.Cos (theta),Mathf.Sin (theta),0)+position;
+			points.Add (result);
+		}
+//		points.Add (position+new Vector3(R,0,0));
+
+		List<int> indices = new List<int> ();
+		for (int i = 1; i < points.Count-1; i++) {
+			indices.Add (0);
+			indices.Add (i);
+			indices.Add (i+1);
+		}
+//		indices.Add (0);
+//		indices.Add (points.Count-1);
+//		indices.Add (1);
+
+
+		Mesh mesh = new Mesh ();
+		GetComponent<MeshFilter> ().mesh = mesh;
+		mesh.vertices = points.ToArray ();
+		mesh.triangles = indices.ToArray ();
+		mesh.RecalculateNormals();  
+		mesh.RecalculateBounds(); 
+
+		List<Vector2> colliderPoints = new List<Vector2> ();
+		foreach (Vector3 point in points) {
+			colliderPoints.Add (point);
+		}
+		colliderPoints.RemoveAt (0);//0 is origin point
+//		colliderPoints.Add (colliderPoints[0]);//1 is first point
+		polygonCollider.pathCount += 1;
+		polygonCollider.SetPath (polygonCollider.pathCount-1,colliderPoints.ToArray ());
+	}
 
 	private float Angle(Vector3 start,Vector3 end){
 		//XXX not very sure whether this will result in any bug
@@ -256,6 +321,11 @@ public class Barrier : MonoBehaviour
 			return Vector3.Angle (start, end);
 	}
 
+	/// <summary>
+	/// Rotate the Vector3 current by theta in anticlockwise.
+	/// </summary>
+	/// <param name="current">Current.</param>
+	/// <param name="theta">Theta.In Radian</param>
 	private Vector3 Rotate(Vector3 current,float theta){
 		theta = Mathf.PI * theta / 180;
 		return  new Vector3 (current.x * Mathf.Cos (theta) - current.y * Mathf.Sin (theta), current.y * Mathf.Cos (theta) + current.x * Mathf.Sin (theta));
