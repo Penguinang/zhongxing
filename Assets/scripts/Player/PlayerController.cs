@@ -63,12 +63,7 @@ namespace Player{
 		// -------------------------------Server Callback function--------------------------------------
 		[ClientRpc]
 		public void RpcOnProtectionClick(int[] planets){
-			foreach (int a in planets) {
-				Debug.Log ("Protection clicked, planets is "+a);
-			}
-
-			GameObject barrier = Instantiate (BarrierPrefab);
-			barrier.GetComponent<Barrier> ().Init (planets);
+			OnProtectionClick (planets);
 		}
 
 		[ClientRpc]
@@ -98,6 +93,14 @@ namespace Player{
 				return;
 			}
 			planet.GetComponent<Planet> ().LaunchShell (direction);
+		}
+
+		public void OnProtectionClick(int[] planets){
+			foreach (int a in planets) {
+				Debug.Log ("Protection clicked, planets is "+a);
+			}
+			GameObject barrier = Instantiate (BarrierPrefab);
+			barrier.GetComponent<Barrier> ().Init (planets);
 		}
 	}
 }

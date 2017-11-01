@@ -68,6 +68,10 @@ namespace Prototype.NetworkLobby
 		public override void OnMatchJoined (bool success, string extendedInfo, MatchInfo matchInfo){
 			loadingNum.countFromAndTo (60,100);
 			base.OnMatchJoined (success,extendedInfo,matchInfo);
+			Debug.Log ("on match joining");
+			Debug.Log ("extendInfo is : " + extendedInfo);
+			Debug.Log ("matchinfo to string is : "+matchInfo.ToString ());
+//			Debug.Log ("");
 			logPanel.OnMatching ();
 		}
 

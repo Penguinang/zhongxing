@@ -17,6 +17,15 @@ public class Barrier : MonoBehaviour
 	public float R = 2;
 	List<Vector3> vertices;
 
+	/// <summary>
+	/// 每一个星球之间形成防护层的间隔的延迟，s
+	/// </summary>
+	public float PlanetsProtectionInterval = 0;
+	/// <summary>
+	/// 单个防护层总时间为 36×OneProtectionInterval s
+	/// </summary>
+	public float OneProtectionInterval = 0.02f;
+
 	void OnTriggerEnter2D(Collider2D collider){
 		//XXX
 		Debug.Log ("barrier get attack");
@@ -54,6 +63,7 @@ public class Barrier : MonoBehaviour
 					x += 0.05f;
 					starsPositions.Add (lastPosition * (1 - x) + targetPosition * x);
 					yield return StartCoroutine (Calculate (starsPositions));
+					yield return new WaitForSeconds (PlanetsProtectionInterval/20);
 				}
 			}
 		} else {
@@ -64,7 +74,7 @@ public class Barrier : MonoBehaviour
 			while (currTheta < Mathf.PI*2) {
 				ProtectionForOnePlayer (position,currTheta);
 				currTheta += dTheta;
-				yield return new WaitForSeconds (0.2f);
+				yield return new WaitForSeconds (OneProtectionInterval);
 			}
 		}
 	}
@@ -137,6 +147,7 @@ public class Barrier : MonoBehaviour
 
 		//----------------------------------------对边的坐标修正--------------------------------------------
 		vertices.RemoveAt (vertices.Count-1);
+		bool startFlag = true;
 		for (int i = 0; i < vertices.Count; i+=3) {
 			int nextVertex = (i+1)%vertices.Count;
 			int prevVertex = (i - 1 + vertices.Count) % vertices.Count;
@@ -150,6 +161,13 @@ public class Barrier : MonoBehaviour
 //			vertices.Insert (i+2,rightPoint);
 
 			//DEBUG
+			if (startFlag)
+				startFlag = false;
+			else {
+				nextVertex = (i+2)%vertices.Count;
+				prevVertex = (i - 2 + vertices.Count) % vertices.Count;
+			}
+				
 			Vector3 leftEdge = vertices[nextVertex] - vertices [i];
 			Vector3 rightEdge = vertices [prevVertex] - vertices [i];
 			Vector3 right = new Vector3(-rightEdge.y,rightEdge.x);
