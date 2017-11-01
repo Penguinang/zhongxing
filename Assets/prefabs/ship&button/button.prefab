@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212268379278418872}
   - component: {fileID: 61900061468764458}
   - component: {fileID: 114354999499320908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 212670208353125624}
   - component: {fileID: 58403831531845320}
   - component: {fileID: 114161722146388456}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 212599890505664818}
   - component: {fileID: 61124388921628712}
   - component: {fileID: 114253238183852486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: protect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4551646707420478}
   - component: {fileID: 114312170822907426}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 212641657001849526}
   - component: {fileID: 61021203631865092}
   - component: {fileID: 114242642431538628}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4269138454398046}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce33ae4a1d74bde4e851a81c3cf2c439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonId: 1
+  ButtonId: 0
 --- !u!114 &114354999499320908
 MonoBehaviour:
   m_ObjectHideFlags: 1

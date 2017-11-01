@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948659140868412}
   - component: {fileID: 120064108778053950}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23200054409019046}
   - component: {fileID: 114337939752648184}
   - component: {fileID: 60932705391545068}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503634925143452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4948659140868412}
@@ -152,6 +152,8 @@ MonoBehaviour:
   debugLine: {fileID: 120064108778053950}
   polygonCollider: {fileID: 60932705391545068}
   R: 2
+  PlanetsProtectionInterval: 0
+  OneProtectionInterval: 0
   stars: []
 --- !u!120 &120064108778053950
 LineRenderer:
