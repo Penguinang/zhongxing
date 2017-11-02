@@ -24,7 +24,7 @@ public class Ship : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        this.AwakePos=this.transform.position;
+		this.AwakePos=this.transform.position;
         Rship.mass = this.mass;
     }
 
@@ -38,13 +38,13 @@ public class Ship : MonoBehaviour
     void Update()
     {
 
-        if ((this.transform.position - AwakePos).magnitude < 0.1)
+		if ((this.transform.position - AwakePos).magnitude < 0.1)
             if (Input.GetMouseButton(0))
         {
             //获取鼠标的坐标，鼠标是屏幕坐标，Z轴为0，这里不做转换
             Vector3 mouse = Input.mousePosition;
             //获取物体坐标，物体坐标是世界坐标，将其转换成屏幕坐标，和鼠标一直
-            Vector3 obj = Camera.main.WorldToScreenPoint(transform.position);
+			Vector3 obj = Camera.main.WorldToScreenPoint(transform.position);
             //屏幕坐标向量相减，得到指向鼠标点的目标向量，即黄色线段
             Vector3 direction = mouse - obj;
             //将Z轴置0,保持在2D平面内
@@ -52,7 +52,7 @@ public class Ship : MonoBehaviour
             //将目标向量长度变成1，即单位向量，这里的目的是只使用向量的方向，不需要长度，所以变成1
             direction = direction.normalized;
          
-            transform.right= direction;
+			transform.right= direction;
            
         }
 
@@ -66,7 +66,7 @@ public class Ship : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if  ((this.transform.position - AwakePos).magnitude < 0.1)
+		if  ((this.transform.position - AwakePos).magnitude < 0.1)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -102,12 +102,11 @@ public class Ship : MonoBehaviour
 			int newPlayer = IDManager.instance.GetPlayerIDForPlanet (this.id);
 			IDManager.instance.ChangePlanetOwner (planetID,oldPlayer,newPlayer);
 
-			if (newPlayer== localPlayerID) {//this.id is attacking planets'id 
+			if (newPlayer== localPlayerID) //this.id is attacking planets'id 
 				col.GetComponent<Planet> ().status = 1;
-			}
 			else
 				col.GetComponent<Planet> ().status = 0;
-            
+			col.gameObject.GetComponent<PlanetIcon> ().SetIconById (IDManager.instance.GetPlayerIDForPlanet (id));
 		}
 		if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude < 3)) {
 

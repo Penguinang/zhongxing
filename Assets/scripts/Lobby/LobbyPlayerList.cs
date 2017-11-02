@@ -24,7 +24,7 @@ namespace Prototype.NetworkLobby
 
             _players.Add(player);
 
-            player.transform.SetParent(playerListContentTransform, false);
+			player.transform.SetParent(playerListContentTransform, false);
         }
 
 		public int getPlayerNum(){

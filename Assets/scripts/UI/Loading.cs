@@ -8,6 +8,6 @@ public class Loading : MonoBehaviour {
 
 	void Update () {
 		Vector3 zero = rotationCenter.position;
-        transform.RotateAround(zero, Vector3.back,speed* Time.deltaTime);
+		transform.RotateAround(zero, Vector3.back,speed* Time.deltaTime);
 	}
 }

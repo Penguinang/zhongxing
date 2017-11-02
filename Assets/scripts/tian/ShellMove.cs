@@ -26,13 +26,13 @@ public class ShellMove : MonoBehaviour {
     public  void  ShellCanMove(Vector3 MousePos)//发射核弹
     {
         hitt = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(MousePos), Vector2.zero);
-        Vector2 p = transform.InverseTransformPoint(hitt.point);
+		Vector2 p = transform.InverseTransformPoint(hitt.point);
         eulerAngles = Mathf.Atan2(p.y,p.x) * Mathf.Rad2Deg -90;//计算欧拉角
         Debug.Log("done");
         // Debug.Log(hitt.point.y);
         // Debug.Log(hitt.transform.position.x);
-        transform.Rotate(0, 0, eulerAngles);//欧拉角旋转
-        shellRigidbody2D.velocity = transform.up * shellMoveSpeed;
+		transform.Rotate(0, 0, eulerAngles);//欧拉角旋转
+		shellRigidbody2D.velocity = transform.up * shellMoveSpeed;
         isShellCanMove = true;
     }
     public void OnTriggerEnter2D(Collider2D collision)
@@ -40,7 +40,7 @@ public class ShellMove : MonoBehaviour {
         //Destroy(this.gameObject);
         
 
-        if (collision.tag == "Planet"&&(this.gameObject.transform.position-collision.transform.position).magnitude>2&&collision.GetComponent<Planet>().status!=1)
+		if (collision.tag == "Planet"&&(this.gameObject.transform.position-collision.transform.position).magnitude>2&&collision.GetComponent<Planet>().status!=1)
         {
             collision.SendMessage("TakeDamage");
             Destroy(this.gameObject);

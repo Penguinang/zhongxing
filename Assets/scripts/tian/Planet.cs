@@ -55,7 +55,7 @@ public class Planet : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //currentHealth = sli.maxValue;
-        HealthBar = this.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
+		HealthBar = this.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
     }
 
 
@@ -72,7 +72,7 @@ public class Planet : MonoBehaviour {
     {
         ShipOnMousedown();
 
-        this.PlanetPosition = this.transform.position;
+		this.PlanetPosition = this.transform.position;
         
 
 
@@ -141,9 +141,9 @@ public class Planet : MonoBehaviour {
         if (sh != null)
             foreach (GameObject s in sh)
             {
-                Gforce = new Vector2(this.transform.position.x - s.transform.position.x,
-                this.transform.position.y - s.transform.position.y);
-                float R = (this.transform.position - s.transform.position).magnitude;
+				Gforce = new Vector2(this.transform.position.x - s.transform.position.x,
+					this.transform.position.y - s.transform.position.y);
+				float R = (this.transform.position - s.transform.position).magnitude;
                 Gforce = Gforce * mass / (R * R);
 				if (R < 0.3)
 					Gforce = new Vector2 ();

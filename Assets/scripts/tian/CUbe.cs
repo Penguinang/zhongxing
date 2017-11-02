@@ -29,9 +29,9 @@ public class CUbe : MonoBehaviour {
         Rship.AddForce(force);
 
 
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        float x = mousepos.x-transform.position.x;
-        float y = mousepos.y-transform.position.y;
+		Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+		float x = mousepos.x-transform.position.x;
+		float y = mousepos.y-transform.position.y;
         float s = Mathf.Sqrt(x * x + y * y);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -43,7 +43,7 @@ public class CUbe : MonoBehaviour {
         //    speed = 1;
         //}
         speed = 1;
-        if (transform.position == e)
+		if (transform.position == e)
         {
             speed = 0;
         }

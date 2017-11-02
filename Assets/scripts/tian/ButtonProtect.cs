@@ -40,9 +40,9 @@ public class ButtonProtect : MonoBehaviour {
             
         }
             pm.LastId = pm.ThisId;
-            pm.ThisId = this.transform.parent.parent.gameObject.GetComponent<Button>().ButtonId;
-        Destroy(this.transform.parent.gameObject);
-        Destroy(this.transform.parent.parent.gameObject);
+		pm.ThisId = this.transform.parent.parent.gameObject.GetComponent<Button>().ButtonId;
+		Destroy(this.transform.parent.gameObject);
+		Destroy(this.transform.parent.parent.gameObject);
         
     }
 

@@ -24,7 +24,7 @@ public class Planes : MonoBehaviour {
     // Use this for initialization
     void Start () {
       
-        FirePosition = transform.Find("FirePosition");
+		FirePosition = transform.Find("FirePosition");
     }
     private void OnMouseDown()
     {

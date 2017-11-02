@@ -6,7 +6,7 @@ public class ButtonCircle : MonoBehaviour {
 
    private void OnMouseDown()
     {
-        Destroy(this.transform.parent.gameObject);
-        Destroy(this.transform.parent.parent.gameObject);
+		Destroy(this.transform.parent.gameObject);
+		Destroy(this.transform.parent.parent.gameObject);
     }
 }

@@ -19,7 +19,7 @@ public class ShellAttack :MonoBehaviour{
 
     // Use this for initialization
     void Start () {
-        FirePosition = this.transform.parent.Find("FirePosition");
+		FirePosition = this.transform.parent.Find("FirePosition");
       
        
     }
@@ -29,7 +29,7 @@ public class ShellAttack :MonoBehaviour{
 	{
         if (isNbomb == false)
 		{Debug.Log ("onmouse down on shellatack"+isNbomb);
-            Nbombpre = Instantiate(Nbomb, transform.position+new Vector3(0,4,0), transform.rotation);
+			Nbombpre = Instantiate(Nbomb, transform.position+new Vector3(0,4,0), transform.rotation);
             isNbomb = true;
             Planes.isNavigationCanDispear = false;
             //Destroy(this.transform.parent.gameObject);
@@ -49,8 +49,8 @@ public class ShellAttack :MonoBehaviour{
                 Destroy(Nbombpre);
                 isNbomb = false;
 
-                Destroy(this.transform.parent.gameObject);
-                Destroy(this.transform.parent.parent.gameObject);
+				Destroy(this.transform.parent.gameObject);
+				Destroy(this.transform.parent.parent.gameObject);
                 //Planes.isNavigationCanDispear = true;
             }
         }
@@ -72,8 +72,8 @@ public class ShellAttack :MonoBehaviour{
 				Destroy (Nbombpre);
 
                 isNbomb = false;
-                Destroy(this.transform.parent.gameObject);
-                Destroy(this.transform.parent.parent.gameObject);
+				Destroy(this.transform.parent.gameObject);
+				Destroy(this.transform.parent.parent.gameObject);
                 //isNavigationCanDispear = true;
                 //Planes.isNavigationCanDispear = true;
             }

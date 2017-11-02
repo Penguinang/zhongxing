@@ -7,6 +7,7 @@ using UnityEngine.Networking.Match;
 using System.Collections;
 using System.Collections.Generic;
 using MySocket;
+using UnityEngine.EventSystems;
 
 
 namespace Prototype.NetworkLobby
@@ -128,6 +129,12 @@ namespace Prototype.NetworkLobby
 				id.GetComponent<IDManager> ().player2 = 2;
 				id.GetComponent<IDManager> ().player3 = 3;
 			} 
+		}
+
+		public override void OnDropConnection(bool success,string extendedinfo){
+			Debug.Log ("override OnDropConnection message");
+			base.OnDropConnection (success,extendedinfo);
+			matchMaker.CreateMatch("game",	(uint)maxPlayers,	true,	"", "", "", 0, 0,OnMatchCreate);
 		}
     }
 }

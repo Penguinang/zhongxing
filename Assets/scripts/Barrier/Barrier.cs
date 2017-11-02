@@ -7,13 +7,14 @@ using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
 using System.Net.Sockets;
 using System;
-using NUnit.Framework.Constraints;
 
 public class Barrier : MonoBehaviour
 {
 	public LineRenderer debugLine;
 	public PolygonCollider2D polygonCollider;
 	public float R = 2;
+
+	private EnergyManager energyManager;
 	List<Vector3> vertices;
 	Color color = new Color(1,1,0,0.5f);
 
@@ -33,6 +34,7 @@ public class Barrier : MonoBehaviour
 		Destroy (collider.gameObject);
 		Debug.Log ("collider : " + collider.name);
 
+		energyManager.IncreaseEnergy (5);
 //		}
 	}
 
@@ -331,7 +333,9 @@ public class Barrier : MonoBehaviour
 	}
 
 	IEnumerator FadeAway(int planetsNumber){
-		float time = planetsNumber * 4;
+		float fadeCoefficient = 1.5f;
+		float baseTime = 10;
+		float time = baseTime / Mathf.Pow (fadeCoefficient, planetsNumber - 1);		
 		float intervalTime = 0.3f;
 		float dColorRatio = intervalTime / time;
 		Material material = GetComponent<Renderer> ().material;
@@ -389,6 +393,7 @@ public class Barrier : MonoBehaviour
 	public GameObject[] stars;
 	void Start(){
 		GetComponent<Renderer> ().material.color = color;
+		energyManager = GameObject.Find("EnergyManager").GetComponent<EnergyManager>();
 	}
 	public GameObject getStar(int ID){
 		if (ID < stars.Length)

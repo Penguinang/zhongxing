@@ -111,7 +111,7 @@ public class LogPanel : MonoBehaviour {
 				}
 			if (!hasRoom) {
 				lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,"", "", "", 0, 0,	lobbyManager.OnMatchCreate);
-				lobbyManager._isMatchmaking = true;				
+				lobbyManager._isMatchmaking = true;
 			}				
 		}
 	}

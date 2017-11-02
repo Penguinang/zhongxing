@@ -29,15 +29,15 @@ public class ButtonShip : MonoBehaviour {
     public void Launch()
     {
         flag = true;
-        float xPos = transform.position.x;
-        float yPos = transform.position.y;
-        Vector3 shipPos = new Vector3(xPos - 1.4f, transform.position.y + 1.3f, 0);
+		float xPos = transform.position.x;
+		float yPos = transform.position.y;
+		Vector3 shipPos = new Vector3(xPos - 1.4f, transform.position.y + 1.3f, 0);
 
 
         if (EnergyManager.launchable)
         {
 
-            GameObject instance = Instantiate(ship, shipPos, transform.rotation);
+			GameObject instance = Instantiate(ship, shipPos, transform.rotation);
 			GameObject planet = transform.parent.parent.parent.gameObject;
 			instance.GetComponent<Ship> ().planetID = planet.GetComponent<Planet> ().id;
             //ShipManager.ships.Add(ship.GetComponent<Ship>());

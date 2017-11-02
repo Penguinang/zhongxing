@@ -198,7 +198,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNameText: {fileID: 102364289572652748}
+  RedIcon: {fileID: 1966020588535116, guid: eaadd6ff01c8e4f0e9be281c2cc3f217, type: 2}
+  YellowIcon: {fileID: 1351016993750110, guid: 301c83b0591744d1791c80d40da6ee54, type: 2}
+  LightBlueIcon: {fileID: 1276965436283090, guid: b072807d1fe914b8a9d67a922359a872,
+    type: 2}
+  DarkBlueIcon: {fileID: 1348254152959292, guid: 307f76bdc6ebc4f0e94cccd28a911f81,
+    type: 2}
   Name: 
   ID: -1
   energy: 0
-  localPlayer: 0

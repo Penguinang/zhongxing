@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class PlayerMessage : NetworkBehaviour {
 	public TextMesh PlayerNameText;
 
+
 	[SyncVar(hook = "OnSyncNameChanged")]
 	public string Name = "";
 
@@ -25,7 +26,7 @@ public class PlayerMessage : NetworkBehaviour {
 
 	void Start(){
 		Invoke ("PatchChangeName",1);
-		Invoke ("UpdatePlanetStatus",3);
+		Invoke ("UpdatePlanetStatus",1);
 	}
 
 	void PatchChangeName(){
@@ -41,12 +42,13 @@ public class PlayerMessage : NetworkBehaviour {
 		}
 		if (isLocalPlayer) {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet> ().status = 1;
-			localPlayer = true;
 			Debug.Log ("localPlayerUpdatePlanet");
 		} else {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet>().status = 0;
 		}
-	}public bool localPlayer = false;
+
+		PlanetManager.GetPlanet (planet [0]).GetComponent<PlanetIcon> ().SetIconById (ID);
+	}
 
 	private void OnEnergyChange(float energy){
 		//XXX we need not sync energy or blood,because they can only be seen and destroyed on localPlayer
