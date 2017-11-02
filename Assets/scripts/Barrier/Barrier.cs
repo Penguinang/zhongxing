@@ -5,10 +5,9 @@ using UnityEngine.Networking;
 using System.ComponentModel.Design;
 using System.Runtime.Serialization.Formatters;
 using System.Xml.Linq;
-//using UnityEngine.XR.Tango;
-//using NUnit.Framework;
 using System.Net.Sockets;
 using System;
+using NUnit.Framework.Constraints;
 
 public class Barrier : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class Barrier : MonoBehaviour
 	public PolygonCollider2D polygonCollider;
 	public float R = 2;
 	List<Vector3> vertices;
+	Color color = new Color(1,1,0,0.5f);
 
 	/// <summary>
 	/// 每一个星球之间形成防护层的间隔的延迟，s
@@ -27,13 +27,12 @@ public class Barrier : MonoBehaviour
 	public float OneProtectionInterval = 0.02f;
 
 	void OnTriggerEnter2D(Collider2D collider){
-		//XXX
-		Debug.Log ("barrier get attack");
 //		if (collider.tag == "stone") {
 //			Destroy (collider);
 //		} else if (collider.tag == "ship") {
 		Destroy (collider.gameObject);
 		Debug.Log ("collider : " + collider.name);
+
 //		}
 	}
 
@@ -77,6 +76,9 @@ public class Barrier : MonoBehaviour
 				yield return new WaitForSeconds (OneProtectionInterval);
 			}
 		}
+
+		StartCoroutine (FadeAway (starsIDs.Length));
+		Debug.Log ("start fade away color");
 	}
 
 	/// <summary>
@@ -328,6 +330,40 @@ public class Barrier : MonoBehaviour
 		polygonCollider.SetPath (polygonCollider.pathCount-1,colliderPoints.ToArray ());
 	}
 
+	IEnumerator FadeAway(int planetsNumber){
+		float time = planetsNumber * 4;
+		float intervalTime = 0.3f;
+		float dColorRatio = intervalTime / time;
+		Material material = GetComponent<Renderer> ().material;
+		Debug.Log ("planet number is : "+planetsNumber+" , and will be destroyed after "+time);
+		while (time > 0) {
+			time -= intervalTime;
+			material.color += new Color (0, 0, dColorRatio, -dColorRatio * 0.5f);
+			yield return new WaitForSeconds (intervalTime);
+		}
+
+		Destroy (gameObject);
+	}
+
+	//XXX 效果不够好，暂时放弃
+	IEnumerator OnCollision(){
+		float animationTime = 0.3f;
+		float dTime = 0.05f;
+		Color ColorChange = new Color(0,0,0.00f);
+		Color dcolor = ColorChange * dTime / animationTime;
+		Material material = GetComponent<Renderer> ().material;
+		while (animationTime > 0) {
+			animationTime -= dTime;
+//			material.color += dcolor;
+//			if (material.color.b > 1)
+//				material.color = new Color (material.color.r,material.color.g,1f,material.color.a);
+			Debug.Log ("now material color is : "+material.color);
+			yield return new WaitForSeconds (dTime);
+		}
+
+		material.color -= ColorChange;
+	}
+
 	private float Angle(Vector3 start,Vector3 end){
 		//XXX not very sure whether this will result in any bug
 		if (start.Equals (new Vector3 ())||end.Equals (new Vector3()))
@@ -352,8 +388,7 @@ public class Barrier : MonoBehaviour
 	//DEBUG
 	public GameObject[] stars;
 	void Start(){
-//		int[] IDs = new int[]{0,1,2,3,4,5,6};
-//		StartCoroutine (Calculate (IDs));
+		GetComponent<Renderer> ().material.color = color;
 	}
 	public GameObject getStar(int ID){
 		if (ID < stars.Length)

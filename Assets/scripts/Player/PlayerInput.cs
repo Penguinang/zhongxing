@@ -26,23 +26,6 @@ namespace Player{
 				Debug.Log ("isn't localPLayer");
 		}		
 
-		void FixedUpdate(){
-			if(!isLocalPlayer)
-				return;
-			float horizontal = Input.GetAxis ("Horizontal");
-			float vertical = Input.GetAxis ("Vertical");
-			PlayerController player = myPlayer.GetComponent<PlayerController>();
-			player.move (Vector3.forward*vertical);
-			player.move (Vector3.right * horizontal);
-
-			bool ro_right = Input.GetKey ("k");
-			if (ro_right)
-				player.rotate (rotateVelocity);
-			bool ro_left = Input.GetKey ("j");
-			if(ro_left)
-				player.rotate (rotateVelocity*-1);
-		}
-
 		// -------------------------------player function API-------------------------------------
 		/// <summary>
 		/// Receive Protection Button Input;
