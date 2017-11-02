@@ -19,19 +19,42 @@ public class Ship : MonoBehaviour
     public float mass;
 	public int planetID = -1;
 
-    
+
+
+    public Planet[] Ps;
+    public Planet TargetPlanet;
+    public float CatchRange;
+    public Vector3 ToTarget;
+    public float MaxV;
+    public GameObject[] Gs;
+    public float[] ranges;
+    public int CatchStatus;
+
+    public Planet AwakePlanet;
+
+
+
 
     // Use this for initialization
     void Awake()
     {
         this.AwakePos=this.transform.position;
         Rship.mass = this.mass;
+
+        Gs = GameObject.FindGameObjectsWithTag("Planet");
+        Ps = new Planet[Gs.Length];
+        for (int i = 0; i < Gs.Length; i++)
+        {
+            Ps[i] = Gs[i].GetComponent<Planet>();
+        }
+        ranges = new float[Ps.Length];
     }
 
     private void Start()
     {
         //ShipManager.ships.Add(this);
         //Debug.Log(ShipManager.ships[0]);
+        CatchStatus = 0;
     }
 
     // Update is called once per frame
@@ -62,7 +85,37 @@ public class Ship : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        
+
+        int i = 0;
+        foreach (Planet p in Ps)
+        {
+            ranges[i] = (p.transform.position - transform.position).magnitude;
+            i = i + 1;
+          
+            if (((p.transform.position - this.transform.position).magnitude < CatchRange) &&
+                ((transform.position-AwakePos).magnitude>3))
+            {
+                TargetPlanet = p;
+            }
+        }
+
+        if (TargetPlanet != null)
+        {
+            ToTarget = TargetPlanet.transform.position - transform.position;
+            //Debug.Log(Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y);
+            if ((Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y <= 0.1) && (Rship.velocity.magnitude < MaxV))
+            {
+                Rship.AddForce(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * 10 * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
+                CatchStatus = 1;
+                Debug.Log(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
+            }
+
+            foreach (Planet p in Ps)
+            {
+                Rship.AddForce(-p.Gforce);
+            }
+        }
+
     }
     private void FixedUpdate()
     {
@@ -93,20 +146,26 @@ public class Ship : MonoBehaviour
 			//col.gameObject.GetComponent<Planet>().GetCaughtBy(this.id);
             
 			Destroy (this.gameObject);
-//			col.GetComponent<Planet> ().status = this.id;
-			//			col.gameObject.transform.GetComponent<Planet> ().status = this.id;
-			//----------------------------------------YangPengBo---------------------------------------------------------------
-			int localPlayerID = LobbyManager.localPlayer.GetComponent<PlayerMessage>().ID;
-			int planetID = col.GetComponent<Planet> ().id;
-			int oldPlayer = IDManager.instance.GetPlayerIDForPlanet (planetID);
-			int newPlayer = IDManager.instance.GetPlayerIDForPlanet (this.id);
-			IDManager.instance.ChangePlanetOwner (planetID,oldPlayer,newPlayer);
+            //			col.GetComponent<Planet> ().status = this.id;
+            //			col.gameObject.transform.GetComponent<Planet> ().status = this.id;
+            //----------------------------------------YangPengBo---------------------------------------------------------------
+            if(CatchStatus==1)
+            {
+                int localPlayerID = LobbyManager.localPlayer.GetComponent<PlayerMessage>().ID;
+                int planetID = col.GetComponent<Planet>().id;
+                int oldPlayer = IDManager.instance.GetPlayerIDForPlanet(planetID);
+                int newPlayer = IDManager.instance.GetPlayerIDForPlanet(this.id);
+                IDManager.instance.ChangePlanetOwner(planetID, oldPlayer, newPlayer);
 
-			if (newPlayer== localPlayerID) {//this.id is attacking planets'id 
-				col.GetComponent<Planet> ().status = 1;
-			}
-			else
-				col.GetComponent<Planet> ().status = 0;
+                if (newPlayer == localPlayerID)
+                {//this.id is attacking planets'id 
+                    col.GetComponent<Planet>().status = 1;
+                }
+                else
+                    col.GetComponent<Planet>().status = 0;
+            }
+            CatchStatus = 0;
+            
             
 		}
 		if ((col.tag == "Planet") && ((this.transform.position - AwakePos).magnitude < 3)) {
@@ -115,7 +174,9 @@ public class Ship : MonoBehaviour
 //            this.id=p.transform.GetComponent<Planet>().status;
 			//----------------------------------------YangPengBo---------------------------------------------------------------
 			this.id = p.GetComponent<Planet> ().id;
-		}
+            AwakePlanet = p.GetComponent<Planet>();
+
+        }
         
 
 	}

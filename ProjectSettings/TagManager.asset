@@ -8,6 +8,7 @@ TagManager:
   - planet
   - Planet
   - stone
+  - CoolTimeManager
   layers:
   - Default
   - TransparentFX
