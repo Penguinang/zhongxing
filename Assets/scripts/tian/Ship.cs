@@ -29,15 +29,21 @@ public class Ship : MonoBehaviour
     public GameObject[] Gs;
     public float[] ranges;
     public int CatchStatus;
+    public float CatchRangeMin;
 
     public Planet AwakePlanet;
-
+    public Vector2 V;
+    public float CatchTime;
+    public int CatchDirection;
 
 
 
     // Use this for initialization
     void Awake()
     {
+
+
+
         this.AwakePos=this.transform.position;
         Rship.mass = this.mass;
 
@@ -61,13 +67,19 @@ public class Ship : MonoBehaviour
     void Update()
     {
 
-        if ((this.transform.position - AwakePos).magnitude < 0.1)
+       
+
+        V = Rship.velocity;
+
+        if ((this.transform.position - AwakePos).magnitude < 1)
             if (Input.GetMouseButton(0))
         {
             //获取鼠标的坐标，鼠标是屏幕坐标，Z轴为0，这里不做转换
             Vector3 mouse = Input.mousePosition;
             //获取物体坐标，物体坐标是世界坐标，将其转换成屏幕坐标，和鼠标一直
             Vector3 obj = Camera.main.WorldToScreenPoint(transform.position);
+
+                //transform.position -= Back;
             //屏幕坐标向量相减，得到指向鼠标点的目标向量，即黄色线段
             Vector3 direction = mouse - obj;
             //将Z轴置0,保持在2D平面内
@@ -87,25 +99,38 @@ public class Ship : MonoBehaviour
         }
 
         int i = 0;
-        foreach (Planet p in Ps)
+        if(TargetPlanet==null)
         {
-            ranges[i] = (p.transform.position - transform.position).magnitude;
-            i = i + 1;
-          
-            if (((p.transform.position - this.transform.position).magnitude < CatchRange) &&
-                ((transform.position-AwakePos).magnitude>3))
+            foreach (Planet p in Ps)
             {
-                TargetPlanet = p;
+                ranges[i] = (p.transform.position - transform.position).magnitude;
+                i = i + 1;
+
+                if (((p.transform.position - this.transform.position).magnitude < CatchRange) &&
+                    ((transform.position - AwakePos).magnitude > 2) && (p != AwakePlanet))
+                {
+                    TargetPlanet = p;
+                    if (ToTarget.x * Rship.velocity.x+ToTarget.y*Rship.velocity.y > 0)
+                    {
+                        CatchDirection = 1;
+                    }
+                    else
+                    {
+                        CatchDirection = -1;
+                    }
+                }
             }
         }
+        
 
         if (TargetPlanet != null)
         {
             ToTarget = TargetPlanet.transform.position - transform.position;
             //Debug.Log(Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y);
-            if ((Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y <= 0.1) && (Rship.velocity.magnitude < MaxV))
+            if ((Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y <= 0.1) && (Rship.velocity.magnitude < MaxV)&&(ToTarget.magnitude>=CatchRangeMin))
             {
-                Rship.AddForce(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * 10 * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
+                //Rship.AddForce(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * 8 * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
+                //transform.RotateAround(TargetPlanet.transform.position, transform.up, 30 * Time.deltaTime);
                 CatchStatus = 1;
                 Debug.Log(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
             }
@@ -119,6 +144,25 @@ public class Ship : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
+        
+        if (TargetPlanet != null)
+        {
+            CatchTime -= 1f;
+            if(CatchTime>0)
+            {
+                transform.RotateAround(TargetPlanet.transform.position, Vector3.forward, 60 * Time.deltaTime*CatchDirection);
+                //transform.Translate(ToTarget * 0.01f);
+                Rship.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                transform.Translate(ToTarget * 0.01f);
+            }
+            
+        }
+
+
         if  ((this.transform.position - AwakePos).magnitude < 0.1)
         {
             if (Input.GetMouseButtonDown(0))
@@ -149,7 +193,7 @@ public class Ship : MonoBehaviour
             //			col.GetComponent<Planet> ().status = this.id;
             //			col.gameObject.transform.GetComponent<Planet> ().status = this.id;
             //----------------------------------------YangPengBo---------------------------------------------------------------
-            if(CatchStatus==1)
+            if((CatchStatus==1)&&(col.gameObject.GetComponent<Planet>()==TargetPlanet))
             {
                 int localPlayerID = LobbyManager.localPlayer.GetComponent<PlayerMessage>().ID;
                 int planetID = col.GetComponent<Planet>().id;
