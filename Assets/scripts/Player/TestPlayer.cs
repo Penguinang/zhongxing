@@ -21,9 +21,9 @@ public class TestPlayer : MonoBehaviour {
 		instance = this;
 		GameObject stars = GameObject.Find ("DebugStars");
 		allPlanets = new List<GameObject> ();
-		for (int i = 0; i < stars.transform.childCount; i++) {
-			allPlanets.Add (stars.transform.GetChild (i).gameObject);
-		}
+//		for (int i = 0; i < stars.transform.childCount; i++) {
+//			allPlanets.Add (stars.transform.GetChild (i).gameObject);
+//		}
 
 	}
 	void Update(){
@@ -34,7 +34,8 @@ public class TestPlayer : MonoBehaviour {
 		if (protect) {
 			//DEBUG
 			testBarrier.GetComponent<Barrier> ().Init (new int[3]{0,3,4});
-//			playerInput.OnProtectionClick (planets);	
+
+			BroadcastManager.AddMessage ("这是一条测试内容,test content");
 		}
 	}
 }

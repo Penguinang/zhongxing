@@ -20,7 +20,7 @@ public class Tip : MonoBehaviour {
 		Vector3 velocity = new Vector3 (0,velo,0);
 
 		RectTransform trans = GetComponent<RectTransform> ();
-		trans.localPosition = new Vector2 (trans.localPosition.x, yStart);
+		trans.localPosition = new Vector2 (-50, yStart);
 		while (trans.localPosition.y < yMax) {
 			trans.localPosition += velocity;
 			if (transform.localPosition.y > yEnd)

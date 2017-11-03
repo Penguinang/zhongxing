@@ -132,7 +132,8 @@ namespace Prototype.NetworkLobby
 		}
 
 		public override void OnDropConnection(bool success,string extendedinfo){
-			Debug.Log ("override OnDropConnection message");
+			Debug.Log ("override OnDropConnection message==============================================");
+			Application.Quit ();
 			base.OnDropConnection (success,extendedinfo);
 			matchMaker.CreateMatch("game",	(uint)maxPlayers,	true,	"", "", "", 0, 0,OnMatchCreate);
 		}

@@ -9,18 +9,23 @@ public class Switch : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        toggle = GetComponent<Toggle>();
-        
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        OnValueChange(toggle.isOn);
+        toggle = GetComponent<Toggle>();   
     }
 
     public void OnValueChange(bool isOn)
     {
+		isOn = toggle.isOn;
         isOnGameObject.SetActive(isOn);
         isOffGameObject.SetActive(!isOn);
     }
+
+	public void OnMusicChange(bool isOn){
+		isOn = toggle.isOn;
+		AudioManager.instance.SwitchMusic (isOn);
+	}
+
+	public void OnEffectChange(bool isOn){
+		isOn = toggle.isOn;
+		AudioManager.instance.SwitchEffects (isOn);
+	}
 }
