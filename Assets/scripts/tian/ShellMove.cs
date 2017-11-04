@@ -6,7 +6,7 @@ public class ShellMove : MonoBehaviour {
     
     public static bool isShellCanMove =false;
     public  static Rigidbody2D shellRigidbody2D;
-    public  static float shellMoveSpeed = 2.0f;
+    public  float shellMoveSpeed = 6.0f;
     public static RaycastHit2D hitt;
     private static float eulerAngles;
     public  float firetime = 1.0f;

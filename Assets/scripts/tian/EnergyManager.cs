@@ -46,21 +46,35 @@ public class EnergyManager : MonoBehaviour {
 
 
     }
-    private void FixedUpdate()
-    {
-        if (energy_update > energy)
-        {
-            energy_update -= 1; 
-        }
-        Amout.GetComponent<Text>().text = energy_update + "%";
-    }
+//    private void FixedUpdate()
+//    {
+//        if (energy_update > energy)
+//        {
+//            energy_update -= 1; 
+//        }
+//        Amout.GetComponent<Text>().text = energy_update + "%";
+//    }
     public void IncreaseEnergy(float e)
     {
         this.energy += e;
+		StartCoroutine (ChangeEnergyEffect ());
     }
     public void DecreaseEnergy(float e)
     {
-        this.energy -= e;
+		this.energy -= e;
+		StartCoroutine (ChangeEnergyEffect ());
     }
+
+	IEnumerator ChangeEnergyEffect(){
+		while (energy != energy_update) {
+			if (energy > energy_update)
+				energy_update += 1;
+			else
+				energy_update -= 1;
+			Amout.GetComponent<Text>().text = energy_update + "%";
+			yield return null;
+		}
+		yield return null;
+	}
 
 }

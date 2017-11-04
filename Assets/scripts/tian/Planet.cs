@@ -202,13 +202,14 @@ public class Planet : MonoBehaviour {
 	//-------------------------------------------------YangPengBo--------------------------------------------------------------
 	public GameObject shipPrefab;
 	public GameObject shellPrefab;
-	public float shellSpeed = 2;
 	public void LaunchShip(Vector2 velocity){
 		GameObject ship = Instantiate (shipPrefab,transform.position,new Quaternion());
 		ship.GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 	public void LaunchShell(Vector2 direction){
+		
 		GameObject shell = Instantiate (shellPrefab, transform.position+new Vector3(0,0.5f,0), new Quaternion ());
+		float shellSpeed = shell.GetComponent<ShellMove> ().shellMoveSpeed;
 		shell.transform.up = direction;
 		shell.GetComponent <Rigidbody2D>().velocity =direction*shellSpeed;
 	}

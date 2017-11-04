@@ -126,7 +126,6 @@ public class Ship : MonoBehaviour
                 //Rship.AddForce(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * 8 * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
                 //transform.RotateAround(TargetPlanet.transform.position, transform.up, 30 * Time.deltaTime);
                 CatchStatus = 1;
-                Debug.Log(((Rship.velocity.x * Rship.velocity.x) + (Rship.velocity.y * Rship.velocity.y) * Rship.mass) * ToTarget / ToTarget.magnitude / ToTarget.magnitude);
             }
 
             foreach (Planet p in Ps)

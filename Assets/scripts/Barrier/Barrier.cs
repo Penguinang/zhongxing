@@ -328,8 +328,9 @@ public class Barrier : MonoBehaviour
 		}
 		colliderPoints.RemoveAt (0);//0 is origin point
 //		colliderPoints.Add (colliderPoints[0]);//1 is first point
-		polygonCollider.pathCount += 1;
+		polygonCollider.pathCount = 1;
 		polygonCollider.SetPath (polygonCollider.pathCount-1,colliderPoints.ToArray ());
+		Debug.Log ("collider path count is : "+polygonCollider.pathCount+"vertices number : "+colliderPoints.Count);
 	}
 
 	IEnumerator FadeAway(int planetsNumber){
