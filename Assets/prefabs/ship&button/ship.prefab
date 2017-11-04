@@ -135,7 +135,7 @@ MonoBehaviour:
   planetID: -1
   Ps: []
   TargetPlanet: {fileID: 0}
-  CatchRange: 4
+  CatchRange: 2.5
   ToTarget: {x: 0, y: 0, z: 0}
   MaxV: 10
   Gs: []

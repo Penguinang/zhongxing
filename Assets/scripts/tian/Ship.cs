@@ -73,6 +73,14 @@ public class Ship : MonoBehaviour
             //获取物体坐标，物体坐标是世界坐标，将其转换成屏幕坐标，和鼠标一直
             Vector3 obj = Camera.main.WorldToScreenPoint(transform.position);
 
+                Vector3 mouPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 back =  mouPos-transform.position;
+                Debug.Log((this.transform.position - AwakePos).magnitude);
+                if(back.magnitude>=7.5f)
+                {
+                    back = 7.5f*back/back.magnitude;
+                }
+                transform.position = (AwakePos-back/10f);
                 //transform.position -= Back;
             //屏幕坐标向量相减，得到指向鼠标点的目标向量，即黄色线段
             Vector3 direction = mouse - obj;
@@ -91,6 +99,9 @@ public class Ship : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+
+
 
         int i = 0;
         if(TargetPlanet==null)

@@ -1,8 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/tian/EnergyManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/tian/Ship.cs">
     <Files>
-      <File FileName="Assets/scripts/tian/EnergyManager.cs" Line="60" Column="42" />
+      <File FileName="Assets/scripts/tian/EnergyManager.cs" Line="70" Column="31" />
+      <File FileName="Assets/scripts/tian/Planet.cs" Line="144" Column="14" />
+      <File FileName="Assets/scripts/tian/ShellMove.cs" Line="7" Column="46" />
+      <File FileName="Assets/scripts/tian/Ship.cs" Line="139" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
