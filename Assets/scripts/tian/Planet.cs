@@ -25,6 +25,9 @@ public class Planet : MonoBehaviour {
     public float mass;
     public Rigidbody2D Rship;
     public GameObject bu;
+	/// <summary>
+	/// the id(index) of this planet in planetmanager's array
+	/// </summary>
     public int id;
     public Vector3 PlanetPosition;
     public bool isDead;
@@ -227,5 +230,6 @@ public class Planet : MonoBehaviour {
 		float shellSpeed = shell.GetComponent<ShellMove> ().shellMoveSpeed;
 		shell.transform.up = direction;
 		shell.GetComponent <Rigidbody2D>().velocity =direction*shellSpeed;
+		shell.GetComponent<ShellMove> ().planetID = this.id;
 	}
 }

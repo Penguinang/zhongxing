@@ -28,16 +28,14 @@ public class Barrier : MonoBehaviour
 	public float OneProtectionInterval = 0.02f;
 
 	void OnTriggerEnter2D(Collider2D collider){
-//		if (collider.tag == "stone") {
-//			Destroy (collider);
-//		} else if (collider.tag == "ship") {
-		Destroy (collider.gameObject);
-		Debug.Log ("collider : " + collider.name);
-
-		energyManager.IncreaseEnergy (5);
-		if(collider.tag == "stone")
+		if (collider.tag == "stone") {
+			Destroy (collider.gameObject);
+			energyManager.IncreaseEnergy (5);
 			AudioManager.AddSound (AudioManager.instance.Explosion);
-//		}
+
+		} else if (collider.tag == "ship") {
+			Destroy (collider.gameObject);
+		}
 	}
 
 	public void Init(int[] starsIDs){

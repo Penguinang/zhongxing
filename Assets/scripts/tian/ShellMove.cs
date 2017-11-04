@@ -11,6 +11,7 @@ public class ShellMove : MonoBehaviour {
     private static float eulerAngles;
     public  float firetime = 1.0f;
     public float speed;
+	public int planetID;
 
     // Use this for initialization
     void Start() {
@@ -31,9 +32,6 @@ public class ShellMove : MonoBehaviour {
         hitt = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(MousePos), Vector2.zero);
 		Vector2 p = transform.InverseTransformPoint(hitt.point);
         eulerAngles = Mathf.Atan2(p.y,p.x) * Mathf.Rad2Deg -90;//计算欧拉角
-        Debug.Log("done");
-        // Debug.Log(hitt.point.y);
-        // Debug.Log(hitt.transform.position.x);
 		transform.Rotate(0, 0, eulerAngles);//欧拉角旋转
 		shellRigidbody2D.velocity = transform.up * shellMoveSpeed;
         isShellCanMove = true;
@@ -42,8 +40,9 @@ public class ShellMove : MonoBehaviour {
     {
         //Destroy(this.gameObject);
         
-
-		if (collision.tag == "Planet"&&(this.gameObject.transform.position-collision.transform.position).magnitude>2&&collision.GetComponent<Planet>().status!=1)
+//		if (collision.tag == "Planet"&&(this.gameObject.transform.position-collision.transform.position).magnitude>2&&collision.GetComponent<Planet>().status!=1)
+		if(collision.tag=="Planet")
+		if(collision.GetComponent<Planet>().id!=planetID)
         {
             collision.SendMessage("TakeDamage");
             Destroy(this.gameObject);

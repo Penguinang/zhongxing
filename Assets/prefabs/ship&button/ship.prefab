@@ -124,8 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstPos: {x: 0, y: 0}
   SecondPos: {x: 0, y: 0}
-  WidthToDestroy: 30
-  HeigtToDestroy: 20
+  WidthToDestroy: 38.2
+  HeigtToDestroy: 22
   AwakePos: {x: 0, y: 0, z: 0}
   speed: 1
   Rship: {fileID: 50983619513312654}
@@ -188,6 +188,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -203,6 +204,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -220,3 +222,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

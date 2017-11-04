@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 public class PlanetProtectDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler

@@ -233,7 +233,6 @@ public class Ship : MonoBehaviour
             AwakePlanet = p.GetComponent<Planet>();
 
         }
-        
 
 	}
  
