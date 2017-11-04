@@ -14,7 +14,8 @@ public class Switch : MonoBehaviour {
 
     public void OnValueChange(bool isOn)
     {
-		isOn = toggle.isOn;
+		if(toggle)
+			isOn = toggle.isOn;
         isOnGameObject.SetActive(isOn);
         isOffGameObject.SetActive(!isOn);
     }

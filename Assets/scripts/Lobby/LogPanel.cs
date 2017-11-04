@@ -104,7 +104,7 @@ public class LogPanel : MonoBehaviour {
 		} else {
 			bool hasRoom = false;
 			foreach (MatchInfoSnapshot room in matches)
-				if (false/*room.currentSize < room.maxSize*/) {
+				if (room.currentSize < room.maxSize) {
 					lobbyManager.matchMaker.JoinMatch(room.networkId, "", "", "", 0, 0, lobbyManager.OnMatchJoined);
 					lobbyManager._isMatchmaking = true;
 					hasRoom = true;

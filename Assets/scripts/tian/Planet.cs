@@ -29,7 +29,7 @@ public class Planet : MonoBehaviour {
     public Vector3 PlanetPosition;
     public bool isDead;
  
-
+	public static string[] PlanetSprite = new string[5]{"Planet1","Planet2","Planet3","Planet5","Planet6"};
 
     //sun
     public static Transform FirePosition;

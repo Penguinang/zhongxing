@@ -165,7 +165,7 @@ public class Ship : MonoBehaviour
             }
             else
             {
-                transform.Translate(ToTarget * 0.01f);
+                transform.Translate(ToTarget * 0.06f);
             }
             
         }
@@ -217,6 +217,10 @@ public class Ship : MonoBehaviour
                 }
                 else
                     col.GetComponent<Planet>().status = 0;
+				Sprite sprite = Resources.Load<Sprite> (Planet.PlanetSprite[IDManager.instance.GetPlayerIDForPlanet(this.id)]);
+				Debug.Log ("planet : "+col.GetComponent<Planet>().id+" is changing sprite to "+Planet.PlanetSprite[IDManager.instance.GetPlayerIDForPlanet(this.id)]);
+				Debug.Log ("ship belongs to player : "+IDManager.instance.GetPlayerIDForPlanet(this.id));
+				col.gameObject.GetComponent<SpriteRenderer> ().sprite = sprite;
             }
             CatchStatus = 0;                  
 		}

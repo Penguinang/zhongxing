@@ -653,7 +653,7 @@ MonoBehaviour:
   mass: 35
   Rship: {fileID: 0}
   bu: {fileID: 0}
-  id: 3
+  id: 4
   PlanetPosition: {x: 0, y: 0, z: 0}
   isDead: 0
   planeHp: 100
@@ -857,7 +857,7 @@ Transform:
   m_Children:
   - {fileID: 1046502794}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &206685114
 CircleCollider2D:
@@ -1382,7 +1382,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490477104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 9.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1425139337}
@@ -1391,7 +1391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 9.87}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490477106
@@ -2319,7 +2319,7 @@ MonoBehaviour:
   mass: 35
   Rship: {fileID: 0}
   bu: {fileID: 0}
-  id: 2
+  id: 3
   PlanetPosition: {x: 0, y: 0, z: 0}
   isDead: 0
   planeHp: 100
@@ -3545,7 +3545,7 @@ MonoBehaviour:
   mass: 40
   Rship: {fileID: 0}
   bu: {fileID: 0}
-  id: 4
+  id: 0
   PlanetPosition: {x: 0, y: 0, z: 0}
   isDead: 0
   planeHp: 100
@@ -3614,7 +3614,7 @@ Transform:
   m_Children:
   - {fileID: 490477105}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1234208451
 CircleCollider2D:
@@ -3976,7 +3976,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425139336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.729, y: -5.46, z: 0}
+  m_LocalPosition: {x: 0, y: 2.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 865540014}
@@ -3985,7 +3985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.729, y: -5.46}
+  m_AnchoredPosition: {x: 0, y: 2.01}
   m_SizeDelta: {x: 2, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425139338
@@ -4484,11 +4484,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planets:
-  - {fileID: 1628923822}
+  - {fileID: 1234208447}
   - {fileID: 206685110}
+  - {fileID: 1628923822}
   - {fileID: 803801493}
   - {fileID: 194275172}
-  - {fileID: 1234208447}
   RedIcon: {fileID: 1966020588535116, guid: eaadd6ff01c8e4f0e9be281c2cc3f217, type: 2}
   YellowIcon: {fileID: 1351016993750110, guid: 301c83b0591744d1791c80d40da6ee54, type: 2}
   LightBlueIcon: {fileID: 1276965436283090, guid: b072807d1fe914b8a9d67a922359a872,
@@ -4662,7 +4662,7 @@ GameObject:
   - component: {fileID: 1628923826}
   - component: {fileID: 1628923827}
   m_Layer: 12
-  m_Name: earth
+  m_Name: Planet3
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4b6796b784bc547becfbaa355b4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 1
+  status: -1
   sli: {fileID: 0}
   Gforce: {x: 0, y: 0}
   ship: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
@@ -4687,7 +4687,7 @@ MonoBehaviour:
   mass: 20
   Rship: {fileID: 0}
   bu: {fileID: 0}
-  id: 0
+  id: 2
   PlanetPosition: {x: 0, y: 0, z: 0}
   isDead: 0
   planeHp: 100
@@ -4756,7 +4756,7 @@ Transform:
   m_Children:
   - {fileID: 469068843}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1628923826
 CircleCollider2D:
@@ -4772,7 +4772,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1.5
 --- !u!114 &1628923827
 MonoBehaviour:
   m_ObjectHideFlags: 0
