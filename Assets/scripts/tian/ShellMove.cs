@@ -16,6 +16,9 @@ public class ShellMove : MonoBehaviour {
     void Start() {
       
         shellRigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
+
+		//---------------------------------------------------------YangPengBo----------------------------------------------------------
+		AudioManager.AddSound (AudioManager.instance.Shell);
     }
     
     // Update is called once per frame

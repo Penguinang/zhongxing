@@ -35,6 +35,8 @@ public class Barrier : MonoBehaviour
 		Debug.Log ("collider : " + collider.name);
 
 		energyManager.IncreaseEnergy (5);
+		if(collider.tag == "stone")
+			AudioManager.AddSound (AudioManager.instance.Explosion);
 //		}
 	}
 
@@ -53,7 +55,7 @@ public class Barrier : MonoBehaviour
 		if (count > 1) {
 			for (int i = 1; i < count; i++) {
 				float x = 0;
-				while (x <= 1) {
+				while (x < 1) {
 					List<Vector3> starsPositions = new List<Vector3> ();
 					for (int k = 0; k <= i; k++) {
 						starsPositions.Add (PlanetManager.GetPlanet (starsIDs [k]).transform.position);
@@ -61,7 +63,7 @@ public class Barrier : MonoBehaviour
 					Vector3 targetPosition = starsPositions [starsPositions.Count - 1];
 					starsPositions.RemoveAt (starsPositions.Count - 1);
 					Vector3 lastPosition = starsPositions [starsPositions.Count - 1];
-					x += 0.05f;
+					x += 0.3f;
 					starsPositions.Add (lastPosition * (1 - x) + targetPosition * x);
 					yield return StartCoroutine (Calculate (starsPositions));
 					yield return new WaitForSeconds (PlanetsProtectionInterval/20);
