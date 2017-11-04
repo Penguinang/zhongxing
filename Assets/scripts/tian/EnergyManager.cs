@@ -58,11 +58,13 @@ public class EnergyManager : MonoBehaviour {
     {
         this.energy += e;
 		StartCoroutine (ChangeEnergyEffect ());
+		BroadcastManager.AddMessage ("能量增加 "+e+"点");
     }
     public void DecreaseEnergy(float e)
     {
 		this.energy -= e;
 		StartCoroutine (ChangeEnergyEffect ());
+		BroadcastManager.AddMessage ("能量减少 "+e+"点");
     }
 
 	IEnumerator ChangeEnergyEffect(){
