@@ -6,8 +6,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{B537C064-D673-E81B-CC13-C0402680FA44}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -38,237 +39,240 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GeneratePlayer.cs" />
-    <Compile Include="Assets\scripts\Barrier\Barrier.cs" />
-    <Compile Include="Assets\scripts\EventSystemChecker.cs" />
-    <Compile Include="Assets\scripts\Lobby\LobbyCountdownPanel.cs" />
-    <Compile Include="Assets\scripts\Lobby\LobbyHook.cs" />
-    <Compile Include="Assets\scripts\Lobby\LobbyManager.cs" />
-    <Compile Include="Assets\scripts\Lobby\LobbyPlayer.cs" />
-    <Compile Include="Assets\scripts\Lobby\LobbyPlayerList.cs" />
-    <Compile Include="Assets\scripts\Lobby\LogPanel.cs" />
-    <Compile Include="Assets\scripts\PanelManage\PanelManager.cs" />
-    <Compile Include="Assets\scripts\PlanetManager\IDManager.cs" />
-    <Compile Include="Assets\scripts\PlanetManager\PlanetManager.cs" />
-    <Compile Include="Assets\scripts\Player\CameraController.cs" />
-    <Compile Include="Assets\scripts\Player\CameraDragHide.cs" />
-    <Compile Include="Assets\scripts\Player\PlanetIcon.cs" />
-    <Compile Include="Assets\scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\scripts\Player\PlayerInput.cs" />
-    <Compile Include="Assets\scripts\Player\PlayerMessage.cs" />
-    <Compile Include="Assets\scripts\Player\Rocker.cs" />
-    <Compile Include="Assets\scripts\Player\TestPlayer.cs" />
-    <Compile Include="Assets\scripts\Socket\AccountDB.cs" />
-    <Compile Include="Assets\scripts\Socket\AssemblyInfo.cs" />
-    <Compile Include="Assets\scripts\Socket\ByteBuffer.cs" />
-    <Compile Include="Assets\scripts\Socket\Client.cs" />
-    <Compile Include="Assets\scripts\tian\Button.cs" />
-    <Compile Include="Assets\scripts\tian\ButtonCircle.cs" />
-    <Compile Include="Assets\scripts\tian\ButtonProtect.cs" />
-    <Compile Include="Assets\scripts\tian\ButtonShip.cs" />
-    <Compile Include="Assets\scripts\tian\CUbe.cs" />
-    <Compile Include="Assets\scripts\tian\EnergyManager.cs" />
-    <Compile Include="Assets\scripts\tian\GameController.cs" />
-    <Compile Include="Assets\scripts\tian\Pauser.cs" />
-    <Compile Include="Assets\scripts\tian\Planes.cs" />
-    <Compile Include="Assets\scripts\tian\Planet.cs" />
-    <Compile Include="Assets\scripts\tian\ProtectManager.cs" />
-    <Compile Include="Assets\scripts\tian\ShellAttack.cs" />
-    <Compile Include="Assets\scripts\tian\ShellMove.cs" />
-    <Compile Include="Assets\scripts\tian\Ship.cs" />
-    <Compile Include="Assets\scripts\tian\ShipManager.cs" />
-    <Compile Include="Assets\scripts\tian\StatusManager.cs" />
-    <Compile Include="Assets\scripts\tian\StoneController.cs" />
-    <Compile Include="Assets\scripts\UI\Loading.cs" />
-    <Compile Include="Assets\scripts\UI\LoadingNum.cs" />
-    <Compile Include="Assets\scripts\UI\SceneChanger.cs" />
-    <Compile Include="Assets\scripts\UI\SceneEnter.cs" />
-    <Compile Include="Assets\scripts\UI\SceneSettings.cs" />
-    <Compile Include="Assets\scripts\UI\SetActive.cs" />
-    <Compile Include="Assets\scripts\UI\SetSettings.cs" />
-    <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
-    <Compile Include="Assets\scripts\UI\Switch.cs" />
-    <Compile Include="Assets\scripts\YangPengbo\AudioManager.cs" />
-    <Compile Include="Assets\scripts\YangPengbo\BroadcastManager.cs" />
-    <Compile Include="Assets\scripts\YangPengbo\Tip.cs" />
-    <None Include="Assets\fonts\OpenSans\License!.txt" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClothModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterInputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterRendererModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UNETModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UNETModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.WebModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.WebModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ARModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StyleSheetsModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.StyleSheetsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GridModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ParticlesLegacyModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ParticlesLegacyModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.WindModule">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\TestRunner\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\TestRunner\net35\unity-custom\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\Timeline\RuntimeEditor\UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\UIAutomation\UnityEngine.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AR">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\UnityAR\RuntimeEditor\UnityEngine.AR.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GoogleAudioSpatializer">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\UnityGoogleAudioSpatializer\RuntimeEditor\UnityEngine.GoogleAudioSpatializer.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HoloLens">
-      <HintPath>..\..\..\..\..\..\run\media\penguinang\ca785986-7d2e-421b-8c00-94fd271d760c\opt\UnityBeta\Editor\Data\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>..\..\..\..\.config\unity3d\cache\packages\packages.unity.com\com.unity.ads%400.0.16\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>..\..\..\..\.config\unity3d\cache\packages\packages.unity.com\com.unity.analytics%400.0.17\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>..\..\..\..\.config\unity3d\cache\packages\packages.unity.com\com.unity.purchasing%400.0.18\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\GeneratePlayer.cs" />
+     <Compile Include="Assets\scripts\Barrier\Barrier.cs" />
+     <Compile Include="Assets\scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyCountdownPanel.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyHook.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyManager.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyPlayer.cs" />
+     <Compile Include="Assets\scripts\Lobby\LobbyPlayerList.cs" />
+     <Compile Include="Assets\scripts\Lobby\LogPanel.cs" />
+     <Compile Include="Assets\scripts\PanelManage\PanelManager.cs" />
+     <Compile Include="Assets\scripts\PlanetManager\IDManager.cs" />
+     <Compile Include="Assets\scripts\PlanetManager\PlanetManager.cs" />
+     <Compile Include="Assets\scripts\Player\CameraController.cs" />
+     <Compile Include="Assets\scripts\Player\CameraDragHide.cs" />
+     <Compile Include="Assets\scripts\Player\PlanetIcon.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerInput.cs" />
+     <Compile Include="Assets\scripts\Player\PlayerMessage.cs" />
+     <Compile Include="Assets\scripts\Player\Rocker.cs" />
+     <Compile Include="Assets\scripts\Player\TestPlayer.cs" />
+     <Compile Include="Assets\scripts\Socket\AccountDB.cs" />
+     <Compile Include="Assets\scripts\Socket\AssemblyInfo.cs" />
+     <Compile Include="Assets\scripts\Socket\ByteBuffer.cs" />
+     <Compile Include="Assets\scripts\Socket\Client.cs" />
+     <Compile Include="Assets\scripts\tian\Button.cs" />
+     <Compile Include="Assets\scripts\tian\ButtonCircle.cs" />
+     <Compile Include="Assets\scripts\tian\ButtonProtect.cs" />
+     <Compile Include="Assets\scripts\tian\ButtonShip.cs" />
+     <Compile Include="Assets\scripts\tian\CoolTime.cs" />
+     <Compile Include="Assets\scripts\tian\CUbe.cs" />
+     <Compile Include="Assets\scripts\tian\EnergyManager.cs" />
+     <Compile Include="Assets\scripts\tian\GameController.cs" />
+     <Compile Include="Assets\scripts\tian\Pauser.cs" />
+     <Compile Include="Assets\scripts\tian\Planes.cs" />
+     <Compile Include="Assets\scripts\tian\Planet.cs" />
+     <Compile Include="Assets\scripts\tian\ProtectManager.cs" />
+     <Compile Include="Assets\scripts\tian\ShellAttack.cs" />
+     <Compile Include="Assets\scripts\tian\ShellCool.cs" />
+     <Compile Include="Assets\scripts\tian\ShellMove.cs" />
+     <Compile Include="Assets\scripts\tian\Ship.cs" />
+     <Compile Include="Assets\scripts\tian\ShipCool.cs" />
+     <Compile Include="Assets\scripts\tian\ShipManager.cs" />
+     <Compile Include="Assets\scripts\tian\StatusManager.cs" />
+     <Compile Include="Assets\scripts\tian\StoneController.cs" />
+     <Compile Include="Assets\scripts\UI\Loading.cs" />
+     <Compile Include="Assets\scripts\UI\LoadingNum.cs" />
+     <Compile Include="Assets\scripts\UI\SceneChanger.cs" />
+     <Compile Include="Assets\scripts\UI\SceneEnter.cs" />
+     <Compile Include="Assets\scripts\UI\SceneSettings.cs" />
+     <Compile Include="Assets\scripts\UI\SetActive.cs" />
+     <Compile Include="Assets\scripts\UI\SetSettings.cs" />
+     <Compile Include="Assets\scripts\UI\SettingsEnter.cs" />
+     <Compile Include="Assets\scripts\UI\Switch.cs" />
+     <Compile Include="Assets\scripts\YangPengbo\AudioManager.cs" />
+     <Compile Include="Assets\scripts\YangPengbo\BroadcastManager.cs" />
+     <Compile Include="Assets\scripts\YangPengbo\Tip.cs" />
+     <None Include="Assets\fonts\OpenSans\License!.txt" />
+ <Reference Include="UnityEngine.CoreModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AccessibilityModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ParticleSystemModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PhysicsModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VehiclesModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ClothModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AIModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AnimationModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TextRenderingModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TerrainPhysicsModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.IMGUIModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ClusterInputModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ClusterRendererModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UNETModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.DirectorModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityAnalyticsModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.CrashReportingModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PerformanceReportingModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityConnectModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.WebModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ARModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VRModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIElementsModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StyleSheetsModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AudioModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GameCenterModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GridModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ImageConversionModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.InputModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.JSONSerializeModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ParticlesLegacyModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Physics2DModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ScreenCaptureModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpriteMaskModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TerrainModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TilemapModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VideoModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.WindModule">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AR">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/UnityAR/RuntimeEditor/UnityEngine.AR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>/run/media/penguinang/ca785986-7d2e-421b-8c00-94fd271d760c/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/home/penguinang/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@0.0.16/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/home/penguinang/.config/unity3d/cache/packages/packages.unity.com/com.unity.analytics@0.0.17/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>/home/penguinang/.config/unity3d/cache/packages/packages.unity.com/com.unity.purchasing@0.0.18/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -278,7 +282,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Assets\scripts\Player\" />
-  </ItemGroup>
+  
 </Project>

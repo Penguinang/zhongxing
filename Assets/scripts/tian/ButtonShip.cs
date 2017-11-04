@@ -11,12 +11,13 @@ public class ButtonShip : MonoBehaviour {
     public GameObject ship;
     public float ship_energy=20;
     public EnergyManager EnergyManager;
+    public CoolTime CT;
 
     void Start()
     {
         flag = false;
         EnergyManager = GameObject.Find("EnergyManager").GetComponent<EnergyManager>();
- 
+        CT = GameObject.FindGameObjectWithTag("CoolTimeManager").GetComponent<CoolTime>();
     }
 
     private void OnMouseDown()
@@ -36,16 +37,18 @@ public class ButtonShip : MonoBehaviour {
 
         if (EnergyManager.launchable)
         {
+            if (CT.ShipTime == 0)
+            {
+                GameObject instance = Instantiate(ship, shipPos, transform.rotation);
+                GameObject planet = transform.parent.parent.parent.gameObject;
+                instance.GetComponent<Ship>().planetID = planet.GetComponent<Planet>().id;
+                //ShipManager.ships.Add(ship.GetComponent<Ship>());
 
-			GameObject instance = Instantiate(ship, shipPos, transform.rotation);
-			GameObject planet = transform.parent.parent.parent.gameObject;
-			instance.GetComponent<Ship> ().planetID = planet.GetComponent<Planet> ().id;
-            //ShipManager.ships.Add(ship.GetComponent<Ship>());
 
-
-
-            //DEBUG
-            EnergyManager.DecreaseEnergy(20f);
+                //DEBUG
+                EnergyManager.DecreaseEnergy(20f);
+            }
+            CT.ShipTime = 1f;
 
 		}
 

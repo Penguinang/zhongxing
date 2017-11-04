@@ -29,6 +29,10 @@ public class EnergyManager : MonoBehaviour {
         {
             EnergyUpdate.fillAmount -= Time.deltaTime/5;
         }
+        else if (EnergyUpdate.fillAmount < Energy.fillAmount)
+        {
+            EnergyUpdate.fillAmount += Time.deltaTime / 5;
+        }
         if(energy-ShipEnergy>=0)
         {
             launchable = true;
@@ -37,6 +41,7 @@ public class EnergyManager : MonoBehaviour {
         {
             launchable = false;
         }
+        
 
 
 

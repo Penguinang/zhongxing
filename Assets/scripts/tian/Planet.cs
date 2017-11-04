@@ -90,6 +90,7 @@ public class Planet : MonoBehaviour {
         else
         {
             this.isDead = true;
+            Destroy(this.gameObject);
         }
 
 
