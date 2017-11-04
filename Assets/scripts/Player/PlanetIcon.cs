@@ -12,6 +12,7 @@ public class PlanetIcon : MonoBehaviour
 		if (icon)
 			Destroy (icon);
 		icon = Instantiate (iconPrefab);
+		Debug.Log ("localPlayer Icon is : " + icon);
 		icon.transform.SetParent (transform);
 		icon.transform.localPosition = new Vector3 (0, 0, 0);
 	}
