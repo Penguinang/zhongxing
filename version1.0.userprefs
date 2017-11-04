@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/YangPengbo/ProtectionSimplify.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/tian/Ship.cs">
     <Files>
-      <File FileName="Assets/scripts/YangPengbo/ProtectionSimplify.cs" Line="9" Column="28" />
+      <File FileName="Assets/scripts/tian/Ship.cs" Line="123" Column="22" />
+      <File FileName="Assets/scripts/tian/Planet.cs" Line="191" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

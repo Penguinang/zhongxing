@@ -146,6 +146,7 @@ MonoBehaviour:
   V: {x: 0, y: 0}
   CatchTime: 300
   CatchDirection: 0
+  debug: 0
 --- !u!114 &114456657757779590
 MonoBehaviour:
   m_ObjectHideFlags: 1
