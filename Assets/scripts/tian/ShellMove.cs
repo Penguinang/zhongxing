@@ -5,22 +5,22 @@ using UnityEngine;
 public class ShellMove : MonoBehaviour {
     
     public static bool isShellCanMove =false;
-    public  static Rigidbody2D shellRigidbody2D;
-    public  static float shellMoveSpeed = 2.0f;
+    public  Rigidbody2D shellRigidbody2D;
+    public  float shellMoveSpeed ;
     public static RaycastHit2D hitt;
     private static float eulerAngles;
     public  float firetime = 1.0f;
-    
+    public float speed;
 
     // Use this for initialization
     void Start() {
       
-        shellRigidbody2D = GetComponent<Rigidbody2D>();
+        shellRigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
     }
     
     // Update is called once per frame
      void Update () {
-        
+        speed = shellRigidbody2D.velocity.magnitude;
 
     }
     public  void  ShellCanMove(Vector3 MousePos)//发射核弹

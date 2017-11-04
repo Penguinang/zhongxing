@@ -52,11 +52,16 @@ public class EnergyManager : MonoBehaviour {
         {
             energy_update -= 1; 
         }
+        else if(energy_update<energy)
+        {
+            energy_update += 1;
+        }
         Amout.GetComponent<Text>().text = energy_update + "%";
     }
     public void IncreaseEnergy(float e)
     {
         this.energy += e;
+        
     }
     public void DecreaseEnergy(float e)
     {
