@@ -106,6 +106,7 @@
      <Compile Include="Assets\scripts\UI\Switch.cs" />
      <Compile Include="Assets\scripts\YangPengbo\AudioManager.cs" />
      <Compile Include="Assets\scripts\YangPengbo\BroadcastManager.cs" />
+     <Compile Include="Assets\scripts\YangPengbo\PlanetProtectDrag.cs" />
      <Compile Include="Assets\scripts\YangPengbo\ProtectionSimplify.cs" />
      <Compile Include="Assets\scripts\YangPengbo\Tip.cs" />
      <None Include="Assets\fonts\OpenSans\License!.txt" />

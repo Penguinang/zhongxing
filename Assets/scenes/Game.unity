@@ -663,6 +663,7 @@ MonoBehaviour:
   AirshipPre: {fileID: 0}
   isInput: 0
   HealthBar: {fileID: 0}
+  pm: {fileID: 0}
   shipPrefab: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   shellPrefab: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6,
     type: 2}
@@ -798,6 +799,7 @@ MonoBehaviour:
   AirshipPre: {fileID: 0}
   isInput: 0
   HealthBar: {fileID: 0}
+  pm: {fileID: 0}
   shipPrefab: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   shellPrefab: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6,
     type: 2}
@@ -1909,7 +1911,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 630943095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2329,6 +2331,7 @@ MonoBehaviour:
   AirshipPre: {fileID: 0}
   isInput: 0
   HealthBar: {fileID: 0}
+  pm: {fileID: 0}
   shipPrefab: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   shellPrefab: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6,
     type: 2}
@@ -3227,7 +3230,6 @@ GameObject:
   - component: {fileID: 1158277552}
   - component: {fileID: 1158277554}
   - component: {fileID: 1158277553}
-  - component: {fileID: 1158277555}
   m_Layer: 5
   m_Name: MinMapEdge
   m_TagString: Untagged
@@ -3287,17 +3289,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1158277551}
---- !u!114 &1158277555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1158277551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b024e495070bf4bacbb376209ef0a087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1177349481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3510,7 @@ GameObject:
   - component: {fileID: 1234208448}
   - component: {fileID: 1234208451}
   - component: {fileID: 1234208453}
+  - component: {fileID: 1234208452}
   m_Layer: 12
   m_Name: Planet1
   m_TagString: Planet
@@ -3555,6 +3547,7 @@ MonoBehaviour:
   AirshipPre: {fileID: 0}
   isInput: 0
   HealthBar: {fileID: 0}
+  pm: {fileID: 0}
   shipPrefab: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   shellPrefab: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6,
     type: 2}
@@ -3631,6 +3624,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.029699087}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &1234208452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234208447}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b024e495070bf4bacbb376209ef0a087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlanetTouchCircle: {fileID: 1325266142221900, guid: d5428854bed62444596cacfd08e439cb,
+    type: 2}
+  PlanetTouches: {fileID: 0}
 --- !u!114 &1234208453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,6 +4704,7 @@ MonoBehaviour:
   AirshipPre: {fileID: 0}
   isInput: 0
   HealthBar: {fileID: 0}
+  pm: {fileID: 0}
   shipPrefab: {fileID: 1981072239721254, guid: 8ca803902d0729447aad6a5d5f1340b1, type: 2}
   shellPrefab: {fileID: 1394427390236570, guid: cd2160955183d6f4b913c411483cb9b6,
     type: 2}

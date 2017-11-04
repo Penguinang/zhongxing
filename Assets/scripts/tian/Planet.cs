@@ -50,7 +50,7 @@ public class Planet : MonoBehaviour {
 
     public Image HealthBar;
 
-
+	public ProtectManager pm;
 
     // Use this for initialization
     void Start () {
@@ -61,7 +61,8 @@ public class Planet : MonoBehaviour {
 
     private void Awake()
     {
-        
+
+		pm = GameObject.Find("ProtectManager").GetComponent<ProtectManager>();
         
     }
 
@@ -113,29 +114,38 @@ public class Planet : MonoBehaviour {
 
 
     void ShipOnMousedown()
-    {
-        if (this.status == 1)
-        {
-            //Debug.Log("done");
-            bu = GameObject.Find("button");
-            if (bu == null)
-            {
-                buttons.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-//<<<<<<< HEAD
-				buttons.GetComponent<Button>().ButtonId = this.id;
-				Instantiate(buttons, transform.position, transform.rotation).transform.parent = transform;
-//=======
-//
-//                //
-//                buttons.GetComponent<Button>().ButtonId = this.id;
-//                Instantiate(buttons, transform.position, transform.rotation);
-//                //
-//
-//           
-//>>>>>>> 8e64032bac1835f4b88e1c98c2e6bf7a9f8ce0c8
-            }
-        }
+	{
+		if (!ButtonProtect.ProtectInput) {
+			if (this.status == 1) { 
+				bu = GameObject.Find ("button");
+				if (bu == null) {
+					buttons.transform.localScale = new Vector3 (0.3f, 0.3f, 0.3f);
+					buttons.GetComponent<Button> ().ButtonId = this.id;
+					Instantiate (buttons, transform.position, transform.rotation).transform.parent = transform;
+				}
+			}
+		} else {
+			if(pm.LastId>0)
+			{
+				int j = 0;
+				foreach(int i in pm.Ids)
+				{
+					if(i!=pm.LastId)
+					{
+						j = j+1;
+					}
+				}
+				if((j!=0)||(pm.Ids.Count==0))
+				{
+					pm.Ids.Add(pm.LastId);
+				}
+
+			}
+			pm.LastId = pm.ThisId;
+			pm.ThisId = this.id;
+		}
     }
+
     void ShipInFixedUpdate()
     {
         GameObject[] sh = GameObject.FindGameObjectsWithTag("ship");

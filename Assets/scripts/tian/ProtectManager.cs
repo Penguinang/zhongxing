@@ -94,7 +94,7 @@ public class ProtectManager : MonoBehaviour {
             planets[0] = single[0];
 			Planets = single;
 			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
-			Debug.Log ("done");
+			ButtonProtect.ProtectInput = false;
             return (single);
         }
         else if ((ThisId == FirstId) && (ThisId != LastId)&& (FirstId != -3) && (LastId != -1))
@@ -114,6 +114,7 @@ public class ProtectManager : MonoBehaviour {
             FirstId = -3;
 			Ids = new List<int>();
 			LobbyManager.localPlayer.GetComponent<PlayerInput>().OnProtectionClick(Planets.ToArray ());
+			ButtonProtect.ProtectInput = false;
 			Debug.Log ("done");
 			return (Ids);
 

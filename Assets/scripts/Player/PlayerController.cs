@@ -100,6 +100,8 @@ namespace Player{
 				Debug.Log ("Protection clicked, planets is "+a);
 			}
 			GameObject barrier = Instantiate (BarrierPrefab);
+			Vector3 ps = barrier.transform.position;
+			barrier.transform.position = new Vector3 (ps.x, ps.y, ps.z + 1);
 			barrier.GetComponent<Barrier> ().Init (planets);
 		}
 	}
