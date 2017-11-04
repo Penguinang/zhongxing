@@ -36,7 +36,7 @@ public class Ship : MonoBehaviour
     public float CatchTime;
     public int CatchDirection;
 
-
+    public float debug;
 
     // Use this for initialization
     void Awake()
@@ -75,12 +75,12 @@ public class Ship : MonoBehaviour
 
                 Vector3 mouPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 back =  mouPos-transform.position;
-                Debug.Log((this.transform.position - AwakePos).magnitude);
+                //Debug.Log((this.transform.position - AwakePos).magnitude);
                 if(back.magnitude>=7.5f)
                 {
                     back = 7.5f*back/back.magnitude;
                 }
-                transform.position = (AwakePos-back/10f);
+                transform.position = (AwakePos+back/10f);
                 //transform.position -= Back;
             //屏幕坐标向量相减，得到指向鼠标点的目标向量，即黄色线段
             Vector3 direction = mouse - obj;
@@ -89,7 +89,7 @@ public class Ship : MonoBehaviour
             //将目标向量长度变成1，即单位向量，这里的目的是只使用向量的方向，不需要长度，所以变成1
             direction = direction.normalized;
          
-			transform.right= direction;
+            transform.right= -direction;
            
         }
 
@@ -104,6 +104,7 @@ public class Ship : MonoBehaviour
 
 
         int i = 0;
+        Vector3 ToParentPlanet = transform.position - AwakePos;
         if(TargetPlanet==null)
         {
             foreach (Planet p in Ps)
@@ -115,13 +116,16 @@ public class Ship : MonoBehaviour
                     ((transform.position - AwakePos).magnitude > 2) && (p != AwakePlanet))
                 {
                     TargetPlanet = p;
-                    if (ToTarget.x * Rship.velocity.x+ToTarget.y*Rship.velocity.y > 0)
+                    ToTarget = p.transform.position - transform.position;
+                    //Debug.Log(ToTarget.x * ToParentPlanet.x + ToTarget.y * ToParentPlanet.y);
+                    debug = ToTarget.x * V.x + ToTarget.y * V.y;
+					if (/*ToTarget.x * V.x+ToTarget.y* V.y >= 0*/Vector3.Cross (V,ToTarget).z<0)
                     {
-                        CatchDirection = 1;
+                        CatchDirection = -1;// clockwise
                     }
                     else
                     {
-                        CatchDirection = -1;
+                        CatchDirection = 1;// anticlockwise
                     }
                 }
             }
@@ -131,6 +135,8 @@ public class Ship : MonoBehaviour
         if (TargetPlanet != null)
         {
             ToTarget = TargetPlanet.transform.position - transform.position;
+
+            
             //Debug.Log(Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y);
             if ((Rship.velocity.x * ToTarget.x + Rship.velocity.y * ToTarget.y <= 0.1) && (Rship.velocity.magnitude < MaxV)&&(ToTarget.magnitude>=CatchRangeMin))
             {
@@ -165,7 +171,7 @@ public class Ship : MonoBehaviour
         }
 
 
-        if  ((this.transform.position - AwakePos).magnitude < 0.1)
+        if  ((this.transform.position - AwakePos).magnitude < 0.8)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -175,8 +181,9 @@ public class Ship : MonoBehaviour
             {
                 SecondPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				//----------------------------------------------------YangPengBo-----------------------------------------------------------------
-//                Rship.velocity = (new Vector3(SecondPos.x,SecondPos.y,0) - AwakePos) * speed;
-				Vector3 velocity = (SecondPos-(Vector2)AwakePos)*speed;
+                //Rship.velocity = (new Vector3(SecondPos.x,SecondPos.y,0) - AwakePos) * speed;
+				Vector3 velocity = -(SecondPos-(Vector2)AwakePos)*speed;
+
 				if(planetID!=-1)
 					LobbyManager.localPlayer.GetComponent<PlayerInput>().OnShipClick (planetID,velocity);
 				Destroy (gameObject);

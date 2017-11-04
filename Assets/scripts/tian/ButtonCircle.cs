@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ButtonCircle : MonoBehaviour {
 
-   private void OnMouseDown()
+    private void Awake()
+    {
+        
+    }
+    private void OnMouseDown()
     {
 		Destroy(this.transform.parent.gameObject);
 		Destroy(this.transform.parent.parent.gameObject);
