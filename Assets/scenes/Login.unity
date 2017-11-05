@@ -1686,6 +1686,7 @@ MonoBehaviour:
   alreadyLogin: {fileID: 309428102}
   matching: {fileID: 2141387340}
   linking: {fileID: 1480314855}
+  PlayerNum: 0
   playerNumInput: {fileID: 1969555287}
   OnlyCreateRoom: {fileID: 1850176785}
 --- !u!1 &1061915303
@@ -2663,7 +2664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1969555288
 RectTransform:
   m_ObjectHideFlags: 0

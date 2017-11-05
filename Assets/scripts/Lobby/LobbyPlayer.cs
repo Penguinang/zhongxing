@@ -9,10 +9,15 @@ namespace Prototype.NetworkLobby
 {
     public class LobbyPlayer : NetworkLobbyPlayer
     {
-		public int PlayerNum = 1;
 		public string Name;
 		[SyncVar]
 		public int ID = -1;
+		
+		public int PlayerNum = 1;
+		void Awake(){		
+			InputField num = GameObject.Find ("DebugPlayerNum").GetComponent<InputField> ();		
+			PlayerNum = int.Parse (num.text);		
+		}
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();
@@ -43,7 +48,7 @@ namespace Prototype.NetworkLobby
 		public IEnumerator waitMatchPlayers(){
 			LobbyPlayerList playerList = LobbyPlayerList._instance;
 			Vector3 rotation = new Vector3 (0, 0, 1);
-			while(playerList.getPlayerNum ()<4){
+			while(playerList.getPlayerNum ()<PlayerNum){
 				yield return 0;
 				rotation += new Vector3 (0, 0, 1);
 			}

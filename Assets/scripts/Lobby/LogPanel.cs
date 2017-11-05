@@ -27,6 +27,7 @@ public class LogPanel : MonoBehaviour {
 	}
 
 	//DEBUG
+
 	public GameObject playerNumInput;
 	public GameObject OnlyCreateRoom;
 	public void OnClickLogin(){
@@ -101,11 +102,11 @@ public class LogPanel : MonoBehaviour {
 		loadingNum.countFromAndTo (30,60);
 
 		//DEBUG
-		if (OnlyCreateRoom.GetComponent<Toggle> ().isOn) {
-			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,"", "", "", 0, 0,	lobbyManager.OnMatchCreate);
-			lobbyManager._isMatchmaking = true;
-			return;
-		}
+//		if (OnlyCreateRoom.GetComponent<Toggle> ().isOn) {
+//			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,"", "", "", 0, 0,	lobbyManager.OnMatchCreate);
+//			lobbyManager._isMatchmaking = true;
+//			return;
+//		}
 
 		if (matches.Count == 0) {
 			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,	"", "", "", 0, 0,lobbyManager.OnMatchCreate);
@@ -113,7 +114,8 @@ public class LogPanel : MonoBehaviour {
 		} else {
 			bool hasRoom = false;
 			foreach (MatchInfoSnapshot room in matches)
-				if (room.currentSize < room.maxSize) {
+//				if (room.currentSize < room.maxSize) {
+				if(room.currentSize<room.maxSize){
 					lobbyManager.matchMaker.JoinMatch(room.networkId, "", "", "", 0, 0, lobbyManager.OnMatchJoined);
 					lobbyManager._isMatchmaking = true;
 					hasRoom = true;
