@@ -211,16 +211,17 @@ public class Ship : MonoBehaviour
                 int newPlayer = IDManager.instance.GetPlayerIDForPlanet(this.id);
                 IDManager.instance.ChangePlanetOwner(planetID, oldPlayer, newPlayer);
 
-                if (newPlayer == localPlayerID)
-                {//this.id is attacking planets'id 
+                if (newPlayer == localPlayerID){//this.id is attacking planets'id 
                     col.GetComponent<Planet>().status = 1;
-                }
+                	}
                 else
                     col.GetComponent<Planet>().status = 0;
 				Sprite sprite = Resources.Load<Sprite> (Planet.PlanetSprite[IDManager.instance.GetPlayerIDForPlanet(this.id)]);
 				Debug.Log ("planet : "+col.GetComponent<Planet>().id+" is changing sprite to "+Planet.PlanetSprite[IDManager.instance.GetPlayerIDForPlanet(this.id)]);
 				Debug.Log ("ship belongs to player : "+IDManager.instance.GetPlayerIDForPlanet(this.id));
 				col.gameObject.GetComponent<SpriteRenderer> ().sprite = sprite;
+
+				col.GetComponent<PlanetIcon> ().SetIconById (IDManager.instance.GetPlayerIDForPlanet(this.id));
             }
             CatchStatus = 0;                  
 		}

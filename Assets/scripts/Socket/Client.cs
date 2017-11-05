@@ -9,8 +9,8 @@ namespace MySocket
 {  
 	public class ClientSocket  
 	{  
-		private static byte[] result = new byte[1024];  
-		public static Socket clientSocket;  
+		private byte[] result = new byte[1024];  
+		public Socket clientSocket;  
 		//是否已连接的标识  
 		public bool IsConnected = false;  
 
