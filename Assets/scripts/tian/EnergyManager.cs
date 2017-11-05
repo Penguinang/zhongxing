@@ -57,6 +57,8 @@ public class EnergyManager : MonoBehaviour {
     public void IncreaseEnergy(float e)
     {
         this.energy += e;
+		if (energy > 100)
+			energy = 100;
 		StartCoroutine (ChangeEnergyEffect ());
 		BroadcastManager.AddMessage ("能量增加 "+e+"点");
     }

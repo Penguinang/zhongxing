@@ -48,7 +48,7 @@ namespace Prototype.NetworkLobby
 		public IEnumerator waitMatchPlayers(){
 			LobbyPlayerList playerList = LobbyPlayerList._instance;
 			Vector3 rotation = new Vector3 (0, 0, 1);
-			while(playerList.getPlayerNum ()<PlayerNum){
+			while(playerList.getPlayerNum ()<4){
 				yield return 0;
 				rotation += new Vector3 (0, 0, 1);
 			}
