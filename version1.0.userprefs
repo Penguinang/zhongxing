@@ -1,10 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/tian/EnergyManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Player/PlayerMessage.cs">
     <Files>
-      <File FileName="Assets/scripts/Lobby/LogPanel.cs" Line="15" Column="12" />
-      <File FileName="Assets/scripts/Lobby/LobbyPlayer.cs" Line="51" Column="38" />
-      <File FileName="Assets/scripts/tian/EnergyManager.cs" Line="61" Column="17" />
+      <File FileName="Assets/scripts/Player/PlayerMessage.cs" Line="45" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

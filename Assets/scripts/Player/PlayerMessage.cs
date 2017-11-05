@@ -43,11 +43,11 @@ public class PlayerMessage : NetworkBehaviour {
 		if (isLocalPlayer) {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet> ().status = 1;
 			Debug.Log ("localPlayerUpdatePlanet, Planet : "+planet[0]+" for player : "+ID);
+			PlanetManager.GetPlanet (planet [0]).GetComponent<PlanetIcon> ().SetIconById (ID);
 		} else {
 			PlanetManager.GetPlanet (planet[0]).GetComponent<Planet>().status = 0;
 			Debug.Log ("nonlocalPlayerUpdatePlanet, Planet : "+planet[0]+" for player : "+ID);
 		}
-		PlanetManager.GetPlanet (planet [0]).GetComponent<PlanetIcon> ().SetIconById (ID);
 	}
 
 	private void OnEnergyChange(float energy){
