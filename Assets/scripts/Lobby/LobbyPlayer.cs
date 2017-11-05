@@ -56,8 +56,11 @@ namespace Prototype.NetworkLobby
 				Name = LobbyManager.s_Singleton.localPlayerName;
 				CmdClientUpdateName (Name);
 				Debug.Log ("cmdchangename");
+				LoadingNum loadingNum = GameObject.Find ("Loading").GetComponent<LoadingNum> ();
+				loadingNum.countFromAndTo (80,100);
 			}
 			SendReadyToBeginMessage ();
+
 		}
     }
 }

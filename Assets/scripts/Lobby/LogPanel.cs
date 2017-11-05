@@ -28,6 +28,7 @@ public class LogPanel : MonoBehaviour {
 
 	//DEBUG
 	public GameObject playerNumInput;
+	public GameObject OnlyCreateRoom;
 	public void OnClickLogin(){
 		//==========================================================================================================
 		// 连接的过程一共分为三步
@@ -98,6 +99,14 @@ public class LogPanel : MonoBehaviour {
 
 	private void OnListGet(bool success, string extendedInfo, List<MatchInfoSnapshot> matches){
 		loadingNum.countFromAndTo (30,60);
+
+		//DEBUG
+		if (OnlyCreateRoom.GetComponent<Toggle> ().isOn) {
+			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,"", "", "", 0, 0,	lobbyManager.OnMatchCreate);
+			lobbyManager._isMatchmaking = true;
+			return;
+		}
+
 		if (matches.Count == 0) {
 			lobbyManager.matchMaker.CreateMatch("game",	(uint)lobbyManager.maxPlayers,	true,	"", "", "", 0, 0,lobbyManager.OnMatchCreate);
 			lobbyManager._isMatchmaking = true;	

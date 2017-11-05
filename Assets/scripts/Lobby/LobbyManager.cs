@@ -60,14 +60,14 @@ namespace Prototype.NetworkLobby
 
 		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
 		{
-			loadingNum.countFromAndTo (60,100);
+			loadingNum.countFromAndTo (60,80);
 			base.OnMatchCreate(success, extendedInfo, matchInfo);
             _currentMatchID = (System.UInt64)matchInfo.networkId;
 			logPanel.OnMatching ();
 		}
 
 		public override void OnMatchJoined (bool success, string extendedInfo, MatchInfo matchInfo){
-			loadingNum.countFromAndTo (60,100);
+			loadingNum.countFromAndTo (60,80);
 			base.OnMatchJoined (success,extendedInfo,matchInfo);
 			Debug.Log ("on match joining");
 			Debug.Log ("extendInfo is : " + extendedInfo);
