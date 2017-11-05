@@ -61,7 +61,7 @@ public class Barrier : MonoBehaviour
 					Vector3 targetPosition = starsPositions [starsPositions.Count - 1];
 					starsPositions.RemoveAt (starsPositions.Count - 1);
 					Vector3 lastPosition = starsPositions [starsPositions.Count - 1];
-					x += 0.3f;
+					x += 0.25f;
 					starsPositions.Add (lastPosition * (1 - x) + targetPosition * x);
 					yield return StartCoroutine (Calculate (starsPositions));
 					yield return new WaitForSeconds (PlanetsProtectionInterval/20);

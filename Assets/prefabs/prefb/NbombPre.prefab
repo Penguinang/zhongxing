@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellRigidbody2D: {fileID: 50541957883534120}
-  shellMoveSpeed: 2
+  shellMoveSpeed: 4
   firetime: 1
   speed: 0
   planetID: 0

@@ -105,8 +105,8 @@ public class Planes : MonoBehaviour {
     public void TakeDamage()
     {
         if (planeHp <= 0) return;
-        planeHp -= 10;
-        if (planeHp <= 10)
+        planeHp -= 20;
+        if (planeHp <= 20)
         {
             Destroy(this.gameObject);
         }
